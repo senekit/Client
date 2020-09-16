@@ -7,6 +7,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
@@ -18,8 +19,7 @@ import javafx.stage.Stage;
  **/
 public class LoginInUi extends Application {
     public void start(final Stage primaryStage) throws Exception {
-        GridPane gridPane = new GridPane();                         //总体框架
-        gridPane.setAlignment(Pos.CENTER);                          //居中
+        Pane pane = new Pane();                         //总体框架
 
         Text emailText = new Text("邮箱:     ");
         Text passwordText = new Text("密码:     ");
@@ -37,19 +37,21 @@ public class LoginInUi extends Application {
             } catch (Exception e) {
                 e.printStackTrace();
             }
-            primaryStage.hide(); //点开新的界面后，是否关闭此界面
-        });
+            primaryStage.hide();
+        });                                                         //打开注册界面
 
-        gridPane.add(emailText,0,0);
-        gridPane.add(passwordText,0,1);
-        gridPane.add(emailTextField,1,0);
-        gridPane.add(passwordTextField,1,1);
-        gridPane.add(registerButton,0,2);
-        gridPane.add(loginButton,1,2);
-        GridPane.setHalignment(registerButton,HPos.CENTER);
-        GridPane.setHalignment(loginButton, HPos.CENTER);
+        pane.getChildren().add(emailText);
+        pane.getChildren().add(passwordText);
+        pane.getChildren().add(loginButton);
+        pane.getChildren().add(registerButton);
+        pane.getChildren().add(emailTextField);
+        pane.getChildren().add(passwordTextField);
+        registerButton.setLayoutX(38);
+        registerButton.setLayoutY(356);
+        registerButton.setPrefHeight(36);
+        registerButton.setPrefWidth(86);
 
-        primaryStage.setScene(new Scene(gridPane,300,250));
+        primaryStage.setScene(new Scene(pane,300,500));
 
         primaryStage.show();
     }
