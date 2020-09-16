@@ -46,10 +46,33 @@ public class LoginInUi extends Application {
         pane.getChildren().add(registerButton);
         pane.getChildren().add(emailTextField);
         pane.getChildren().add(passwordTextField);
+
+        emailText.setLayoutX(23);
+        emailText.setLayoutY(124);
+        emailTextField.setLayoutX(83);
+        emailTextField.setLayoutY(100);
+        emailTextField.setPrefWidth(188);
+        emailTextField.setPrefHeight(36);
+
+        passwordText.setLayoutX(23);
+        passwordText.setLayoutY(204);
+        passwordTextField.setLayoutX(83);
+        passwordTextField.setLayoutY(180);
+        passwordTextField.setPrefHeight(36);
+        passwordTextField.setPrefWidth(188);
+
+        loginButton.setLayoutX(168);
+        loginButton.setLayoutY(356);
+        loginButton.setPrefHeight(36);
+        loginButton.setPrefWidth(86);
+
         registerButton.setLayoutX(38);
         registerButton.setLayoutY(356);
         registerButton.setPrefHeight(36);
         registerButton.setPrefWidth(86);
+
+        //emailText.setFont(18);
+
 
         primaryStage.setScene(new Scene(pane,300,500));
 
