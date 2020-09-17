@@ -11,11 +11,9 @@ public class User {
     private String password;
     private String familyId;
 
-    public User(String email, String name, String password, String familyId) {
+    public User(String email,String password) {
         this.email = email;
-        this.name = name;
         this.password = password;
-        this.familyId = familyId;
     }
 
     public String getEmail() {

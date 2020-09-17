@@ -12,6 +12,9 @@ import javafx.stage.Stage;
  **/
 public class MainUi extends Application {
     User user;
+    MainUi(User user){
+        this.user=user;
+    }
     @Override
     public void start(Stage primaryStage) throws Exception {
         TabPane mainTabPane = new TabPane();

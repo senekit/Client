@@ -3,6 +3,9 @@ import javafx.scene.control.*;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
+
+import java.io.IOException;
 
 
 /**
@@ -87,5 +90,77 @@ public class BookingUi {
         trafficButton.setPrefHeight(40);
         trafficButton.setLayoutX(195);
         trafficButton.setLayoutY(330);
+//内部类用于发送消息和接收消息
+        class Send{
+            public void sendMessage(String species) throws IOException {
+                ClientSocket socket = new ClientSocket();
+                String message = "M/"+species+"/"+importTextField.getText();
+                socket.send(message);
+                String[] messages= socket.accept();
+                switch (messages[0].charAt(0)){
+                    case 'S':{
+                        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                        alert.setTitle("成功");
+                        alert.setHeaderText(null);
+                        alert.setContentText("添加成功");
+                        alert.showAndWait();
+                    }
+                    case 'F':{
+                        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                        alert.setTitle("错误");
+                        alert.setHeaderText(null);
+                        alert.setContentText("添加失败");
+                        alert.showAndWait();
+                        break;
+                    }
+                }
+                socket.close();
+            }
+        }
+//六个按钮的事件驱动
+        salaryButton.setOnAction(e->{
+            try {
+                new Send().sendMessage(salaryButton.getText());
+            } catch (IOException ioException) {
+                ioException.printStackTrace();
+            }
+        });
+        investButton.setOnAction(e->{
+            try {
+                new Send().sendMessage(investButton.getText());
+            } catch (IOException ioException) {
+                ioException.printStackTrace();
+            }
+        });
+        clothesButton.setOnAction(e->{
+            try {
+                new Send().sendMessage(clothesButton.getText());
+            } catch (IOException ioException) {
+                ioException.printStackTrace();
+            }
+        });
+        eatButton.setOnAction(e->{
+            try {
+                new Send().sendMessage(eatButton.getText());
+            } catch (IOException ioException) {
+                ioException.printStackTrace();
+            }
+        });
+        houseButton.setOnAction(e->{
+            try {
+                new Send().sendMessage(houseButton.getText());
+            } catch (IOException ioException) {
+                ioException.printStackTrace();
+            }
+        });
+        trafficButton.setOnAction(e->{
+            try {
+                new Send().sendMessage(trafficButton.getText());
+            } catch (IOException ioException) {
+                ioException.printStackTrace();
+            }
+        });
+
+
     }
 }

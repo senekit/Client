@@ -69,7 +69,7 @@ public class LoginInUi extends Application {
 
         primaryStage.show();
 
-        ClientSocket socket = new ClientSocket("192.168.43.47", 8888);
+        ClientSocket socket = new ClientSocket("127.0.0.1", 8888);
 
 //内部类处理服务器信息
         class Solution {
@@ -88,7 +88,8 @@ public class LoginInUi extends Application {
                         alert.setHeaderText(null);
                         alert.setContentText("登录成功");
                         alert.showAndWait();
-                        MainUi open = new MainUi();
+                        User user = new User(emailTextField.getText(),passwordTextField.getText());
+                        MainUi open = new MainUi(user);
                         try {
                             open.start(new Stage());
                         } catch (Exception e) {
