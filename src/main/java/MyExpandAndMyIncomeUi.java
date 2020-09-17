@@ -15,16 +15,10 @@ public class MyExpandAndMyIncomeUi {
     public Pane myExpandandMyIncomePane;
 
     public void init(){
-        myExpandandMyIncomePane = new Pane();
+        this.myExpandandMyIncomePane = new Pane();
 
-        DatePicker datePicker = new DatePicker();
-        myExpandandMyIncomePane.getChildren().add(datePicker);
-
-        Button a = new Button("a");
-        myExpandandMyIncomePane.getChildren().add(a);
-
-        a.setOnAction((ActionEvent event) -> {
-            System.out.println(datePicker.getValue());
-        });
+//        a.setOnAction((ActionEvent event) -> {
+//            System.out.println(datePicker.getValue());
+//        });
     }
 }

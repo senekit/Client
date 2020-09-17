@@ -11,10 +11,11 @@ import javafx.stage.Stage;
  * create: 2020-09-17 09:38
  **/
 public class MainUi extends Application {
+    User user;
     @Override
     public void start(Stage primaryStage) throws Exception {
         TabPane mainTabPane = new TabPane();
-        Tab bookingTab = new Tab("记账本");           //选项卡界面
+        Tab bookingTab = new Tab("记账本");
         Tab myExpandandMyIncomeTab = new Tab("我的收入支出");
         Tab financialAnalysisTab = new Tab("财务分析");
         Tab financialStatementTab = new Tab("财务报表");
@@ -29,21 +30,26 @@ public class MainUi extends Application {
         financialProjectTab.setClosable(false);
         userInformationTab.setClosable(false);
         mainTabPane.getTabs().addAll(bookingTab,myExpandandMyIncomeTab,financialAnalysisTab,financialStatementTab,incomeofFamilyMembers,financialProjectTab,userInformationTab);
+        //主界面选项卡
+
+        BookingUi bookingUi = new BookingUi();
+        bookingUi.init();
+        bookingTab.setContent(bookingUi.bookingPane);
+        //记账本选项卡
 
         MyExpandAndMyIncomeUi myExpandAndMyIncomeUi = new MyExpandAndMyIncomeUi();
         myExpandAndMyIncomeUi.init();
         myExpandandMyIncomeTab.setContent(myExpandAndMyIncomeUi.myExpandandMyIncomePane);
+        //收入支出选项卡
 
         FinancialProjectUi financialProjectUi = new FinancialProjectUi();
         financialProjectUi.init();
         financialProjectTab.setContent(financialProjectUi.financialProjectTabPane);
+        //理财项目选项卡
 
-        primaryStage.setScene(new Scene(mainTabPane,800,600));
+        primaryStage.setTitle("家庭金融管理系统");
+        primaryStage.setScene(new Scene(mainTabPane,550,450));
         primaryStage.show();
+        //Stage设置
     }
-
-
-
-
-
 }

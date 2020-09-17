@@ -96,7 +96,6 @@ public class RegisterUi extends Application {
         returnButton.setPrefHeight(36);
 
         primaryStage.setScene(new Scene(pane,455,644));
-
         primaryStage.show();
 
         ClientSocket registersocket = new ClientSocket("127.0.0.1",8888);
