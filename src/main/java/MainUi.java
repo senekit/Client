@@ -30,16 +30,9 @@ public class MainUi extends Application {
         userInformationTab.setClosable(false);
         mainTabPane.getTabs().addAll(myExpandTab,myIncomeTab,financialAnalysisTab,financialStatementTab,incomeofFamilyMembers,financialProjectTab,userInformationTab);
 
-        TabPane financialProjectTabPane = new TabPane();
-        Tab onGoingProjectTab = new Tab("正在进行的项目");
-        Tab projectRiskTab = new Tab("项目风险");
-        Tab prospectiveYieldTab = new Tab("预计收益");
-        onGoingProjectTab.setClosable(false);
-        projectRiskTab.setClosable(false);
-        prospectiveYieldTab.setClosable(false);
-        financialProjectTabPane.getTabs().addAll(onGoingProjectTab,projectRiskTab,prospectiveYieldTab);
-
-        financialProjectTab.setContent(financialProjectTabPane);
+        FinancialProjectUi financialProjectUi = new FinancialProjectUi();
+        financialProjectUi.init();
+        financialProjectTab.setContent(financialProjectUi.financialProjectTabPane);
 
         primaryStage.setScene(new Scene(mainTabPane,800,600));
         primaryStage.show();
