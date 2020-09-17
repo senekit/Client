@@ -48,14 +48,8 @@ public class ClientSocket extends Socket {
         in.read(data);
         String[] messages = new String[100];
         String message =new String(data);
-        int j=0,k=0;
-        for(int i=0;i<message.length();i++){
-            if(message.charAt(i)=='/'){
-                messages[j]=message.substring(j,i);
-                j=i+1;
-                k++;
-            }
-        }
+        System.out.println(message);
+        messages = message.split("/");
         return messages;
     }
 }

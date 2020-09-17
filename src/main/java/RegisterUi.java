@@ -96,9 +96,10 @@ public class RegisterUi extends Application {
         returnButton.setPrefHeight(36);
 
         primaryStage.setScene(new Scene(pane,455,644));
+
         primaryStage.show();
 
-        ClientSocket registersocket = new ClientSocket("127.0.0.1",8888);
+        ClientSocket registersocket = new ClientSocket("192.168.43.47", 8888);
 
 //内部类处理服务器信息
         class Solution {
@@ -124,7 +125,7 @@ public class RegisterUi extends Application {
                             e.printStackTrace();
                         }
                         primaryStage.hide(); //点开新的界面后，是否关闭此界面
-
+                        break;
                     }
                     case 'F':{
                         Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -136,6 +137,7 @@ public class RegisterUi extends Application {
                         passwordTextField.setText("请在此输入您的密码");
                         passwordAgainTextField.setText("请在此输入您的密码");
                         nameTextField.setText("请输入您的姓名");
+                        break;
                     }
                 }
             }
@@ -165,15 +167,13 @@ public class RegisterUi extends Application {
             String email = emailTextField.getText().trim();
             if(!("".equals(name))&&!("".equals(password))&&!("".equals(passwordagain))&&!("".equals(email))){
                 if(password.equals(passwordagain)){
-                    String message = "R/"+name+"/"+password+"/"+email+"/";
+                    String message = "R/"+email+"/"+password+"/"+name+"/";
                     try {
                         registersocket.send(message);
                         Solution solution = new Solution();
-                        while (registersocket.isConnected()) {
-                            String[] messages;
-                            messages = registersocket.accept();
-                            solution.solve(messages);
-                        }
+                        String[] messages;
+                        messages = registersocket.accept();
+                        solution.solve(messages);
                     } catch (IOException ioException) {
                         ioException.printStackTrace();
                     }

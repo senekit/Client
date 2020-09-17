@@ -69,7 +69,7 @@ public class LoginInUi extends Application {
 
         primaryStage.show();
 
-        ClientSocket socket = new ClientSocket("127.0.0.1", 8888);
+        ClientSocket socket = new ClientSocket("192.168.43.47", 8888);
 
 //内部类处理服务器信息
         class Solution {
@@ -95,15 +95,27 @@ public class LoginInUi extends Application {
                             e.printStackTrace();
                         }
                         primaryStage.hide(); //点开新的界面后，是否关闭此界面
+                        break;
                     }
                     case 'F': {
                         Alert alert = new Alert(Alert.AlertType.INFORMATION);
                         alert.setTitle("错误");
                         alert.setHeaderText(null);
-                        alert.setContentText("用户名或者密码错误或不存在,请重新输入");
+                        alert.setContentText("密码错误,请重新输入");
                         alert.showAndWait();
                         emailTextField.setText("请在此输入您的邮箱");
                         passwordTextField.setText("请在此输入您的密码");
+                        break;
+                    }
+                    case 'N': {
+                        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                        alert.setTitle("错误");
+                        alert.setHeaderText(null);
+                        alert.setContentText("用户名不存在,请重新输入");
+                        alert.showAndWait();
+                        emailTextField.setText("请在此输入您的邮箱");
+                        passwordTextField.setText("请在此输入您的密码");
+                        break;
                     }
                 }
             }
@@ -122,6 +134,7 @@ public class LoginInUi extends Application {
 
 //登录动作事件驱动
         loginButton.setOnAction(e -> {
+
             String email = emailTextField.getText().trim();
             String password = passwordTextField.getText().trim();
             String login = "L";
@@ -129,11 +142,9 @@ public class LoginInUi extends Application {
             try {
                 socket.send(message);
                 Solution solution = new Solution();
-                while (socket.isConnected()) {
-                    String[] messages;
-                    messages = socket.accept();
-                    solution.solve(messages);
-                }
+                String[] messages;
+                messages = socket.accept();
+                solution.solve(messages);
             } catch (IOException ioException) {
                 ioException.printStackTrace();
             }
@@ -147,7 +158,6 @@ public class LoginInUi extends Application {
             }
         });
     }
-
     public static void main(String[] args) {
         launch(args);
     }
