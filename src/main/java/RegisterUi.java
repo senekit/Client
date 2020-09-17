@@ -1,4 +1,5 @@
 import javafx.application.Application;
+import javafx.event.ActionEvent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
@@ -31,6 +32,17 @@ public class RegisterUi extends Application {
         passwordAgainTextField.setText("请在此输入您的密码");
         nameTextField.setText("请输入您的姓名");
         Button registerButton = new Button("注册");
+        Button returnButton = new Button("返回");
+
+        returnButton.setOnAction((ActionEvent event) -> {
+            LoginInUi open  = new LoginInUi();
+            try {
+                open.start(new Stage());
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            primaryStage.hide();
+        });                                                         //返回登录界面
 
         pane.getChildren().add(emailText);
         pane.getChildren().add(passwordAgainText);
@@ -41,18 +53,51 @@ public class RegisterUi extends Application {
         pane.getChildren().add(passwordTextField);
         pane.getChildren().add(nameTextField);
         pane.getChildren().add(registerButton);
+        pane.getChildren().add(returnButton);
 
         nameText.setLayoutX(60);
         nameText.setLayoutY(100);
+        nameTextField.setLayoutX(90);
+        nameTextField.setLayoutY(110);
+        nameTextField.setPrefWidth(219);
+        nameTextField.setPrefHeight(36);
+
         emailText.setLayoutX(60);
-        emailText.setLayoutY(170);
+        emailText.setLayoutY(180);
+        emailTextField.setLayoutX(90);
+        emailTextField.setLayoutY(190);
+        emailTextField.setPrefWidth(219);
+        emailTextField.setPrefHeight(36);
+
+
         passwordText.setLayoutX(60);
-        passwordText.setLayoutY(240);
+        passwordText.setLayoutY(260);
+        passwordTextField.setLayoutX(90);
+        passwordTextField.setLayoutY(270);
+        passwordTextField.setPrefWidth(219);
+        passwordTextField.setPrefHeight(36);
+
         passwordAgainText.setLayoutX(60);
-        passwordAgainText.setLayoutY(310);
+        passwordAgainText.setLayoutY(340);
+        passwordAgainTextField.setLayoutX(90);
+        passwordAgainTextField.setLayoutY(350);
+        passwordAgainTextField.setPrefWidth(219);
+        passwordAgainTextField.setPrefHeight(36);
+
+        registerButton.setLayoutX(151);
+        registerButton.setLayoutY(456);
+        registerButton.setPrefWidth(154);
+        registerButton.setPrefHeight(45);
+
+        returnButton.setLayoutX(187);
+        returnButton.setLayoutY(533);
+        returnButton.setPrefWidth(81);
+        returnButton.setPrefHeight(36);
 
 
-        primaryStage.setScene(new Scene(pane,300,500));
+
+
+        primaryStage.setScene(new Scene(pane,455,644));
 
         primaryStage.show();
     }
