@@ -69,7 +69,6 @@ public class RegisterUi extends Application {
         emailTextField.setPrefWidth(219);
         emailTextField.setPrefHeight(36);
 
-
         passwordText.setLayoutX(60);
         passwordText.setLayoutY(260);
         passwordTextField.setLayoutX(90);
@@ -93,9 +92,6 @@ public class RegisterUi extends Application {
         returnButton.setLayoutY(533);
         returnButton.setPrefWidth(81);
         returnButton.setPrefHeight(36);
-
-
-
 
         primaryStage.setScene(new Scene(pane,455,644));
 
