@@ -7,6 +7,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import java.io.IOException;
@@ -19,11 +20,10 @@ import java.io.IOException;
  **/
 public class LoginInUi extends Application {
     public void start(final Stage primaryStage) throws Exception {
-        GridPane gridPane = new GridPane();                         //总体框架
-        gridPane.setAlignment(Pos.CENTER);                          //居中
+        Pane pane = new Pane();                         //总体框架
 
-        Text emailText = new Text("邮箱:     ");
-        Text passwordText = new Text("密码:     ");
+        Text emailText = new Text("邮箱:");
+        Text passwordText = new Text("密码:");
         TextField emailTextField = new TextField();
         emailTextField.setText("请在此输入您的邮箱");
         TextField passwordTextField = new TextField();
@@ -41,16 +41,41 @@ public class LoginInUi extends Application {
             primaryStage.hide(); //点开新的界面后，是否关闭此界面
         });
 
-        gridPane.add(emailText,0,0);
-        gridPane.add(passwordText,0,1);
-        gridPane.add(emailTextField,1,0);
-        gridPane.add(passwordTextField,1,1);
-        gridPane.add(registerButton,0,2);
-        gridPane.add(loginButton,1,2);
-        GridPane.setHalignment(registerButton,HPos.CENTER);
-        GridPane.setHalignment(loginButton, HPos.CENTER);
+        pane.getChildren().add(emailText);
+        pane.getChildren().add(passwordText);
+        pane.getChildren().add(loginButton);
+        pane.getChildren().add(registerButton);
+        pane.getChildren().add(emailTextField);
+        pane.getChildren().add(passwordTextField);
 
-        primaryStage.setScene(new Scene(gridPane,300,250));
+        emailText.setLayoutX(23);
+        emailText.setLayoutY(124);
+        emailTextField.setLayoutX(83);
+        emailTextField.setLayoutY(100);
+        emailTextField.setPrefWidth(188);
+        emailTextField.setPrefHeight(36);
+
+        passwordText.setLayoutX(23);
+        passwordText.setLayoutY(204);
+        passwordTextField.setLayoutX(83);
+        passwordTextField.setLayoutY(180);
+        passwordTextField.setPrefHeight(36);
+        passwordTextField.setPrefWidth(188);
+
+        loginButton.setLayoutX(168);
+        loginButton.setLayoutY(356);
+        loginButton.setPrefHeight(36);
+        loginButton.setPrefWidth(86);
+
+        registerButton.setLayoutX(38);
+        registerButton.setLayoutY(356);
+        registerButton.setPrefHeight(36);
+        registerButton.setPrefWidth(86);
+
+        //emailText.setFont(18);
+
+
+        primaryStage.setScene(new Scene(pane,300,500));
 
         primaryStage.show();
 
