@@ -1,3 +1,5 @@
+
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -40,31 +42,20 @@ public class ClientSocket extends Socket {
     []
     java.lang.String
      **/
-    public void accept() throws IOException {
+    public String[] accept() throws IOException {
         InputStream in = this.getInputStream();
         byte[] data=new byte[1024];
         in.read(data);
+        String[] messages = new String[100];
         String message =new String(data);
-        System.out.println(message);
-//        String[] messages= new String[100];
-//        int j=0,k=0;
-//        for(int i=0;i<message.length();i++){
-//            if(message.charAt(i)=='/'){
-//                messages[k]=message.substring(j,i);
-//                j=i+1;
-//                k++;
-//            }
-//        }
-//        switch (messages[0].charAt(0)){
-//            case 'S':{
-//                //弹出弹窗提示操作成功
-//            }
-//            case 'I':{
-//                //从服务器获取收入信息
-//            }
-//            case 'E':{
-//                //从服务器获取支出信息
-//            }
-//        }
+        int j=0,k=0;
+        for(int i=0;i<message.length();i++){
+            if(message.charAt(i)=='/'){
+                messages[j]=message.substring(j,i);
+                j=i+1;
+                k++;
+            }
+        }
+        return messages;
     }
 }

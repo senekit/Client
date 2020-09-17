@@ -1,12 +1,14 @@
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
+import java.io.IOException;
 
 
 /**
@@ -96,5 +98,108 @@ public class RegisterUi extends Application {
         primaryStage.setScene(new Scene(pane,455,644));
 
         primaryStage.show();
+
+        ClientSocket registersocket = new ClientSocket("127.0.0.1",8888);
+
+//内部类处理服务器信息
+        class Solution {
+            /**
+             * @Description:处理服务器端信息
+             * @Author: LJZ
+             * @Date: 2020/9/17 11:04
+            [messages]
+            void
+             **/
+            public void solve(String messages[]){
+                switch (messages[0].charAt(0)){
+                    case 'S':{
+                        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                        alert.setTitle("成功");
+                        alert.setHeaderText(null);
+                        alert.setContentText("注册成功");
+                        alert.showAndWait();
+                        LoginInUi open  = new LoginInUi();
+                        try {
+                            open.start(new Stage());
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                        primaryStage.hide(); //点开新的界面后，是否关闭此界面
+
+                    }
+                    case 'F':{
+                        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                        alert.setTitle("错误");
+                        alert.setHeaderText(null);
+                        alert.setContentText("该用户已存在");
+                        alert.showAndWait();
+                        emailTextField.setText("请在此输入您的邮箱");
+                        passwordTextField.setText("请在此输入您的密码");
+                        passwordAgainTextField.setText("请在此输入您的密码");
+                        nameTextField.setText("请输入您的姓名");
+                    }
+                }
+            }
+        }
+
+//返回登录界面
+        returnButton.setOnAction((ActionEvent event) -> {
+            try {
+                registersocket.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            LoginInUi open  = new LoginInUi();
+            try {
+                open.start(new Stage());
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            primaryStage.hide();
+        });
+
+//注册事件处理
+        registerButton.setOnAction(e->{
+            String password = passwordTextField.getText().trim();
+            String passwordagain = passwordAgainTextField.getText().trim();
+            String name = nameTextField.getText().trim();
+            String email = emailTextField.getText().trim();
+            if(!("".equals(name))&&!("".equals(password))&&!("".equals(passwordagain))&&!("".equals(email))){
+                if(password.equals(passwordagain)){
+                    String message = "R/"+name+"/"+password+"/"+email+"/";
+                    try {
+                        registersocket.send(message);
+                        Solution solution = new Solution();
+                        while (registersocket.isConnected()) {
+                            String[] messages;
+                            messages = registersocket.accept();
+                            solution.solve(messages);
+                        }
+                    } catch (IOException ioException) {
+                        ioException.printStackTrace();
+                    }
+                }
+                else{
+                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setTitle("错误");
+                    alert.setHeaderText(null);
+                    alert.setContentText("两次密码不一致");
+                    alert.showAndWait();
+                    passwordTextField.setText("请在此输入您的密码");
+                    passwordAgainTextField.setText("请在此输入您的密码");
+                }
+            }
+            else {
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("错误");
+                alert.setHeaderText(null);
+                alert.setContentText("填写不能为空");
+                alert.showAndWait();
+                emailTextField.setText("请在此输入您的邮箱");
+                passwordTextField.setText("请在此输入您的密码");
+                passwordAgainTextField.setText("请在此输入您的密码");
+                nameTextField.setText("请输入您的姓名");
+            }
+        });
     }
 }

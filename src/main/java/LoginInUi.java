@@ -1,11 +1,13 @@
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+
 import java.io.IOException;
 
 /**
@@ -16,6 +18,8 @@ import java.io.IOException;
  **/
 public class LoginInUi extends Application {
     public void start(final Stage primaryStage) throws Exception {
+
+
         Pane pane = new Pane();                         //总体框架
 
         Text emailText = new Text("邮箱:");
@@ -26,16 +30,6 @@ public class LoginInUi extends Application {
         passwordTextField.setText("请在此输入您的密码");
         Button loginButton = new Button("登录");
         Button registerButton = new Button("注册");
-
-        registerButton.setOnAction((ActionEvent event) -> {
-            RegisterUi open  = new RegisterUi();
-            try {
-                open.start(new Stage());
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-            primaryStage.hide(); //点开新的界面后，是否关闭此界面
-        });
 
         pane.getChildren().add(emailText);
         pane.getChildren().add(passwordText);
@@ -71,41 +65,90 @@ public class LoginInUi extends Application {
         //emailText.setFont(18);
 
 
-        primaryStage.setScene(new Scene(pane,300,500));
+        primaryStage.setScene(new Scene(pane, 300, 500));
 
         primaryStage.show();
 
-//登录动作事件驱动
-        loginButton.setOnAction(e->{
-            ClientSocket socket = null;
-            try {
-                socket = new ClientSocket("192.168.43.47",8888);
-            } catch (IOException ioException) {
-                ioException.printStackTrace();
+        ClientSocket socket = new ClientSocket("127.0.0.1", 8888);
+
+//内部类处理服务器信息
+        class Solution {
+            /**
+             * @Description:处理服务器端信息
+             * @Author: LJZ
+             * @Date: 2020/9/17 11:04
+             * [messages]
+             * void
+             **/
+            public void solve(String messages[]) {
+                switch (messages[0].charAt(0)) {
+                    case 'S': {
+                        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                        alert.setTitle("成功");
+                        alert.setHeaderText(null);
+                        alert.setContentText("登录成功");
+                        alert.showAndWait();
+                        MainUi open = new MainUi();
+                        try {
+                            open.start(new Stage());
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                        primaryStage.hide(); //点开新的界面后，是否关闭此界面
+                    }
+                    case 'F': {
+                        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                        alert.setTitle("错误");
+                        alert.setHeaderText(null);
+                        alert.setContentText("用户名或者密码错误或不存在,请重新输入");
+                        alert.showAndWait();
+                        emailTextField.setText("请在此输入您的邮箱");
+                        passwordTextField.setText("请在此输入您的密码");
+                    }
+                }
             }
+        }
+
+//跳转注册界面
+        registerButton.setOnAction((ActionEvent event) -> {
+            RegisterUi open = new RegisterUi();
+            try {
+                open.start(new Stage());
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            primaryStage.hide(); //点开新的界面后，是否关闭此界面
+        });
+
+//登录动作事件驱动
+        loginButton.setOnAction(e -> {
             String email = emailTextField.getText().trim();
             String password = passwordTextField.getText().trim();
-            String login="L";
-            String message= login+"/"+email+"/"+password;
+            String login = "L";
+            String message = login + "/" + email + "/" + password + "/";
             try {
                 socket.send(message);
-                while(socket.isConnected()){
-                    socket.accept();
+                Solution solution = new Solution();
+                while (socket.isConnected()) {
+                    String[] messages;
+                    messages = socket.accept();
+                    solution.solve(messages);
                 }
             } catch (IOException ioException) {
                 ioException.printStackTrace();
             }
         });
-//        primaryStage.setOnCloseRequest(e->{
-//            try {
-//                socket.close();
-//            } catch (IOException ioException) {
-//                ioException.printStackTrace();
-//            }
-//        });
+//窗体关闭事件
+        primaryStage.setOnCloseRequest(e -> {
+            try {
+                socket.close();
+            } catch (IOException ioException) {
+                ioException.printStackTrace();
+            }
+        });
     }
-    public static void main(String[] args){
+
+    public static void main(String[] args) {
         launch(args);
     }
 }
-
