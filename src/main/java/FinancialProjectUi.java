@@ -13,11 +13,9 @@ public class FinancialProjectUi {
     public void init(User user){
         this.financialProjectTabPane = new TabPane();
         Tab onGoingProjectTab = new Tab("正在进行的项目");
-        Tab projectRiskTab = new Tab("项目风险");
-        Tab prospectiveYieldTab = new Tab("预计收益");
+        Tab prospectiveYieldAndRiskTab = new Tab("预计收益和风险");
         onGoingProjectTab.setClosable(false);
-        projectRiskTab.setClosable(false);
-        prospectiveYieldTab.setClosable(false);
-        this.financialProjectTabPane.getTabs().addAll(onGoingProjectTab,projectRiskTab,prospectiveYieldTab);
+        prospectiveYieldAndRiskTab.setClosable(false);
+        this.financialProjectTabPane.getTabs().addAll(onGoingProjectTab,prospectiveYieldAndRiskTab);
     }
 }

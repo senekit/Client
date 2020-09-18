@@ -24,16 +24,20 @@ public class UserInformationUi {
         Button switchAccountButton = new Button("更换账号");
         Button cancelAccountButton = new Button("注销账户");
 
+        changePasswordButton.setLayoutX(113);
+        changePasswordButton.setLayoutY(225);
+        changePasswordButton.setPrefHeight(50);
+        changePasswordButton.setPrefWidth(150);
 
-        changePasswordButton.setLayoutX(150);
-        changePasswordButton.setLayoutY(300);
-        changePasswordButton.setPrefHeight(200);
-        changePasswordButton.setLayoutY(150);
+        switchAccountButton.setLayoutX(113);
+        switchAccountButton.setLayoutY(300);
+        switchAccountButton.setPrefHeight(50);
+        switchAccountButton.setPrefWidth(150);
 
-
-
-
-
+        cancelAccountButton.setLayoutX(113);
+        cancelAccountButton.setLayoutY(375);
+        cancelAccountButton.setPrefHeight(50);
+        cancelAccountButton.setPrefWidth(150);
 
 
         userInformationPane.getChildren().addAll(backgroundLabel,cancelAccountButton,switchAccountButton,changePasswordButton);

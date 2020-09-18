@@ -53,7 +53,7 @@ public class MainUi extends Application {
         //财务分析选项卡
 
         FamilyMemberUi familyMemberUi = new FamilyMemberUi();
-        familyMemberUi.init(user);
+        incomeofFamilyMembers.setOnSelectionChanged(e-> familyMemberUi.init(user));
         incomeofFamilyMembers.setContent(familyMemberUi.familyMemberPane);
         //家庭成员选项卡
 
