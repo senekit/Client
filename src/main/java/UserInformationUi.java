@@ -40,5 +40,9 @@ public class UserInformationUi {
         cancelAccountButton.setPrefWidth(150);
 
         userInformationPane.getChildren().addAll(backgroundLabel,cancelAccountButton,switchAccountButton,changePasswordButton);
+
+
+
+
     }
 }

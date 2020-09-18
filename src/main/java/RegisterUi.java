@@ -5,6 +5,8 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
+import javafx.scene.paint.Paint;
+import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
@@ -29,10 +31,10 @@ public class RegisterUi extends Application {
         TextField passwordTextField = new TextField();
         TextField passwordAgainTextField = new TextField();
         TextField nameTextField = new TextField();
-        emailTextField.setText("请在此输入您的邮箱");
-        passwordTextField.setText("请在此输入您的密码");
-        passwordAgainTextField.setText("请在此输入您的密码");
-        nameTextField.setText("请输入您的姓名");
+        emailTextField.setPromptText("请在此输入您的邮箱");
+        passwordTextField.setPromptText("请在此输入您的密码");
+        passwordAgainTextField.setPromptText("请在此输入您的密码");
+        nameTextField.setPromptText("请输入您的姓名");
         Button registerButton = new Button("注册");
         Button returnButton = new Button("返回");
 
@@ -85,17 +87,89 @@ public class RegisterUi extends Application {
         passwordAgainTextField.setPrefWidth(219);
         passwordAgainTextField.setPrefHeight(36);
 
-        registerButton.setLayoutX(151);
+        registerButton.setLayoutX(120);
         registerButton.setLayoutY(456);
-        registerButton.setPrefWidth(154);
-        registerButton.setPrefHeight(45);
+        registerButton.setPrefWidth(160);
+        registerButton.setPrefHeight(50);
 
-        returnButton.setLayoutX(187);
+        returnButton.setLayoutX(120);
         returnButton.setLayoutY(533);
-        returnButton.setPrefWidth(81);
-        returnButton.setPrefHeight(36);
+        returnButton.setPrefWidth(160);
+        returnButton.setPrefHeight(50);
 
-        primaryStage.setScene(new Scene(pane,455,644));
+        /** 样式部分 **/
+        nameText.setFont(Font.font(18));
+        nameText.setFill(Paint.valueOf("lightgrey"));
+        emailText.setFont(Font.font(18));
+        emailText.setFill(Paint.valueOf("lightgrey"));
+        passwordText.setFont(Font.font(18));
+        passwordText.setFill(Paint.valueOf("lightgrey"));
+        passwordAgainText.setFont(Font.font(18));
+        passwordAgainText.setFill(Paint.valueOf("lightgrey"));
+
+
+        pane.setStyle("-fx-background-color: #36383c");
+
+        registerButton.setStyle("" +
+                "-fx-background-color: #dfebff;\n" +
+                "-fx-background-radius: 25;\n" +
+                "-fx-border-radius: 25;");
+        registerButton.setOnMouseEntered(
+                e->{
+                    registerButton.setStyle("-fx-background-color: #bec9dd;\n" +
+                            "-fx-background-radius: 25;\n" +
+                            "-fx-border-radius: 25;");
+                });
+        registerButton.setOnMouseExited(
+                e->{
+                    registerButton.setStyle("-fx-background-color: #dfebff;\n" +
+                            "-fx-background-radius: 25;\n" +
+                            "-fx-border-radius: 25;");
+                });
+        registerButton.setOnMousePressed(
+                e->{
+                    registerButton.setStyle("-fx-background-color: #8893a7;\n" +
+                            "-fx-background-radius: 25;\n" +
+                            "-fx-border-radius: 25;");
+                });
+        registerButton.setOnMouseReleased(e->{
+            registerButton.setStyle("" +
+                    "-fx-background-color: #dfebff;\n" +
+                    "-fx-background-radius: 25;\n" +
+                    "-fx-border-radius: 25;");
+        });
+
+        returnButton.setStyle("" +
+                "-fx-background-color: #dfebff;\n" +
+                "-fx-background-radius: 25;\n" +
+                "-fx-border-radius: 25;");
+        returnButton.setOnMouseEntered(
+                e->{
+                    returnButton.setStyle("-fx-background-color: #bec9dd;\n" +
+                            "-fx-background-radius: 25;\n" +
+                            "-fx-border-radius: 25;");
+                });
+        returnButton.setOnMouseExited(
+                e->{
+                    returnButton.setStyle("-fx-background-color: #dfebff;\n" +
+                            "-fx-background-radius: 25;\n" +
+                            "-fx-border-radius: 25;");
+                });
+        returnButton.setOnMousePressed(
+                e->{
+                    returnButton.setStyle("-fx-background-color: #8893a7;\n" +
+                            "-fx-background-radius: 25;\n" +
+                            "-fx-border-radius: 25;");
+                });
+        returnButton.setOnMouseReleased(e->{
+            returnButton.setStyle("" +
+                    "-fx-background-color: #dfebff;\n" +
+                    "-fx-background-radius: 25;\n" +
+                    "-fx-border-radius: 25;");
+        });
+
+
+        primaryStage.setScene(new Scene(pane,400,644));
 
         primaryStage.show();
 
@@ -112,7 +186,7 @@ public class RegisterUi extends Application {
              **/
             public void solve(String messages[]){
                 switch (messages[0].charAt(0)){
-                    case 'S':{
+                    case 'B':{
                         Alert alert = new Alert(Alert.AlertType.INFORMATION);
                         alert.setTitle("成功");
                         alert.setHeaderText(null);
@@ -194,10 +268,10 @@ public class RegisterUi extends Application {
                 alert.setHeaderText(null);
                 alert.setContentText("填写不能为空");
                 alert.showAndWait();
-                emailTextField.setText("请在此输入您的邮箱");
-                passwordTextField.setText("请在此输入您的密码");
-                passwordAgainTextField.setText("请在此输入您的密码");
-                nameTextField.setText("请输入您的姓名");
+                emailTextField.setText("");
+                passwordTextField.setText("");
+                passwordAgainTextField.setText("");
+                nameTextField.setText("");
             }
         });
     }
