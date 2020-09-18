@@ -12,6 +12,7 @@ import javafx.stage.Stage;
  **/
 public class MainUi extends Application {
     User user;
+    MainUi(){}
     MainUi(User user){
         this.user=user;
     }
@@ -31,7 +32,7 @@ public class MainUi extends Application {
         mainTabPane.getTabs().addAll(bookingTab,financialAnalysisTab,incomeofFamilyMembers,financialProjectTab,userInformationTab);
         //主界面选项卡
 
-        BookingUi bookingUi = new BookingUi();
+        BookingUi bookingUi = new BookingUi(user);
         bookingUi.init();
         bookingTab.setContent(bookingUi.bookingPane);
         //记账本选项卡

@@ -69,7 +69,7 @@ public class LoginInUi extends Application {
 
         primaryStage.show();
 
-        ClientSocket socket = new ClientSocket("127.0.0.1", 8888);
+        ClientSocket socket = new ClientSocket("192.168.43.47", 8888);
 
 //内部类处理服务器信息
         class Solution {
@@ -82,7 +82,7 @@ public class LoginInUi extends Application {
              **/
             public void solve(String messages[]) {
                 switch (messages[0].charAt(0)) {
-                    case 'S': {
+                    case 'A': {
                         Alert alert = new Alert(Alert.AlertType.INFORMATION);
                         alert.setTitle("成功");
                         alert.setHeaderText(null);

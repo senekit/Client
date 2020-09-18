@@ -6,6 +6,7 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.time.format.DateTimeFormatter;
 
 
 /**
@@ -15,6 +16,11 @@ import java.io.IOException;
  * @create: 2020-09-17 15:28
  **/
 public class BookingUi {
+    User user;
+    BookingUi(User user){
+        this.user=user;
+    }
+
     public TabPane bookingPane;
 
     public void init(){
@@ -93,17 +99,25 @@ public class BookingUi {
 //内部类用于发送消息和接收消息
         class Send{
             public void sendMessage(String species) throws IOException {
-                ClientSocket socket = new ClientSocket();
-                String message = "M/"+species+"/"+importTextField.getText();
+                ClientSocket socket = new ClientSocket("192.168.43.47",8888);
+                if(datePicker.getValue().toString()==null){
+                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setTitle("错误");
+                    alert.setHeaderText(null);
+                    alert.setContentText("不能为空");
+                }
+                String message = "M/"+user.getEmail()+"/"+species+"/"+importTextField.getText()+"/"+datePicker.getValue().toString().trim();
+                System.out.println(datePicker.getValue().toString());
                 socket.send(message);
                 String[] messages= socket.accept();
                 switch (messages[0].charAt(0)){
-                    case 'S':{
+                    case 'C':{
                         Alert alert = new Alert(Alert.AlertType.INFORMATION);
                         alert.setTitle("成功");
                         alert.setHeaderText(null);
                         alert.setContentText("添加成功");
                         alert.showAndWait();
+                        break;
                     }
                     case 'F':{
                         Alert alert = new Alert(Alert.AlertType.INFORMATION);
