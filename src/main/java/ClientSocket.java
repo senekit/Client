@@ -42,14 +42,12 @@ public class ClientSocket extends Socket {
     []
     java.lang.String
      **/
-    public String[] accept() throws IOException {
+    public String accept() throws IOException {
         InputStream in = this.getInputStream();
         byte[] data=new byte[1024];
         in.read(data);
-        String[] messages = new String[100];
         String message =new String(data);
         System.out.println(message);
-        messages = message.split("/");
-        return messages;
+        return message;
     }
 }
