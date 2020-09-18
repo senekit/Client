@@ -2,7 +2,10 @@ import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+
+import java.io.IOException;
 
 /**
  * program: Client
@@ -12,12 +15,20 @@ import javafx.stage.Stage;
  **/
 public class MainUi extends Application {
     User user;
-    MainUi(){}
-    MainUi(User user){
+    MainUi() throws IOException {}
+    MainUi(User user) throws IOException {
         this.user=user;
     }
+
     @Override
     public void start(Stage primaryStage) throws Exception {
+        ClientSocket socket = new ClientSocket("192.168.43.47",8888);
+        socket.send(new String("F/"+user.getEmail()));
+        String[] message = socket.accept().split("/");
+        System.out.println(message[0]+message[1]);
+        user.setFamilyId(message[0]);
+        user.setName(message[1]);
+
         TabPane mainTabPane = new TabPane();
         Tab bookingTab = new Tab("记账本");
         Tab financialAnalysisTab = new Tab("财务分析");
@@ -48,12 +59,19 @@ public class MainUi extends Application {
         //用户信息选项卡
 
         FinancialAnalysisUi financialAnalysisUi = new FinancialAnalysisUi();
-        financialAnalysisUi.init(user);
-        financialAnalysisTab.setContent(financialAnalysisUi.financialAnalysisPane);
+        Pane empty = new Pane();
+        financialAnalysisTab.setOnSelectionChanged(e->{
+            try {
+                financialAnalysisUi.init(user);
+                financialAnalysisTab.setContent(financialAnalysisUi.financialAnalysisPane);
+            } catch (IOException ioException) {
+                ioException.printStackTrace();
+            }
+        });
         //财务分析选项卡
 
         FamilyMemberUi familyMemberUi = new FamilyMemberUi();
-        incomeofFamilyMembers.setOnSelectionChanged(e-> familyMemberUi.init(user));
+        familyMemberUi.init(user);
         incomeofFamilyMembers.setContent(familyMemberUi.familyMemberPane);
         //家庭成员选项卡
 

@@ -1,3 +1,5 @@
+import javafx.beans.property.SimpleStringProperty;
+
 /**
  * @program: Client
  * @description: 用户信息
@@ -9,25 +11,57 @@ public class User {
     private String email;
     private String name;
     private String password;
+    private String familyId;
+    private SimpleStringProperty money;
+    private SimpleStringProperty date;
+    private SimpleStringProperty item;
 
     public User(String email, String password) {
         this.email = email;
         this.password = password;
     }
 
-    private String familyId;
-
-    public User(String email, String name, String password, String familyId) {
-        this.email = email;
-        this.name = name;
-        this.password = password;
-        this.familyId = familyId;
+    public User(String item,String money,String date){
+        this.item=new SimpleStringProperty(item);
+        this.money=new SimpleStringProperty(money);
+        this.date=new SimpleStringProperty(date);
     }
 
+    public String getMoney() {
+        return money.get();
+    }
 
+    public SimpleStringProperty moneyProperty() {
+        return money;
+    }
 
+    public void setMoney(String money) {
+        this.money.set(money);
+    }
 
+    public String getDate() {
+        return date.get();
+    }
 
+    public SimpleStringProperty dateProperty() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date.set(date);
+    }
+
+    public String getItem() {
+        return item.get();
+    }
+
+    public SimpleStringProperty itemProperty() {
+        return item;
+    }
+
+    public void setItem(String item) {
+        this.item.set(item);
+    }
 
     public String getEmail() {
         return email;

@@ -172,7 +172,7 @@ public class RegisterUi extends Application {
                         registersocket.send(message);
                         Solution solution = new Solution();
                         String[] messages;
-                        messages = registersocket.accept();
+                        messages = registersocket.accept().split("/");
                         solution.solve(messages);
                     } catch (IOException ioException) {
                         ioException.printStackTrace();

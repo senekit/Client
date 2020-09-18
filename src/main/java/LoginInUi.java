@@ -69,7 +69,7 @@ public class LoginInUi extends Application {
 
         primaryStage.show();
 
-        ClientSocket socket = new ClientSocket("127.0.0.1", 8888);
+        ClientSocket socket = new ClientSocket("192.168.43.47", 8888);
 
 //内部类处理服务器信息
         class Solution {
@@ -80,7 +80,7 @@ public class LoginInUi extends Application {
              * [messages]
              * void
              **/
-            public void solve(String messages[]) {
+            public void solve(String messages[]) throws IOException {
                 switch (messages[0].charAt(0)) {
                     case 'A': {
                         Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -144,7 +144,7 @@ public class LoginInUi extends Application {
                 socket.send(message);
                 Solution solution = new Solution();
                 String[] messages;
-                messages = socket.accept();
+                messages = socket.accept().split("/");
                 solution.solve(messages);
             } catch (IOException ioException) {
                 ioException.printStackTrace();
