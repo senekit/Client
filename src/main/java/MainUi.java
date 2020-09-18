@@ -32,15 +32,30 @@ public class MainUi extends Application {
         mainTabPane.getTabs().addAll(bookingTab,financialAnalysisTab,incomeofFamilyMembers,financialProjectTab,userInformationTab);
         //主界面选项卡
 
-        BookingUi bookingUi = new BookingUi(user);
-        bookingUi.init();
+        BookingUi bookingUi = new BookingUi();
+        bookingUi.init(user);
         bookingTab.setContent(bookingUi.bookingPane);
         //记账本选项卡
 
         FinancialProjectUi financialProjectUi = new FinancialProjectUi();
-        financialProjectUi.init();
+        financialProjectUi.init(user);
         financialProjectTab.setContent(financialProjectUi.financialProjectTabPane);
         //理财项目选项卡
+
+        UserInformationUi userInformationUi = new UserInformationUi();
+        userInformationUi.init(user);
+        userInformationTab.setContent(userInformationUi.userInformationPane);
+        //用户信息选项卡
+
+        FinancialAnalysisUi financialAnalysisUi = new FinancialAnalysisUi();
+        financialAnalysisUi.init(user);
+        financialAnalysisTab.setContent(financialAnalysisUi.financialAnalysisPane);
+        //财务分析选项卡
+
+        FamilyMemberUi familyMemberUi = new FamilyMemberUi();
+        familyMemberUi.init(user);
+        incomeofFamilyMembers.setContent(familyMemberUi.familyMemberPane);
+        //家庭成员选项卡
 
         primaryStage.setTitle("家庭金融管理系统");
         primaryStage.setScene(new Scene(mainTabPane,375,500));

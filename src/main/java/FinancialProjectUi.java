@@ -10,7 +10,7 @@ import javafx.scene.control.TabPane;
 public class FinancialProjectUi {
     public TabPane financialProjectTabPane;
 
-    public void init(){
+    public void init(User user){
         this.financialProjectTabPane = new TabPane();
         Tab onGoingProjectTab = new Tab("正在进行的项目");
         Tab projectRiskTab = new Tab("项目风险");

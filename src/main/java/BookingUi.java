@@ -16,14 +16,10 @@ import java.time.format.DateTimeFormatter;
  * @create: 2020-09-17 15:28
  **/
 public class BookingUi {
-    User user;
-    BookingUi(User user){
-        this.user=user;
-    }
 
     public TabPane bookingPane;
 
-    public void init(){
+    public void init(User user){
         bookingPane = new TabPane();
 
         Tab addTab = new Tab("添加");
@@ -174,7 +170,5 @@ public class BookingUi {
                 ioException.printStackTrace();
             }
         });
-
-
     }
 }
