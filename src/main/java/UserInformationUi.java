@@ -80,5 +80,15 @@ public class UserInformationUi {
                 ex.printStackTrace();
             }
         });
+
+        //修改
+        changePasswordButton.setOnAction(e-> {
+            UserInformationPasswordUi open = new UserInformationPasswordUi();
+            try {
+                open.start(new Stage());
+            } catch (Exception exception) {
+                exception.printStackTrace();
+            }
+        });
     }
 }

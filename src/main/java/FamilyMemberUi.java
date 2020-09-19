@@ -1,3 +1,4 @@
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
@@ -12,8 +13,28 @@ public class FamilyMemberUi {
     Pane familyMemberPane = new Pane();
     public void init(User user){
         System.out.println(user.getFamilyId());
-        if(user.getFamilyId() == "0"){
+        if(user.getFamilyId().equals("0")){
+            Text promptText = new Text("您还未加入任何家庭组，请选择加入或者创建");
+            Button createButton = new Button("创建家庭组");
+            Button joinButton = new Button("加入家庭组");
 
+            promptText.setStyle("-fx-font-size: 15px;");
+            promptText.setLayoutX(30);
+            promptText.setLayoutY(50);
+
+            createButton.setPrefWidth(200);
+            createButton.setPrefHeight(100);
+            createButton.setLayoutX(85);
+            createButton.setLayoutY(100);
+            createButton.setStyle("-fx-font-size: 20px");
+
+            joinButton.setPrefWidth(200);
+            joinButton.setPrefHeight(100);
+            joinButton.setLayoutX(85);
+            joinButton.setLayoutY(250);
+            joinButton.setStyle("-fx-font-size: 20px");
+
+            familyMemberPane.getChildren().addAll(promptText,createButton,joinButton);
         }
         else{
             Label backgroundLabel1 = new Label("                     ");

@@ -62,7 +62,6 @@ public class MainUi extends Application {
         //用户信息选项卡
 
         FinancialAnalysisUi financialAnalysisUi = new FinancialAnalysisUi();
-        Pane empty = new Pane();
         financialAnalysisTab.setOnSelectionChanged(e->{
             try {
                 financialAnalysisUi.init(user);
@@ -79,8 +78,11 @@ public class MainUi extends Application {
         //数据可视化选项卡
 
         FamilyMemberUi familyMemberUi = new FamilyMemberUi();
-        familyMemberUi.init(user);
-        incomeofFamilyMembers.setContent(familyMemberUi.familyMemberPane);
+        incomeofFamilyMembers.setOnSelectionChanged(e->{
+            familyMemberUi.init(user);
+            incomeofFamilyMembers.setContent(familyMemberUi.familyMemberPane);
+        });
+
         //家庭成员选项卡
 
         primaryStage.setTitle("家庭金融管理系统");
