@@ -114,59 +114,69 @@ public class RegisterUi extends Application {
         registerButton.setStyle("" +
                 "-fx-background-color: #dfebff;\n" +
                 "-fx-background-radius: 25;\n" +
-                "-fx-border-radius: 25;");
+                "-fx-border-radius: 25;"+
+                "-fx-font-size:17px;");
         registerButton.setOnMouseEntered(
                 e->{
                     registerButton.setStyle("-fx-background-color: #bec9dd;\n" +
                             "-fx-background-radius: 25;\n" +
-                            "-fx-border-radius: 25;");
+                            "-fx-border-radius: 25;"+
+                            "-fx-font-size:17px;");
                 });
         registerButton.setOnMouseExited(
                 e->{
                     registerButton.setStyle("-fx-background-color: #dfebff;\n" +
                             "-fx-background-radius: 25;\n" +
-                            "-fx-border-radius: 25;");
+                            "-fx-border-radius: 25;"+
+                            "-fx-font-size:17px;");
                 });
         registerButton.setOnMousePressed(
                 e->{
                     registerButton.setStyle("-fx-background-color: #8893a7;\n" +
                             "-fx-background-radius: 25;\n" +
-                            "-fx-border-radius: 25;");
+                            "-fx-border-radius: 25;"+
+                            "-fx-font-size:17px;");
                 });
         registerButton.setOnMouseReleased(e->{
             registerButton.setStyle("" +
                     "-fx-background-color: #dfebff;\n" +
                     "-fx-background-radius: 25;\n" +
-                    "-fx-border-radius: 25;");
+                    "-fx-border-radius: 25;"+
+                    "-fx-font-size:17px;");
         });
 
         returnButton.setStyle("" +
                 "-fx-background-color: #dfebff;\n" +
                 "-fx-background-radius: 25;\n" +
-                "-fx-border-radius: 25;");
+                "-fx-border-radius: 25;"+
+                "-fx-font-size:17px;");
         returnButton.setOnMouseEntered(
                 e->{
                     returnButton.setStyle("-fx-background-color: #bec9dd;\n" +
                             "-fx-background-radius: 25;\n" +
-                            "-fx-border-radius: 25;");
+                            "-fx-border-radius: 25;"+
+                            "-fx-font-size:17px;");
                 });
         returnButton.setOnMouseExited(
                 e->{
                     returnButton.setStyle("-fx-background-color: #dfebff;\n" +
                             "-fx-background-radius: 25;\n" +
-                            "-fx-border-radius: 25;");
+                            "-fx-border-radius: 25;"+
+                            "-fx-font-size:17px;");
                 });
         returnButton.setOnMousePressed(
                 e->{
                     returnButton.setStyle("-fx-background-color: #8893a7;\n" +
                             "-fx-background-radius: 25;\n" +
-                            "-fx-border-radius: 25;");
+                            "-fx-border-radius: 25;"+
+                            "-fx-font-size:17px;");
                 });
         returnButton.setOnMouseReleased(e->{
             returnButton.setStyle("" +
                     "-fx-background-color: #dfebff;\n" +
                     "-fx-background-radius: 25;\n" +
-                    "-fx-border-radius: 25;");
+                    "-fx-border-radius: 25;"+
+                    "-fx-font-size:17px;");
         });
 
 

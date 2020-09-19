@@ -78,71 +78,89 @@ public class LoginInUi extends Application {
         passwordText.setFont(Font.font(18));
         passwordText.setFill(Paint.valueOf("lightgrey"));
 
-        /** 注册和登录按钮样式 **/
+        /** 注册和登录和关闭按钮样式 **/
         loginButton.setStyle("" +
                 "-fx-background-color: #dfebff;\n" +
                 "-fx-background-radius: 25;\n" +
-                "-fx-border-radius: 25;");
+                "-fx-border-radius: 25;" +
+                "-fx-font-size:17px;");
         loginButton.setOnMouseEntered(
                 e->{
                     loginButton.setStyle("-fx-background-color: #bec9dd;\n" +
                             "-fx-background-radius: 25;\n" +
-                            "-fx-border-radius: 25;");
+                            "-fx-border-radius: 25;"+
+                            "-fx-font-size:17px;");
                 });
         loginButton.setOnMouseExited(
                 e->{
                     loginButton.setStyle("-fx-background-color: #dfebff;\n" +
                             "-fx-background-radius: 25;\n" +
-                            "-fx-border-radius: 25;");
+                            "-fx-border-radius: 25;"+
+                            "-fx-font-size:17px;");
                 });
         loginButton.setOnMousePressed(
                 e->{
                     loginButton.setStyle("-fx-background-color: #8893a7;\n" +
                             "-fx-background-radius: 25;\n" +
-                            "-fx-border-radius: 25;");
+                            "-fx-border-radius: 25;"+
+                            "-fx-font-size:17px;");
                 });
         loginButton.setOnMouseReleased(e->{
             loginButton.setStyle("" +
                     "-fx-background-color: #dfebff;\n" +
                     "-fx-background-radius: 25;\n" +
-                    "-fx-border-radius: 25;");
+                    "-fx-border-radius: 25;"+
+                    "-fx-font-size:17px;");
         });
 
         registerButton.setStyle("" +
                 "-fx-background-color: #dfebff;\n" +
                 "-fx-background-radius: 25;\n" +
-                "-fx-border-radius: 25;");
+                "-fx-border-radius: 25;" +
+                "-fx-font-size:17px;");
         registerButton.setOnMouseEntered(
                 e->{
                     registerButton.setStyle("-fx-background-color: #bec9dd;\n" +
                             "-fx-background-radius: 25;\n" +
-                            "-fx-border-radius: 25;");
+                            "-fx-border-radius: 25;"+
+                            "-fx-font-size:17px;");
                 });
         registerButton.setOnMouseExited(
                 e->{
                     registerButton.setStyle("-fx-background-color: #dfebff;\n" +
                             "-fx-background-radius: 25;\n" +
-                            "-fx-border-radius: 25;");
+                            "-fx-border-radius: 25;"+
+                            "-fx-font-size:17px;");
                 });
         registerButton.setOnMousePressed(
                 e->{
                     registerButton.setStyle("-fx-background-color: #8893a7;\n" +
                             "-fx-background-radius: 25;\n" +
-                            "-fx-border-radius: 25;");
+                            "-fx-border-radius: 25;"+
+                            "-fx-font-size:17px;");
                 });
         registerButton.setOnMouseReleased(e->{
             registerButton.setStyle("" +
                     "-fx-background-color: #dfebff;\n" +
                     "-fx-background-radius: 25;\n" +
-                    "-fx-border-radius: 25;");
+                    "-fx-border-radius: 25;"+
+                    "-fx-font-size:17px;");
         });
-        closeButton.setStyle("-fx-background-color: rgb(245, 246, 250);" +
+
+        closeButton.setStyle("-fx-background-color: #dfebff;" +
                 "-fx-border-radius: 5px; -fx-font-size: 9pt ; -fx-font-family: STHeiti");
+        closeButton.setOnMouseEntered(e->{
+            closeButton.setStyle("-fx-text-fill: white; -fx-background-color: rgb(218, 95, 71)");
+        });
+        closeButton.setOnMouseExited(e->{
+            closeButton.setStyle("-fx-background-color: #dfebff; -fx-border-radius: 5px; -fx-font-size: 9pt ;" +
+                    " -fx-font-family: STHeiti");
+        });
         closeButton.setOnMousePressed(e->{
             closeButton.setStyle("-fx-text-fill: white; -fx-background-color: rgb(218, 95, 71)");
         });
         closeButton.setOnMouseReleased(e->{
-            closeButton.setStyle("-fx-background-color: rgb(245, 246, 250); -fx-border-radius: 5px; -fx-font-size: 9pt ;" +
+            closeButton.setStyle("-fx-background-color: #dfebff; -fx-border-radius: 5px; -fx-font-size: 9pt ;" +
                     " -fx-font-family: STHeiti");
         });
 
