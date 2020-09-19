@@ -1,9 +1,12 @@
 import javafx.application.Application;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+
+import java.io.IOException;
 
 /**
  * @program: Client
@@ -12,8 +15,13 @@ import javafx.stage.Stage;
  * @create: 2020-09-19 22:27
  **/
 public class UserInformationPasswordUi extends Application {
+    User user;
+    UserInformationPasswordUi(User user){
+        this.user=user;
+    }
     @Override
     public void start(Stage primaryStage) throws Exception {
+        ClientSocket socket = new ClientSocket("127.0.0.1",8888);
 
         TextField newPasswordTextField = new TextField();
         TextField newPasswordTextFieldAgain = new TextField();
@@ -46,13 +54,56 @@ public class UserInformationPasswordUi extends Application {
         confirmButton.setPrefWidth(100);
         confirmButton.setPrefHeight(30);
 
-
-
-
-
         Pane passwordPane = new Pane();
         passwordPane.getChildren().addAll(newPasswordTextField,newPasswordTextFieldAgain,codeTextField,codeButton,confirmButton);
         primaryStage.setScene(new Scene(passwordPane,340,200));
         primaryStage.show();
+
+        codeButton.setOnAction(e->{
+            try {
+                socket.send(new String("  "));
+            } catch (IOException ioException) {
+                ioException.printStackTrace();
+            }
+        });
+
+        confirmButton.setOnAction(e->{
+            if(newPasswordTextField.getText().trim().equals(newPasswordTextFieldAgain.getText().trim())){
+                try {
+                    socket.send(new String(user.getEmail()+"/"+codeTextField.getText().trim()+"/"+newPasswordTextField.getText().trim()));
+                    String[] messages=socket.accept().split("/");
+                    if(messages[0].charAt(0)=='S'){
+                        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                        alert.setTitle("成功");
+                        alert.setHeaderText(null);
+                        alert.setContentText("修改成功");
+                        alert.showAndWait();
+                        primaryStage.close();
+                    }
+                    else{
+                        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                        alert.setTitle("错误");
+                        alert.setHeaderText(null);
+                        alert.setContentText("验证码错误");
+                        alert.showAndWait();
+                        newPasswordTextField.setText("");
+                        newPasswordTextFieldAgain.setText("");
+                        codeTextField.setText("");
+                    }
+                } catch (IOException ioException) {
+                    ioException.printStackTrace();
+                }
+            }
+            else{
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("错误");
+                alert.setHeaderText(null);
+                alert.setContentText("两次密码不一致");
+                alert.showAndWait();
+                newPasswordTextField.setText("");
+                newPasswordTextFieldAgain.setText("");
+                codeTextField.setText("");
+            }
+        });
     }
 }

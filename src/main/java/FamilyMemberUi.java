@@ -3,6 +3,8 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 
+import java.io.IOException;
+
 /**
  * @program: Client
  * @description: 家庭成员界面Ui
@@ -11,7 +13,7 @@ import javafx.scene.text.Text;
  **/
 public class FamilyMemberUi {
     Pane familyMemberPane = new Pane();
-    public void init(User user){
+    public void init(User user) throws IOException {
         System.out.println(user.getFamilyId());
         if(user.getFamilyId().equals("0")){
             Text promptText = new Text("您还未加入任何家庭组，请选择加入或者创建");
@@ -59,6 +61,10 @@ public class FamilyMemberUi {
             backgroundLabel3.setLayoutY(320);
 
             familyMemberPane.getChildren().addAll(backgroundLabel1,backgroundLabel2,backgroundLabel3);
+
+            ClientSocket socket = new ClientSocket("127.0.0.1",8888);
+            socket.send(new String(user.getFamilyId()+user.getEmail()));
+            String[] messages=socket.accept().trim().split("/");
         }
     }
 }

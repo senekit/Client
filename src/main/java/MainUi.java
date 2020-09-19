@@ -79,7 +79,11 @@ public class MainUi extends Application {
 
         FamilyMemberUi familyMemberUi = new FamilyMemberUi();
         incomeofFamilyMembers.setOnSelectionChanged(e->{
-            familyMemberUi.init(user);
+            try {
+                familyMemberUi.init(user);
+            } catch (IOException ioException) {
+                ioException.printStackTrace();
+            }
             incomeofFamilyMembers.setContent(familyMemberUi.familyMemberPane);
         });
 

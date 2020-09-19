@@ -83,7 +83,7 @@ public class UserInformationUi {
 
         //修改
         changePasswordButton.setOnAction(e-> {
-            UserInformationPasswordUi open = new UserInformationPasswordUi();
+            UserInformationPasswordUi open = new UserInformationPasswordUi(user);
             try {
                 open.start(new Stage());
             } catch (Exception exception) {
