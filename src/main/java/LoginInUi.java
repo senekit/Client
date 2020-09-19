@@ -9,6 +9,7 @@ import javafx.scene.paint.Paint;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 import java.io.IOException;
 
@@ -32,6 +33,7 @@ public class LoginInUi extends Application {
         passwordTextField.setPromptText("请在此输入您的密码");
         Button loginButton = new Button("登录");
         Button registerButton = new Button("注册");
+        Button closeButton = new Button("X");
 
         pane.getChildren().add(emailText);
         pane.getChildren().add(passwordText);
@@ -39,6 +41,7 @@ public class LoginInUi extends Application {
         pane.getChildren().add(registerButton);
         pane.getChildren().add(emailTextField);
         pane.getChildren().add(passwordTextField);
+        pane.getChildren().add(closeButton);
 
         emailText.setLayoutX(23);
         emailText.setLayoutY(124);
@@ -63,6 +66,11 @@ public class LoginInUi extends Application {
         registerButton.setLayoutY(356);
         registerButton.setPrefHeight(36);
         registerButton.setPrefWidth(186);
+
+        closeButton.setLayoutX(260);
+        closeButton.setLayoutY(15);
+        closeButton.setPrefWidth(30);
+        closeButton.setPrefHeight(20);
 
 /** 样式部分 **/
         emailText.setFont(Font.font(18));
@@ -128,16 +136,21 @@ public class LoginInUi extends Application {
                     "-fx-background-radius: 25;\n" +
                     "-fx-border-radius: 25;");
         });
+        closeButton.setStyle("-fx-background-color: rgb(245, 246, 250);" +
+                "-fx-border-radius: 5px; -fx-font-size: 9pt ; -fx-font-family: STHeiti");
+        closeButton.setOnMousePressed(e->{
+            closeButton.setStyle("-fx-text-fill: white; -fx-background-color: rgb(218, 95, 71)");
+        });
+        closeButton.setOnMouseReleased(e->{
+            closeButton.setStyle("-fx-background-color: rgb(245, 246, 250); -fx-border-radius: 5px; -fx-font-size: 9pt ;" +
+                    " -fx-font-family: STHeiti");
+        });
 
         pane.setStyle("-fx-background-color: #36383c");
 
-
-
-
         primaryStage.setScene(new Scene(pane, 300, 500));
-
+        primaryStage.initStyle(StageStyle.TRANSPARENT);
         primaryStage.show();
-
         ClientSocket socket = new ClientSocket("127.0.0.1", 8888);
 
 //内部类处理服务器信息
@@ -227,8 +240,13 @@ public class LoginInUi extends Application {
                 ioException.printStackTrace();
             }
         });
+//关闭按钮
+        closeButton.setOnAction(e->{
+            primaryStage.close();
+        });
     }
     public static void main(String[] args) {
         launch(args);
     }
 }
+

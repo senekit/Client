@@ -4,6 +4,7 @@ import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 import java.io.IOException;
 
@@ -56,7 +57,7 @@ public class MainUi extends Application {
         //理财项目选项卡
 
         UserInformationUi userInformationUi = new UserInformationUi();
-        userInformationUi.init(user);
+        userInformationUi.init(user,primaryStage);
         userInformationTab.setContent(userInformationUi.userInformationPane);
         //用户信息选项卡
 
@@ -84,6 +85,7 @@ public class MainUi extends Application {
 
         primaryStage.setTitle("家庭金融管理系统");
         primaryStage.setScene(new Scene(mainTabPane,375,500));
+        primaryStage.initStyle(StageStyle.TRANSPARENT);
         primaryStage.show();
         //Stage设置
     }

@@ -9,6 +9,7 @@ import javafx.scene.paint.Paint;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 import java.io.IOException;
 
@@ -170,9 +171,8 @@ public class RegisterUi extends Application {
 
 
         primaryStage.setScene(new Scene(pane,400,644));
-
+        primaryStage.initStyle(StageStyle.TRANSPARENT);
         primaryStage.show();
-
         ClientSocket registersocket = new ClientSocket("127.0.0.1", 8888);
 
 //内部类处理服务器信息

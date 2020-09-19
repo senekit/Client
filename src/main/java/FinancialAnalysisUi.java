@@ -38,8 +38,11 @@ public class FinancialAnalysisUi {
 
         if(tag == 0){
             table.getColumns().addAll(itemColumn, moneyColumn, dateColumn);
+            table.setPrefWidth(197);
             tag++;
         }
+
+
 
 
         final VBox vbox = new VBox();
