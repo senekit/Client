@@ -20,6 +20,9 @@ import java.io.IOException;
 public class FinancialAnalysisUi {
 
     private final TableView<User> table = new TableView<>();
+    TableColumn itemColumn = new TableColumn("收支项目");
+    TableColumn moneyColumn = new TableColumn("金额");
+    TableColumn dateColumn = new TableColumn("日期");
     int tag = 0;
     Pane financialAnalysisPane;
     public void init(User user) throws IOException {
@@ -29,10 +32,6 @@ public class FinancialAnalysisUi {
         label.setFont(new Font("Arial", 20));
 
         table.setEditable(true);
-
-        TableColumn itemColumn = new TableColumn("收支项目");
-        TableColumn moneyColumn = new TableColumn("金额");
-        TableColumn dateColumn = new TableColumn("日期");
 
         if(tag == 0){
             table.getColumns().addAll(itemColumn, moneyColumn, dateColumn);
@@ -47,24 +46,27 @@ public class FinancialAnalysisUi {
 
         financialAnalysisPane.getChildren().add(vbox);
 
-        ClientSocket socket = new ClientSocket("192.168.43.47",8888);
+        ClientSocket socket = new ClientSocket("127.0.0.1",8888);
         String send = "I/"+user.getEmail();
         System.out.println(send);
         socket.send(send);
         String[] message=socket.accept().split("/");
+        System.out.println(message[0]);
 
-        ObservableList<User> data = FXCollections.observableArrayList(new User(message[1], message[2],message[3]));
-        int i = 4;
-        while(i< message.length){
-             data.add(new User(message[i++], message[i++],message[i++]));
+        if(message[0].trim().equals("I")){
+            System.out.println("aaa");
+            ObservableList<User> data = FXCollections.observableArrayList(new User(message[1], message[2],message[3]));
+            System.out.println(message[1]+message[2]+message[3]);
+            int i = 4;
+            while(i< message.length){
+                data.add(new User(message[i++], message[i++],message[i++]));
+            }
+            itemColumn.setCellValueFactory(new PropertyValueFactory<>("item"));
+            moneyColumn.setCellValueFactory(new PropertyValueFactory<>("money"));
+            dateColumn.setCellValueFactory(new PropertyValueFactory<>("date"));
+
+            table.setItems(data);
         }
-
-        itemColumn.setCellValueFactory(new PropertyValueFactory<>("item"));
-        moneyColumn.setCellValueFactory(new PropertyValueFactory<>("money"));
-        dateColumn.setCellValueFactory(new PropertyValueFactory<>("date"));
-
-        table.setItems(data);
-
     }
 
 }
