@@ -12,6 +12,7 @@ public class User {
     private String name;
     private String password;
     private String familyId;
+    private boolean check;
     private SimpleStringProperty money;
     private SimpleStringProperty date;
     private SimpleStringProperty item;
@@ -21,10 +22,19 @@ public class User {
         this.password = password;
     }
 
-    public User(String item,String money,String date){
+    public User(String item,String money,String date,boolean check){
         this.item=new SimpleStringProperty(item);
         this.money=new SimpleStringProperty(money);
         this.date=new SimpleStringProperty(date);
+        this.check=check;
+    }
+
+    public boolean isCheck() {
+        return check;
+    }
+
+    public void setCheck(boolean check) {
+        this.check = check;
     }
 
     public String getMoney() {
