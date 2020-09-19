@@ -138,7 +138,7 @@ public class LoginInUi extends Application {
 
         primaryStage.show();
 
-        ClientSocket socket = new ClientSocket("192.168.43.47", 8888);
+        ClientSocket socket = new ClientSocket("127.0.0.1", 8888);
 
 //内部类处理服务器信息
         class Solution {
@@ -173,8 +173,8 @@ public class LoginInUi extends Application {
                         alert.setHeaderText(null);
                         alert.setContentText("密码错误,请重新输入");
                         alert.showAndWait();
-                        emailTextField.setText("请在此输入您的邮箱");
-                        passwordTextField.setText("请在此输入您的密码");
+                        emailTextField.setText("");
+                        passwordTextField.setText("");
                         break;
                     }
                     case 'N': {

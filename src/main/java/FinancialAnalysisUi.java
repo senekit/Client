@@ -1,6 +1,7 @@
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -25,6 +26,8 @@ public class FinancialAnalysisUi {
     TableColumn dateColumn = new TableColumn("日期");
     int tag = 0;
     Pane financialAnalysisPane;
+
+
     public void init(User user) throws IOException {
         financialAnalysisPane = new Pane();
 
@@ -67,6 +70,19 @@ public class FinancialAnalysisUi {
 
             table.setItems(data);
         }
-    }
 
+        Button reviseButton = new Button("修改");
+        Button deleteButton = new Button("删除");
+        financialAnalysisPane.getChildren().addAll(reviseButton,deleteButton);
+
+        reviseButton.setPrefWidth(100);
+        reviseButton.setPrefHeight(40);
+        reviseButton.setLayoutX(266);
+        reviseButton.setLayoutY(40);
+
+        deleteButton.setPrefHeight(40);
+        deleteButton.setPrefWidth(100);
+        deleteButton.setLayoutX(266);
+        deleteButton.setLayoutY(90);
+    }
 }

@@ -22,7 +22,7 @@ public class MainUi extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        ClientSocket socket = new ClientSocket("192.168.43.47",8888);
+        ClientSocket socket = new ClientSocket("127.0.0.1",8888);
         socket.send(new String("F/"+user.getEmail()));
         String[] message = socket.accept().split("/");
         System.out.println(message[0]+message[1]);
@@ -32,6 +32,7 @@ public class MainUi extends Application {
         TabPane mainTabPane = new TabPane();
         Tab bookingTab = new Tab("记账本");
         Tab financialAnalysisTab = new Tab("财务分析");
+        Tab dataVisualizationTab = new Tab("数据可视化");
         Tab incomeofFamilyMembers = new Tab("家庭成员收支情况");
         Tab financialProjectTab = new Tab("理财项目");
         Tab userInformationTab = new Tab("我的信息");
@@ -40,7 +41,8 @@ public class MainUi extends Application {
         incomeofFamilyMembers.setClosable(false);
         financialProjectTab.setClosable(false);
         userInformationTab.setClosable(false);
-        mainTabPane.getTabs().addAll(bookingTab,financialAnalysisTab,incomeofFamilyMembers,financialProjectTab,userInformationTab);
+        dataVisualizationTab.setClosable(false);
+        mainTabPane.getTabs().addAll(bookingTab,financialAnalysisTab,dataVisualizationTab,incomeofFamilyMembers,financialProjectTab,userInformationTab);
         //主界面选项卡
 
         BookingUi bookingUi = new BookingUi();
@@ -69,6 +71,11 @@ public class MainUi extends Application {
             }
         });
         //财务分析选项卡
+
+        DataVisualizationUi dataVisualizationUi = new DataVisualizationUi();
+        dataVisualizationUi.init(user);
+        dataVisualizationTab.setContent(dataVisualizationUi.dataVisualizationPane);
+        //数据可视化选项卡
 
         FamilyMemberUi familyMemberUi = new FamilyMemberUi();
         familyMemberUi.init(user);

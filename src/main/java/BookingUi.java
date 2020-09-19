@@ -17,23 +17,12 @@ import java.time.format.DateTimeFormatter;
  **/
 public class BookingUi {
 
-    public TabPane bookingPane;
+    public Pane bookingPane;
 
     public void init(User user){
-        bookingPane = new TabPane();
-
-        Tab addTab = new Tab("添加");
-        Tab tableTab = new Tab("更改数据");
-        Tab chartTab = new Tab("图表可视化");
-        addTab.setClosable(false);
-        tableTab.setClosable(false);
-        chartTab.setClosable(false);
-
-        bookingPane.getTabs().addAll(addTab,tableTab,chartTab);
 
         Pane addPane = new Pane();
-        addTab.setContent(addPane);
-
+        bookingPane = addPane;
         TextField importTextField = new TextField();
         addPane.getChildren().add(importTextField);
         importTextField.setPrefHeight(100);
@@ -95,7 +84,7 @@ public class BookingUi {
 //内部类用于发送消息和接收消息
         class Send{
             public void sendMessage(String species) throws IOException {
-                ClientSocket socket = new ClientSocket("192.168.43.47",8888);
+                ClientSocket socket = new ClientSocket("127.0.0.1",8888);
                 if(datePicker.getValue().toString()==null){
                     Alert alert = new Alert(Alert.AlertType.INFORMATION);
                     alert.setTitle("错误");
