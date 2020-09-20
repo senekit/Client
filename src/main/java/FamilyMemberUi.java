@@ -2,6 +2,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
 
 import java.io.IOException;
 
@@ -37,6 +38,17 @@ public class FamilyMemberUi {
             joinButton.setStyle("-fx-font-size: 20px");
 
             familyMemberPane.getChildren().addAll(promptText,createButton,joinButton);
+
+            createButton.setOnAction(e->{
+                JoinFamilyUi open  = new JoinFamilyUi();
+                try {
+                    open.start(new Stage());
+                } catch (Exception ex) {
+                    ex.printStackTrace();
+                }
+            });
+
+
         }
         else{
             Label backgroundLabel1 = new Label("                     ");
@@ -62,7 +74,7 @@ public class FamilyMemberUi {
 
             familyMemberPane.getChildren().addAll(backgroundLabel1,backgroundLabel2,backgroundLabel3);
 
-            ClientSocket socket = new ClientSocket("192.168.31.56",8888);
+            ClientSocket socket = new ClientSocket("127.0.0.1",8888);
             socket.send(new String(user.getFamilyId()+user.getEmail()));
             String[] messages=socket.accept().trim().split("/");
         }

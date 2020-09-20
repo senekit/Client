@@ -33,6 +33,7 @@ public class LoginInUi extends Application {
         passwordTextField.setPromptText("请在此输入您的密码");
         Button loginButton = new Button("登录");
         Button registerButton = new Button("注册");
+        Button forgetPasswordButton = new Button("忘记密码");
         Button closeButton = new Button("X");
 
         pane.getChildren().add(emailText);
@@ -42,6 +43,7 @@ public class LoginInUi extends Application {
         pane.getChildren().add(emailTextField);
         pane.getChildren().add(passwordTextField);
         pane.getChildren().add(closeButton);
+        pane.getChildren().add(forgetPasswordButton);
 
         emailText.setLayoutX(23);
         emailText.setLayoutY(124);
@@ -71,6 +73,11 @@ public class LoginInUi extends Application {
         closeButton.setLayoutY(15);
         closeButton.setPrefWidth(30);
         closeButton.setPrefHeight(20);
+
+        forgetPasswordButton.setPrefWidth(80);
+        forgetPasswordButton.setPrefHeight(20);
+        forgetPasswordButton.setLayoutX(190);
+        forgetPasswordButton.setLayoutY(230);
 
 /** 样式部分 **/
         emailText.setFont(Font.font(18));
@@ -169,7 +176,7 @@ public class LoginInUi extends Application {
         primaryStage.setScene(new Scene(pane, 300, 500));
         primaryStage.initStyle(StageStyle.TRANSPARENT);
         primaryStage.show();
-        ClientSocket socket = new ClientSocket("192.168.31.56", 8888);
+        ClientSocket socket = new ClientSocket("127.0.0.1", 8888);
 
 //内部类处理服务器信息
         class Solution {
@@ -262,7 +269,17 @@ public class LoginInUi extends Application {
         closeButton.setOnAction(e->{
             primaryStage.close();
         });
+//忘记密码按钮
+        forgetPasswordButton.setOnAction(e->{
+            UserForgetPasswordUi open = new UserForgetPasswordUi();
+            try {
+                open.start(new Stage());
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
+        });
     }
+
     public static void main(String[] args) {
         launch(args);
     }

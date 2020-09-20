@@ -22,7 +22,7 @@ public class UserInformationPasswordUi extends Application {
     }
     @Override
     public void start(Stage primaryStage) throws Exception {
-        ClientSocket socket = new ClientSocket("192.168.31.56",8888);
+        ClientSocket socket = new ClientSocket("127.0.0.1",8888);
 
         TextField newPasswordTextField = new TextField();
         TextField newPasswordTextFieldAgain = new TextField();

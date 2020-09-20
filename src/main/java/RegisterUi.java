@@ -183,7 +183,7 @@ public class RegisterUi extends Application {
         primaryStage.setScene(new Scene(pane,400,644));
         primaryStage.initStyle(StageStyle.TRANSPARENT);
         primaryStage.show();
-        ClientSocket registersocket = new ClientSocket("192.168.31.56", 8888);
+        ClientSocket registersocket = new ClientSocket("127.0.0.1", 8888);
 
 //内部类处理服务器信息
         class Solution {
@@ -217,10 +217,10 @@ public class RegisterUi extends Application {
                         alert.setHeaderText(null);
                         alert.setContentText("该用户已存在");
                         alert.showAndWait();
-                        emailTextField.setText("请在此输入您的邮箱");
-                        passwordTextField.setText("请在此输入您的密码");
-                        passwordAgainTextField.setText("请在此输入您的密码");
-                        nameTextField.setText("请输入您的姓名");
+                        emailTextField.setText("");
+                        passwordTextField.setText("");
+                        passwordAgainTextField.setText("");
+                        nameTextField.setText("");
                         break;
                     }
                 }

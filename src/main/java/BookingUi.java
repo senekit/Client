@@ -84,7 +84,7 @@ public class BookingUi {
 //内部类用于发送消息和接收消息
         class Send{
             public void sendMessage(String species) throws IOException {
-                ClientSocket socket = new ClientSocket("192.168.31.56",8888);
+                ClientSocket socket = new ClientSocket("127.0.0.1",8888);
                 if(datePicker.getValue().toString()==null){
                     Alert alert = new Alert(Alert.AlertType.INFORMATION);
                     alert.setTitle("错误");

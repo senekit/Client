@@ -23,7 +23,7 @@ public class MainUi extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        ClientSocket socket = new ClientSocket("192.168.31.56",8888);
+        ClientSocket socket = new ClientSocket("127.0.0.1",8888);
         socket.send(new String("F/"+user.getEmail()));
         String[] message = socket.accept().split("/");
         System.out.println(message[0]+message[1]);
@@ -96,7 +96,7 @@ public class MainUi extends Application {
         //家庭成员选项卡
 
         primaryStage.setTitle("家庭金融管理系统");
-        primaryStage.setScene(new Scene(mainTabPane,700,500));
+        primaryStage.setScene(new Scene(mainTabPane,450,500));
         primaryStage.initStyle(StageStyle.TRANSPARENT);
         primaryStage.show();
         //Stage设置
