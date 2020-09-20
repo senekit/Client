@@ -14,10 +14,14 @@ import java.util.Calendar;
  **/
 public class DataVisualizationUi {
     Pane dataVisualizationPane = new Pane();
+    XYChart.Series series1;
+    XYChart.Series series;
+    LineChart linechart;
+    int tag=0;
 
     public void init(User user) throws IOException {
-        ClientSocket socket = new ClientSocket("127.0.0.1",8888);
-        socket.send(new String(user.getEmail()));
+        ClientSocket socket = new ClientSocket("192.168.31.56",8888);
+        socket.send(new String("B/"+user.getEmail()));
         String[] messages= socket.accept().trim().split("/");
         Calendar c = Calendar.getInstance();
         double day = c.get(Calendar.DATE);
@@ -28,31 +32,35 @@ public class DataVisualizationUi {
         NumberAxis yAxis = new NumberAxis(0, 1000, 200);
         yAxis.setLabel("Money");
 
-        LineChart linechart = new LineChart(xAxis, yAxis);
+        linechart = new LineChart(xAxis, yAxis);
 
-        XYChart.Series series = new XYChart.Series();
+        series = new XYChart.Series();
         series.setName("收入折线图");
 
-        series.getData().add(new XYChart.Data(14, 15));
-        series.getData().add(new XYChart.Data(15, 30));
-        series.getData().add(new XYChart.Data(16, 60));
-        series.getData().add(new XYChart.Data(17, 120));
-        series.getData().add(new XYChart.Data(18, 240));
-        series.getData().add(new XYChart.Data(19, 300));
+        series.getData().add(new XYChart.Data(day-6, Double.parseDouble(messages[13])));
+        series.getData().add(new XYChart.Data(day-5, Double.parseDouble(messages[11])));
+        series.getData().add(new XYChart.Data(day-4, Double.parseDouble(messages[9])));
+        series.getData().add(new XYChart.Data(day-3, Double.parseDouble(messages[7])));
+        series.getData().add(new XYChart.Data(day-2, Double.parseDouble(messages[5])));
+        series.getData().add(new XYChart.Data(day-1, Double.parseDouble(messages[3])));
+        series.getData().add(new XYChart.Data(day, Double.parseDouble(messages[1])));
 
-        XYChart.Series series1 = new XYChart.Series();
-        series.setName("支出折线图");
+        series1 = new XYChart.Series();
+        series1.setName("支出折线图");
 
-        series1.getData().add(new XYChart.Data(14, 20));
-        series1.getData().add(new XYChart.Data(15, 30));
-        series1.getData().add(new XYChart.Data(16, 60));
-        series1.getData().add(new XYChart.Data(17, 120));
-        series1.getData().add(new XYChart.Data(18, 240));
-        series1.getData().add(new XYChart.Data(19, 300));
+        series1.getData().add(new XYChart.Data(day-6, Double.parseDouble(messages[14])));
+        series1.getData().add(new XYChart.Data(day-5, Double.parseDouble(messages[12])));
+        series1.getData().add(new XYChart.Data(day-4, Double.parseDouble(messages[10])));
+        series1.getData().add(new XYChart.Data(day-3, Double.parseDouble(messages[8])));
+        series1.getData().add(new XYChart.Data(day-2, Double.parseDouble(messages[6])));
+        series1.getData().add(new XYChart.Data(day-1, Double.parseDouble(messages[4])));
+        series1.getData().add(new XYChart.Data(day, Double.parseDouble(messages[2])));
 
-        linechart.getData().add(series);
-        linechart.getData().add(series1);
+        if(tag == 0){
+            linechart.getData().add(series);
+            linechart.getData().add(series1);
 
-        dataVisualizationPane.getChildren().add(linechart);
+            dataVisualizationPane.getChildren().add(linechart);
+        }
     }
 }

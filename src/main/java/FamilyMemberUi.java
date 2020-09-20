@@ -62,7 +62,7 @@ public class FamilyMemberUi {
 
             familyMemberPane.getChildren().addAll(backgroundLabel1,backgroundLabel2,backgroundLabel3);
 
-            ClientSocket socket = new ClientSocket("127.0.0.1",8888);
+            ClientSocket socket = new ClientSocket("192.168.31.56",8888);
             socket.send(new String(user.getFamilyId()+user.getEmail()));
             String[] messages=socket.accept().trim().split("/");
         }

@@ -61,7 +61,7 @@ public class FinancialAnalysisUi {
 
         financialAnalysisPane.getChildren().add(vbox);
 
-        ClientSocket socket = new ClientSocket("127.0.0.1",8888);
+        ClientSocket socket = new ClientSocket("192.168.31.56",8888);
         String send = "I/"+user.getEmail();
         System.out.println(send);
         socket.send(send);
@@ -98,14 +98,15 @@ public class FinancialAnalysisUi {
             @Override
             public void handle(TableColumn.CellEditEvent<User,String> event) {
                 event.getTableView().getItems().get(event.getTablePosition().getRow()).setItem(event.getNewValue());
-                String message=user.getEmail()
-                        +event.getTableView().getItems().get(event.getTablePosition().getRow()).getItem()
-                        +event.getTableView().getItems().get(event.getTablePosition().getRow()).getMoney()
+                String message="T/"+user.getEmail()+"/"
+                        +event.getTableView().getItems().get(event.getTablePosition().getRow()).getItem()+"/"
+                        +event.getTableView().getItems().get(event.getTablePosition().getRow()).getMoney()+"/"
                         +event.getTableView().getItems().get(event.getTablePosition().getRow()).getDate();
                 System.out.println(message);
                 try {
-                    ClientSocket socket1 = new ClientSocket("127.0.0.1",8888);
+                    ClientSocket socket1 = new ClientSocket("192.168.31.56",8888);
                     socket1.send(message);
+                    socket1.accept();
                     socket1.close();
                 } catch (IOException e) {
                     e.printStackTrace();
@@ -116,13 +117,13 @@ public class FinancialAnalysisUi {
         moneyColumn.setOnEditCommit(new EventHandler<TableColumn.CellEditEvent<User,String>>() {
             @Override
             public void handle(TableColumn.CellEditEvent<User,String> event) {
-                event.getTableView().getItems().get(event.getTablePosition().getRow()).setItem(event.getNewValue());
-                String message=user.getEmail()
-                        +event.getTableView().getItems().get(event.getTablePosition().getRow()).getItem()
-                        +event.getTableView().getItems().get(event.getTablePosition().getRow()).getMoney()
+                event.getTableView().getItems().get(event.getTablePosition().getRow()).setMoney(event.getNewValue());
+                String message="O/"+user.getEmail()+"/"
+                        +event.getTableView().getItems().get(event.getTablePosition().getRow()).getItem()+"/"
+                        +event.getTableView().getItems().get(event.getTablePosition().getRow()).getMoney()+"/"
                         +event.getTableView().getItems().get(event.getTablePosition().getRow()).getDate();
                 try {
-                    ClientSocket socket1 = new ClientSocket("127.0.0.1",8888);
+                    ClientSocket socket1 = new ClientSocket("192.168.31.56",8888);
                     socket1.send(message);
                     socket1.close();
                 } catch (IOException e) {
@@ -134,13 +135,13 @@ public class FinancialAnalysisUi {
         dateColumn.setOnEditCommit(new EventHandler<TableColumn.CellEditEvent<User,String>>() {
             @Override
             public void handle(TableColumn.CellEditEvent<User,String> event) {
-                event.getTableView().getItems().get(event.getTablePosition().getRow()).setItem(event.getNewValue());
-                String message=user.getEmail()
-                        +event.getTableView().getItems().get(event.getTablePosition().getRow()).getItem()
-                        +event.getTableView().getItems().get(event.getTablePosition().getRow()).getMoney()
+                event.getTableView().getItems().get(event.getTablePosition().getRow()).setDate(event.getNewValue());
+                String message="D/"+user.getEmail()+"/"
+                        +event.getTableView().getItems().get(event.getTablePosition().getRow()).getItem()+"/"
+                        +event.getTableView().getItems().get(event.getTablePosition().getRow()).getMoney()+"/"
                         +event.getTableView().getItems().get(event.getTablePosition().getRow()).getDate();
                 try {
-                    ClientSocket socket1 = new ClientSocket("127.0.0.1",8888);
+                    ClientSocket socket1 = new ClientSocket("192.168.31.56",8888);
                     socket1.send(message);
                     socket1.close();
                 } catch (IOException e) {
@@ -179,8 +180,8 @@ public class FinancialAnalysisUi {
                 User s = data.get(i1);
                 if (s.isCheck()) {
                     try {
-                        ClientSocket clientSocket = new ClientSocket("127.0.0.1",8888);
-                        clientSocket.send(new String(user.getEmail()+data.get(i1).getItem()+data.get(i1).getMoney())+data.get(i1).getDate());
+                        ClientSocket clientSocket = new ClientSocket("192.168.31.56",8888);
+                        clientSocket.send(new String("E/"+user.getEmail()+"/"+data.get(i1).getItem()+"/"+data.get(i1).getMoney())+"/"+data.get(i1).getDate());
                     } catch (IOException ioException) {
                         ioException.printStackTrace();
                     }
