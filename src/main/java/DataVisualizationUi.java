@@ -19,9 +19,9 @@ public class DataVisualizationUi {
     LineChart linechart;
     int tag=0;
 
-    public void init(User user) throws IOException {
-        ClientSocket socket = new ClientSocket("127.0.0.1",8888);
-        socket.send(new String("B/"+user.getEmail()));
+    public void init() throws IOException {
+        ClientSocket socket = new ClientSocket("192.168.31.56",8888);
+        socket.send(new String("B/"+MainUi.user.getEmail()));
         String[] messages= socket.accept().trim().split("/");
         Calendar c = Calendar.getInstance();
         double day = c.get(Calendar.DATE);

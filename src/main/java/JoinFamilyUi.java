@@ -5,6 +5,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
+import java.io.IOException;
 
 
 /**
@@ -14,6 +15,7 @@ import javafx.stage.Stage;
  * @create: 2020-09-20 15:50
  **/
 public class JoinFamilyUi extends Application {
+    public FamilyMemberUi familyMemberUi;
     @Override
     public void start(Stage primaryStage) throws Exception {
 
@@ -31,5 +33,20 @@ public class JoinFamilyUi extends Application {
         joinFamilyPane.getChildren().addAll(familyTextField,confirmButton);
         primaryStage.setScene(new Scene(joinFamilyPane,200,100));
         primaryStage.show();
+
+        confirmButton.setOnAction(e->{
+            ClientSocket socket = null;
+            try {
+                socket = new ClientSocket("192.168.31.56",8888);
+                socket.send(new String("J/"+MainUi.user.getEmail()+"/"+familyTextField.getText().trim()));
+                MainUi.user.setFamilyId(familyTextField.getText().trim());
+                primaryStage.close();
+            } catch (IOException ioException) {
+                ioException.printStackTrace();
+            }
+        });
+    }
+    public void re(FamilyMemberUi familyMemberUi){
+        this.familyMemberUi = familyMemberUi;
     }
 }

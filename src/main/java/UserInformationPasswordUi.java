@@ -15,14 +15,10 @@ import java.io.IOException;
  * @create: 2020-09-19 22:27
  **/
 public class UserInformationPasswordUi extends Application {
-    User user;
     String[] messages;
-    UserInformationPasswordUi(User user){
-        this.user=user;
-    }
     @Override
     public void start(Stage primaryStage) throws Exception {
-        ClientSocket socket = new ClientSocket("127.0.0.1",8888);
+        ClientSocket socket = new ClientSocket("192.168.31.56",8888);
 
         TextField newPasswordTextField = new TextField();
         TextField newPasswordTextFieldAgain = new TextField();
@@ -62,7 +58,7 @@ public class UserInformationPasswordUi extends Application {
 
         codeButton.setOnAction(e->{
             try {
-                socket.send(new String("C/"+user.getEmail()));
+                socket.send(new String("C/"+MainUi.user.getEmail()));
                 messages=socket.accept().trim().split("/");
                 if(messages[0].charAt(0)=='S'){
                     Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -87,7 +83,7 @@ public class UserInformationPasswordUi extends Application {
             if(codeTextField.getText().trim().equals(messages[1].trim())){
                 if(newPasswordTextField.getText().trim().equals(newPasswordTextFieldAgain.getText().trim())){
                     try {
-                        socket.send(new String("P/"+user.getEmail()+"/"+newPasswordTextField.getText().trim()));
+                        socket.send(new String("P/"+MainUi.user.getEmail()+"/"+newPasswordTextField.getText().trim()));
                         String[] messages1=socket.accept().split("/");
                         if(messages1[0].charAt(0)=='S'){
                             Alert alert = new Alert(Alert.AlertType.INFORMATION);

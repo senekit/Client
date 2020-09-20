@@ -4,6 +4,8 @@ import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
+import java.io.IOException;
+
 
 /**
  * @program: Client
@@ -14,7 +16,7 @@ import javafx.stage.Stage;
 public class UserInformationUi {
     public Pane userInformationPane = new Pane();
 
-    public void init(User user, Stage stage){
+    public void init( Stage stage){
         Label backgroundLabel = new Label("                     ");
         backgroundLabel.setStyle("-fx-background-radius: 10px ;-fx-background-color: gray;");
         backgroundLabel.setPrefHeight(160);
@@ -25,6 +27,7 @@ public class UserInformationUi {
         Button changePasswordButton = new Button("修改密码");
         Button switchAccountButton = new Button("更换账号");
         Button cancelAccountButton = new Button("注销账户");
+        Button deleteButton = new Button("解散家庭");
         Button cancelButton = new Button("退出程序");
 
         changePasswordButton.setLayoutX(113);
@@ -47,11 +50,11 @@ public class UserInformationUi {
         cancelButton.setPrefHeight(50);
         cancelButton.setPrefWidth(150);
 
-        userInformationPane.getChildren().addAll(backgroundLabel,cancelAccountButton,switchAccountButton,changePasswordButton,cancelButton);
+        userInformationPane.getChildren().addAll(backgroundLabel,cancelAccountButton,switchAccountButton,changePasswordButton,deleteButton,cancelButton);
 
-        Text emailText = new Text("邮箱：" + user.getEmail());
-        Text nameText = new Text("姓名：" + user.getName());
-        Text familyIdText = new Text("家庭ID：" + user.getFamilyId());
+        Text emailText = new Text("邮箱：" + MainUi.user.getEmail());
+        Text nameText = new Text("姓名：" + MainUi.user.getName());
+        Text familyIdText = new Text("家庭ID：" + MainUi.user.getFamilyId());
 
         emailText.setLayoutX(60);
         emailText.setLayoutY(50);
@@ -83,12 +86,25 @@ public class UserInformationUi {
 
         //修改
         changePasswordButton.setOnAction(e-> {
-            UserInformationPasswordUi open = new UserInformationPasswordUi(user);
+            UserInformationPasswordUi open = new UserInformationPasswordUi();
             try {
                 open.start(new Stage());
             } catch (Exception exception) {
                 exception.printStackTrace();
             }
+        });
+
+        //解散
+        deleteButton.setOnAction(e->{
+            try {
+                ClientSocket socket = new ClientSocket("192.168.31.56",8888);
+                socket.send(new String("Z/"+MainUi.user.getFamilyId()));
+                MainUi.user.setFamilyId("0");
+                init(new Stage());
+            } catch (IOException ioException) {
+                ioException.printStackTrace();
+            }
+
         });
     }
 }

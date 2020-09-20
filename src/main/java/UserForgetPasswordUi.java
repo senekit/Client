@@ -1,11 +1,13 @@
 import javafx.application.Application;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
+import java.io.IOException;
 import java.util.concurrent.atomic.AtomicReference;
 
 /**
@@ -15,8 +17,10 @@ import java.util.concurrent.atomic.AtomicReference;
  * @create: 2020-09-20 14:50
  **/
 public class UserForgetPasswordUi extends Application {
+    String[] messages;
     @Override
     public void start(Stage primaryStage) throws Exception {
+        ClientSocket socket = new ClientSocket("192.168.31.56",8888);
 
         TextField newPasswordTextField = new TextField();
         TextField newPasswordTextFieldAgain = new TextField();
@@ -192,5 +196,79 @@ public class UserForgetPasswordUi extends Application {
 
         primaryStage.initStyle(StageStyle.TRANSPARENT);
         primaryStage.show();
+
+        codeButton.setOnAction(e->{
+            try {
+                socket.send(new String("C/"+emailTextField.getText().trim()));
+                messages=socket.accept().trim().split("/");
+                if(messages[0].charAt(0)=='S'){
+                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setTitle("成功");
+                    alert.setHeaderText(null);
+                    alert.setContentText("发送成功");
+                    alert.showAndWait();
+                }
+                else {
+                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setTitle("失败");
+                    alert.setHeaderText(null);
+                    alert.setContentText("发送失败");
+                    alert.showAndWait();
+                }
+            } catch (IOException ioException) {
+                ioException.printStackTrace();
+            }
+        });
+
+        confirmButton.setOnAction(e->{
+            if(codeTextField.getText().trim().equals(messages[1].trim())){
+                if(newPasswordTextField.getText().trim().equals(newPasswordTextFieldAgain.getText().trim())){
+                    try {
+                        socket.send(new String("P/"+emailTextField.getText().trim()+"/"+newPasswordTextField.getText().trim()));
+                        String[] messages1=socket.accept().split("/");
+                        if(messages1[0].charAt(0)=='S'){
+                            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                            alert.setTitle("成功");
+                            alert.setHeaderText(null);
+                            alert.setContentText("修改成功");
+                            alert.showAndWait();
+                            primaryStage.close();
+                        }
+                        else{
+                            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                            alert.setTitle("错误");
+                            alert.setHeaderText(null);
+                            alert.setContentText("修改失败");
+                            alert.showAndWait();
+                            newPasswordTextField.setText("");
+                            newPasswordTextFieldAgain.setText("");
+                            codeTextField.setText("");
+                        }
+                    } catch (IOException ioException) {
+                        ioException.printStackTrace();
+                    }
+                }
+                else {
+                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setTitle("错误");
+                    alert.setHeaderText(null);
+                    alert.setContentText("两次密码不一致");
+                    alert.showAndWait();
+                    newPasswordTextField.setText("");
+                    newPasswordTextFieldAgain.setText("");
+                    codeTextField.setText("");
+                }
+            }
+            else {
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("错误");
+                alert.setHeaderText(null);
+                alert.setContentText("验证码错误");
+                alert.showAndWait();
+                newPasswordTextField.setText("");
+                newPasswordTextFieldAgain.setText("");
+                codeTextField.setText("");
+            }
+        });
     }
 }

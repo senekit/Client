@@ -36,7 +36,7 @@ public class FinancialAnalysisUi {
     Pane financialAnalysisPane;
 
 
-    public void init(User user) throws IOException {
+    public void init() throws IOException {
         financialAnalysisPane = new Pane();
 
         final Label label = new Label("收支记录");
@@ -61,8 +61,8 @@ public class FinancialAnalysisUi {
 
         financialAnalysisPane.getChildren().add(vbox);
 
-        ClientSocket socket = new ClientSocket("127.0.0.1",8888);
-        String send = "I/"+user.getEmail();
+        ClientSocket socket = new ClientSocket("192.168.31.56",8888);
+        String send = "I/"+MainUi.user.getEmail();
         System.out.println(send);
         socket.send(send);
         String[] message=socket.accept().split("/");
@@ -98,13 +98,13 @@ public class FinancialAnalysisUi {
             @Override
             public void handle(TableColumn.CellEditEvent<User,String> event) {
                 event.getTableView().getItems().get(event.getTablePosition().getRow()).setItem(event.getNewValue());
-                String message="T/"+user.getEmail()+"/"
+                String message="T/"+MainUi.user.getEmail()+"/"
                         +event.getTableView().getItems().get(event.getTablePosition().getRow()).getItem()+"/"
                         +event.getTableView().getItems().get(event.getTablePosition().getRow()).getMoney()+"/"
                         +event.getTableView().getItems().get(event.getTablePosition().getRow()).getDate();
                 System.out.println(message);
                 try {
-                    ClientSocket socket1 = new ClientSocket("127.0.0.1",8888);
+                    ClientSocket socket1 = new ClientSocket("192.168.31.56",8888);
                     socket1.send(message);
                     socket1.accept();
                     socket1.close();
@@ -118,7 +118,7 @@ public class FinancialAnalysisUi {
             @Override
             public void handle(TableColumn.CellEditEvent<User,String> event) {
                 event.getTableView().getItems().get(event.getTablePosition().getRow()).setMoney(event.getNewValue());
-                String message="O/"+user.getEmail()+"/"
+                String message="O/"+MainUi.user.getEmail()+"/"
                         +event.getTableView().getItems().get(event.getTablePosition().getRow()).getItem()+"/"
                         +event.getTableView().getItems().get(event.getTablePosition().getRow()).getMoney()+"/"
                         +event.getTableView().getItems().get(event.getTablePosition().getRow()).getDate();
@@ -136,7 +136,7 @@ public class FinancialAnalysisUi {
             @Override
             public void handle(TableColumn.CellEditEvent<User,String> event) {
                 event.getTableView().getItems().get(event.getTablePosition().getRow()).setDate(event.getNewValue());
-                String message="D/"+user.getEmail()+"/"
+                String message="D/"+MainUi.user.getEmail()+"/"
                         +event.getTableView().getItems().get(event.getTablePosition().getRow()).getItem()+"/"
                         +event.getTableView().getItems().get(event.getTablePosition().getRow()).getMoney()+"/"
                         +event.getTableView().getItems().get(event.getTablePosition().getRow()).getDate();
@@ -180,8 +180,8 @@ public class FinancialAnalysisUi {
                 User s = data.get(i1);
                 if (s.isCheck()) {
                     try {
-                        ClientSocket clientSocket = new ClientSocket("127.0.0.1",8888);
-                        clientSocket.send(new String("E/"+user.getEmail()+"/"+data.get(i1).getItem()+"/"+data.get(i1).getMoney())+"/"+data.get(i1).getDate());
+                        ClientSocket clientSocket = new ClientSocket("192.168.31.56",8888);
+                        clientSocket.send(new String("E/"+MainUi.user.getEmail()+"/"+data.get(i1).getItem()+"/"+data.get(i1).getMoney())+"/"+data.get(i1).getDate());
                     } catch (IOException ioException) {
                         ioException.printStackTrace();
                     }

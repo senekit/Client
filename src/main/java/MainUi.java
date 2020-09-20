@@ -17,7 +17,7 @@ import java.util.concurrent.atomic.AtomicReference;
  * create: 2020-09-17 09:38
  **/
 public class MainUi extends Application {
-    User user;
+    static public User user;
     MainUi() throws IOException {}
     MainUi(User user) throws IOException {
         this.user=user;
@@ -25,7 +25,7 @@ public class MainUi extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        ClientSocket socket = new ClientSocket("127.0.0.1",8888);
+        ClientSocket socket = new ClientSocket("192.168.31.56",8888);
         socket.send(new String("F/"+user.getEmail()));
         String[] message = socket.accept().split("/");
         System.out.println(message[0]+message[1]);
@@ -90,40 +90,49 @@ public class MainUi extends Application {
         //主界面选项卡
 
         BookingUi bookingUi = new BookingUi();
-        bookingUi.init(user);
+        bookingUi.init();
         bookingTab.setContent(bookingUi.bookingPane);
         //记账本选项卡
 
         FinancialProjectUi financialProjectUi = new FinancialProjectUi();
-        financialProjectUi.init(user);
+        financialProjectUi.init();
         financialProjectTab.setContent(financialProjectUi.financialProjectTabPane);
         //理财项目选项卡
 
         UserInformationUi userInformationUi = new UserInformationUi();
-        userInformationUi.init(user,primaryStage);
-        userInformationTab.setContent(userInformationUi.userInformationPane);
+        userInformationTab.setOnSelectionChanged(e->{
+            userInformationUi.init(primaryStage);
+            userInformationTab.setContent(userInformationUi.userInformationPane);
+        });
         //用户信息选项卡
 
         FinancialAnalysisUi financialAnalysisUi = new FinancialAnalysisUi();
         financialAnalysisTab.setOnSelectionChanged(e->{
             try {
-                financialAnalysisUi.init(user);
-                financialAnalysisTab.setContent(financialAnalysisUi.financialAnalysisPane);
+                financialAnalysisUi.init();
             } catch (IOException ioException) {
                 ioException.printStackTrace();
             }
+            financialAnalysisTab.setContent(financialAnalysisUi.financialAnalysisPane);
         });
         //财务分析选项卡
 
         DataVisualizationUi dataVisualizationUi = new DataVisualizationUi();
-        dataVisualizationUi.init(user);
-        dataVisualizationTab.setContent(dataVisualizationUi.dataVisualizationPane);
+        dataVisualizationTab.setOnSelectionChanged(e->{
+            try {
+                dataVisualizationUi.init();
+            } catch (IOException ioException) {
+                ioException.printStackTrace();
+            }
+            dataVisualizationTab.setContent(dataVisualizationUi.dataVisualizationPane);
+        });
         //数据可视化选项卡
 
         FamilyMemberUi familyMemberUi = new FamilyMemberUi();
         incomeofFamilyMembers.setOnSelectionChanged(e->{
             try {
-                familyMemberUi.init(user);
+                familyMemberUi.familyMemberPane = new Pane();
+                familyMemberUi.init();
             } catch (IOException ioException) {
                 ioException.printStackTrace();
             }
@@ -134,7 +143,6 @@ public class MainUi extends Application {
 
         primaryStage.setTitle("家庭金融管理系统");
         primaryStage.setScene(new Scene(pane,375,530));
-        //primaryStage.setScene(new Scene(mainTabPane,375,500));
         primaryStage.initStyle(StageStyle.TRANSPARENT);
         primaryStage.show();
         //Stage设置
