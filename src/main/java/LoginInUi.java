@@ -77,8 +77,8 @@ public class LoginInUi extends Application {
 
         forgetPasswordButton.setPrefWidth(80);
         forgetPasswordButton.setPrefHeight(20);
-        forgetPasswordButton.setLayoutX(190);
-        forgetPasswordButton.setLayoutY(230);
+        forgetPasswordButton.setLayoutX(110);
+        forgetPasswordButton.setLayoutY(240);
 
 /** 样式部分 **/
         emailText.setFont(Font.font(18));
@@ -87,7 +87,43 @@ public class LoginInUi extends Application {
         passwordText.setFill(Paint.valueOf("lightgrey"));
 
         /** 注册和登录和关闭按钮样式 **/
-        loginButton.setStyle("" +
+        forgetPasswordButton .setStyle(
+                "-fx-background-color: #dfebff;\n" +
+                "-fx-background-radius: 25;\n" +
+                "-fx-border-radius: 25;" +
+                "-fx-font-size:12px;");
+        forgetPasswordButton.setOnMouseEntered(
+                e->{
+                    forgetPasswordButton.setStyle("-fx-background-color: #bec9dd;\n" +
+                            "-fx-background-radius: 25;\n" +
+                            "-fx-border-radius: 25;"+
+                            "-fx-font-size:12px;");
+                });
+        forgetPasswordButton.setOnMouseExited(
+                e->{
+                    forgetPasswordButton.setStyle("-fx-background-color: #dfebff;\n" +
+                            "-fx-background-radius: 25;\n" +
+                            "-fx-border-radius: 25;"+
+                            "-fx-font-size:12px;");
+                });
+        forgetPasswordButton.setOnMousePressed(
+                e->{
+                    forgetPasswordButton.setStyle("-fx-background-color: #8893a7;\n" +
+                            "-fx-background-radius: 25;\n" +
+                            "-fx-border-radius: 25;"+
+                            "-fx-font-size:12px;");
+                });
+        forgetPasswordButton.setOnMouseReleased(
+                e->{
+                    forgetPasswordButton.setStyle(
+                    "-fx-background-color: #dfebff;\n" +
+                    "-fx-background-radius: 25;\n" +
+                    "-fx-border-radius: 25;"+
+                    "-fx-font-size:12px;");
+        });
+
+
+        loginButton.setStyle(
                 "-fx-background-color: #dfebff;\n" +
                 "-fx-background-radius: 25;\n" +
                 "-fx-border-radius: 25;" +
@@ -113,15 +149,16 @@ public class LoginInUi extends Application {
                             "-fx-border-radius: 25;"+
                             "-fx-font-size:17px;");
                 });
-        loginButton.setOnMouseReleased(e->{
-            loginButton.setStyle("" +
+        loginButton.setOnMouseReleased(
+                e->{
+                    loginButton.setStyle("" +
                     "-fx-background-color: #dfebff;\n" +
                     "-fx-background-radius: 25;\n" +
                     "-fx-border-radius: 25;"+
                     "-fx-font-size:17px;");
         });
 
-        registerButton.setStyle("" +
+        registerButton.setStyle(
                 "-fx-background-color: #dfebff;\n" +
                 "-fx-background-radius: 25;\n" +
                 "-fx-border-radius: 25;" +
@@ -147,8 +184,9 @@ public class LoginInUi extends Application {
                             "-fx-border-radius: 25;"+
                             "-fx-font-size:17px;");
                 });
-        registerButton.setOnMouseReleased(e->{
-            registerButton.setStyle("" +
+        registerButton.setOnMouseReleased(
+                e->{
+                    registerButton.setStyle("" +
                     "-fx-background-color: #dfebff;\n" +
                     "-fx-background-radius: 25;\n" +
                     "-fx-border-radius: 25;"+
@@ -178,6 +216,7 @@ public class LoginInUi extends Application {
         primaryStage.initStyle(StageStyle.TRANSPARENT);
         primaryStage.show();
         ClientSocket socket = new ClientSocket("127.0.0.1", 8888);
+
 
 //实现窗口拖动
         AtomicReference<Double> xOffSet = new AtomicReference<>((double) 0);

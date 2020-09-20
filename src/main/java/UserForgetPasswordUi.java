@@ -6,6 +6,8 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
+import java.util.concurrent.atomic.AtomicReference;
+
 /**
  * @program: Client
  * @description: 登录界面忘记密码Ui
@@ -56,31 +58,138 @@ public class UserForgetPasswordUi extends Application {
 
         closeButton.setLayoutX(270);
         closeButton.setLayoutY(5);
+        closeButton.setPrefWidth(30);
+        closeButton.setPrefHeight(20);
 
-        closeButton.setStyle("-fx-background-color: antiquewhite;" +
-                "-fx-border-radius: 5px; -fx-font-size: 9pt ; -fx-font-family: STHeiti");
-        closeButton.setOnMouseEntered(e->{
-            closeButton.setStyle("-fx-text-fill: white; -fx-background-color: rgb(218, 95, 71)");
+        /**关闭按钮**/
+        closeButton.setStyle(
+                "-fx-background-color: antiquewhite;" +
+                "-fx-border-radius: 5px; " +
+                "-fx-font-size: 9pt ; " +
+                "-fx-font-family: STHeiti");
+        closeButton.setOnMouseEntered(
+                e->{
+                closeButton.setStyle(
+                      "-fx-text-fill: white; " +
+                      "-fx-background-color: rgb(218, 95, 71)");
         });
-        closeButton.setOnMouseExited(e->{
-            closeButton.setStyle("-fx-background-color: antiquewhite; -fx-border-radius: 5px; -fx-font-size: 9pt ;" +
-                    " -fx-font-family: STHeiti");
+        closeButton.setOnMouseExited(
+                 e->{
+                 closeButton.setStyle(
+                        "-fx-background-color: antiquewhite; -fx-border-radius: 5px;" +
+                        " -fx-font-size: 9pt ;" +
+                        " -fx-font-family: STHeiti");
         });
         closeButton.setOnMousePressed(e->{
-            closeButton.setStyle("-fx-text-fill: white; -fx-background-color: rgb(218, 95, 71)");
+                closeButton.setStyle(
+                        "-fx-text-fill: white; " +
+                        "-fx-background-color: rgb(218, 95, 71)");
         });
         closeButton.setOnMouseReleased(e->{
-            closeButton.setStyle("-fx-background-color: antiquewhite; -fx-border-radius: 5px; -fx-font-size: 9pt ;" +
-                    " -fx-font-family: STHeiti");
+                closeButton.setStyle(
+                        "-fx-background-color: antiquewhite; " +
+                        "-fx-border-radius: 5px; -fx-font-size: 9pt ;" +
+                        " -fx-font-family: STHeiti");
         });
 
+
         closeButton.setOnAction(e->{
-            primaryStage.close();
+                primaryStage.close();
         });
+
+        /**发送验证码和确认按钮**/
+        codeButton .setStyle(
+                "-fx-background-color: antiquewhite;\n" +
+                        "-fx-background-radius: 25;\n" +
+                        "-fx-border-radius: 25;" +
+                        "-fx-font-size:12px;");
+        codeButton.setOnMouseEntered(
+                e->{
+                    codeButton.setStyle("-fx-background-color: #d9d4bf;\n" +
+                            "-fx-background-radius: 25;\n" +
+                            "-fx-border-radius: 25;"+
+                            "-fx-font-size:12px;");
+                });
+        codeButton.setOnMouseExited(
+                e->{
+                    codeButton.setStyle("-fx-background-color: antiquewhite;\n" +
+                            "-fx-background-radius: 25;\n" +
+                            "-fx-border-radius: 25;"+
+                            "-fx-font-size:12px;");
+                });
+        codeButton.setOnMousePressed(
+                e->{
+                    codeButton.setStyle("-fx-background-color: #d9d4bf;\n" +
+                            "-fx-background-radius: 25;\n" +
+                            "-fx-border-radius: 25;"+
+                            "-fx-font-size:12px;");
+                });
+        codeButton.setOnMouseReleased(
+                e->{
+                    codeButton.setStyle(
+                            "-fx-background-color: antiquewhite;\n" +
+                                    "-fx-background-radius: 25;\n" +
+                                    "-fx-border-radius: 25;"+
+                                    "-fx-font-size:12px;");
+                });
+
+        confirmButton.setStyle(
+                "-fx-background-color: antiquewhite;\n" +
+                        "-fx-background-radius: 25;\n" +
+                        "-fx-border-radius: 25;" +
+                        "-fx-font-size:12px;");
+        confirmButton.setOnMouseEntered(
+                e->{
+                    confirmButton.setStyle("-fx-background-color: #d9d4bf;\n" +
+                            "-fx-background-radius: 25;\n" +
+                            "-fx-border-radius: 25;"+
+                            "-fx-font-size:12px;");
+                });
+        confirmButton.setOnMouseExited(
+                e->{
+                    confirmButton.setStyle("-fx-background-color: antiquewhite;\n" +
+                            "-fx-background-radius: 25;\n" +
+                            "-fx-border-radius: 25;"+
+                            "-fx-font-size:12px;");
+                });
+        confirmButton.setOnMousePressed(
+                e->{
+                    confirmButton.setStyle("-fx-background-color: #d9d4bf;\n" +
+                            "-fx-background-radius: 25;\n" +
+                            "-fx-border-radius: 25;"+
+                            "-fx-font-size:12px;");
+                });
+        confirmButton.setOnMouseReleased(
+                e->{
+                    confirmButton.setStyle(
+                            "-fx-background-color: antiquewhite;\n" +
+                                    "-fx-background-radius: 25;\n" +
+                                    "-fx-border-radius: 25;"+
+                                    "-fx-font-size:12px;");
+                });
+
+
 
         Pane passwordPane = new Pane();
         passwordPane.getChildren().addAll(newPasswordTextField,newPasswordTextFieldAgain,codeTextField,codeButton,confirmButton,emailTextField,closeButton);
         primaryStage.setScene(new Scene(passwordPane,300,250));
+        passwordPane.setStyle("-fx-background-color: #bac5d9");
+
+
+        //实现窗口拖动
+        AtomicReference<Double> xOffSet = new AtomicReference<>((double) 0);
+        AtomicReference<Double> yOffSet = new AtomicReference<>((double) 0);
+        passwordPane.setOnMousePressed(event -> {
+            xOffSet.set(event.getSceneX());
+            yOffSet.set(event.getSceneY());
+        });
+
+        passwordPane.setOnMouseDragged(event -> {
+            primaryStage.setX(event.getScreenX() - xOffSet.get());
+            primaryStage.setY(event.getScreenY() - yOffSet.get());
+        });
+
+
         primaryStage.initStyle(StageStyle.TRANSPARENT);
         primaryStage.show();
     }
