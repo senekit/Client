@@ -1,5 +1,6 @@
 import javafx.application.Application;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 import javafx.scene.layout.Pane;
@@ -7,6 +8,7 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
 import java.io.IOException;
+import java.util.concurrent.atomic.AtomicReference;
 
 /**
  * program: Client
@@ -30,6 +32,8 @@ public class MainUi extends Application {
         user.setFamilyId(message[0]);
         user.setName(message[1]);
 
+        Pane pane = new Pane();
+
         TabPane mainTabPane = new TabPane();
         Tab bookingTab = new Tab("记账本");
         Tab financialAnalysisTab = new Tab("财务分析");
@@ -37,6 +41,7 @@ public class MainUi extends Application {
         Tab incomeofFamilyMembers = new Tab("家庭成员收支情况");
         Tab financialProjectTab = new Tab("理财项目");
         Tab userInformationTab = new Tab("我的信息");
+        Button closeButton = new Button("X");
         bookingTab.setClosable(false);
         financialAnalysisTab.setClosable(false);
         incomeofFamilyMembers.setClosable(false);
@@ -44,6 +49,44 @@ public class MainUi extends Application {
         userInformationTab.setClosable(false);
         dataVisualizationTab.setClosable(false);
         mainTabPane.getTabs().addAll(bookingTab,financialAnalysisTab,dataVisualizationTab,incomeofFamilyMembers,financialProjectTab,userInformationTab);
+
+        pane.getChildren().add(mainTabPane);
+
+//实现页面拖动
+        AtomicReference<Double> xOffSet = new AtomicReference<>((double) 0);
+        AtomicReference<Double> yOffSet = new AtomicReference<>((double) 0);
+        pane.setOnMousePressed(event -> {
+            xOffSet.set(event.getSceneX());
+            yOffSet.set(event.getSceneY());
+        });
+
+        pane.setOnMouseDragged(event -> {
+            primaryStage.setX(event.getScreenX() - xOffSet.get());
+            primaryStage.setY(event.getScreenY() - yOffSet.get());
+        });
+
+//最小化按钮
+        closeButton.setLayoutX(260);
+        closeButton.setLayoutY(15);
+        closeButton.setPrefWidth(30);
+        closeButton.setPrefHeight(20);
+        closeButton.setStyle("-fx-background-color: #dfebff;" +
+                "-fx-border-radius: 5px; -fx-font-size: 9pt ; -fx-font-family: STHeiti");
+        closeButton.setOnMouseEntered(e->{
+            closeButton.setStyle("-fx-text-fill: white; -fx-background-color: rgb(218, 95, 71)");
+        });
+        closeButton.setOnMouseExited(e->{
+            closeButton.setStyle("-fx-background-color: #dfebff; -fx-border-radius: 5px; -fx-font-size: 9pt ;" +
+                    " -fx-font-family: STHeiti");
+        });
+        closeButton.setOnMousePressed(e->{
+            closeButton.setStyle("-fx-text-fill: white; -fx-background-color: rgb(218, 95, 71)");
+        });
+        closeButton.setOnMouseReleased(e->{
+            closeButton.setStyle("-fx-background-color: #dfebff; -fx-border-radius: 5px; -fx-font-size: 9pt ;" +
+                    " -fx-font-family: STHeiti");
+        });
+
         //主界面选项卡
 
         BookingUi bookingUi = new BookingUi();
@@ -90,7 +133,8 @@ public class MainUi extends Application {
         //家庭成员选项卡
 
         primaryStage.setTitle("家庭金融管理系统");
-        primaryStage.setScene(new Scene(mainTabPane,375,500));
+        primaryStage.setScene(new Scene(pane,375,530));
+        //primaryStage.setScene(new Scene(mainTabPane,375,500));
         primaryStage.initStyle(StageStyle.TRANSPARENT);
         primaryStage.show();
         //Stage设置

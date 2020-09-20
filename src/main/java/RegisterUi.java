@@ -12,6 +12,7 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
 import java.io.IOException;
+import java.util.concurrent.atomic.AtomicReference;
 
 
 /**
@@ -177,6 +178,19 @@ public class RegisterUi extends Application {
                     "-fx-background-radius: 25;\n" +
                     "-fx-border-radius: 25;"+
                     "-fx-font-size:17px;");
+        });
+
+//实现窗口拖动
+        AtomicReference<Double> xOffSet = new AtomicReference<>((double) 0);
+        AtomicReference<Double> yOffSet = new AtomicReference<>((double) 0);
+        pane.setOnMousePressed(event -> {
+            xOffSet.set(event.getSceneX());
+            yOffSet.set(event.getSceneY());
+        });
+
+        pane.setOnMouseDragged(event -> {
+            primaryStage.setX(event.getScreenX() - xOffSet.get());
+            primaryStage.setY(event.getScreenY() - yOffSet.get());
         });
 
 

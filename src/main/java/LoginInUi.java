@@ -12,6 +12,7 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
 import java.io.IOException;
+import java.util.concurrent.atomic.AtomicReference;
 
 /**
  * @program: Javafx
@@ -170,6 +171,19 @@ public class LoginInUi extends Application {
         primaryStage.initStyle(StageStyle.TRANSPARENT);
         primaryStage.show();
         ClientSocket socket = new ClientSocket("127.0.0.1", 8888);
+
+//实现窗口拖动
+        AtomicReference<Double> xOffSet = new AtomicReference<>((double) 0);
+        AtomicReference<Double> yOffSet = new AtomicReference<>((double) 0);
+        pane.setOnMousePressed(event -> {
+            xOffSet.set(event.getSceneX());
+            yOffSet.set(event.getSceneY());
+        });
+
+        pane.setOnMouseDragged(event -> {
+            primaryStage.setX(event.getScreenX() - xOffSet.get());
+            primaryStage.setY(event.getScreenY() - yOffSet.get());
+        });
 
 //内部类处理服务器信息
         class Solution {
