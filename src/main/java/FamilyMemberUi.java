@@ -1,5 +1,6 @@
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.Tab;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
@@ -14,7 +15,7 @@ import java.io.IOException;
  **/
 public class FamilyMemberUi {
     Pane familyMemberPane = new Pane();
-    public void init() throws IOException {
+    public void init(Tab incomeTab) throws IOException {
         System.out.println(MainUi.user.getFamilyId());
         if(MainUi.user.getFamilyId().equals("0")){
 
@@ -43,8 +44,10 @@ public class FamilyMemberUi {
             joinButton.setOnAction(e->{
                 JoinFamilyUi open  = new JoinFamilyUi();
                 try {
-                    Stage stage = new Stage();
-                    open.start(stage);
+                    Stage stage1 = new Stage();
+                    open.setTab(incomeTab);
+                    open.setFamilyMemberUi(this);
+                    open.start(stage1);
                 } catch (Exception ex) {
                     ex.printStackTrace();
                 }
@@ -52,19 +55,19 @@ public class FamilyMemberUi {
 
             createButton.setOnAction(e->{
                 try {
-                    ClientSocket socket = new ClientSocket("192.168.31.56",8888);
+                    ClientSocket socket = new ClientSocket("127.0.0.1",8888);
                     socket.send(new String("H/"+MainUi.user.getEmail()));
                     String[] messages=socket.accept().trim().split("/");
                     MainUi.user.setFamilyId(messages[1]);
                     familyMemberPane = new Pane();
-                    init();
+                    incomeTab.setContent(familyMemberPane);
+                    init(incomeTab);
                 } catch (IOException ioException) {
                     ioException.printStackTrace();
                 }
             });
         }
         else{
-
             Label backgroundLabel1 = new Label("                     ");
             backgroundLabel1.setStyle("-fx-background-radius: 10px ;-fx-background-color: gray;");
             backgroundLabel1.setPrefHeight(130);
@@ -88,7 +91,7 @@ public class FamilyMemberUi {
 
             familyMemberPane.getChildren().addAll(backgroundLabel1,backgroundLabel2,backgroundLabel3);
 
-            ClientSocket socket = new ClientSocket("192.168.31.56",8888);
+            ClientSocket socket = new ClientSocket("127.0.0.1",8888);
             socket.send(new String("G/"+MainUi.user.getEmail()));
             String[] messages=socket.accept().trim().split("/");
             String background1="";

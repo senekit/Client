@@ -97,7 +97,7 @@ public class UserInformationUi {
         //解散
         deleteButton.setOnAction(e->{
             try {
-                ClientSocket socket = new ClientSocket("192.168.31.56",8888);
+                ClientSocket socket = new ClientSocket("127.0.0.1",8888);
                 socket.send(new String("Z/"+MainUi.user.getFamilyId()));
                 MainUi.user.setFamilyId("0");
                 init(new Stage());

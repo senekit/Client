@@ -1,6 +1,7 @@
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Tab;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
@@ -16,6 +17,7 @@ import java.io.IOException;
  **/
 public class JoinFamilyUi extends Application {
     public FamilyMemberUi familyMemberUi;
+    public Tab tab;
     @Override
     public void start(Stage primaryStage) throws Exception {
 
@@ -37,16 +39,22 @@ public class JoinFamilyUi extends Application {
         confirmButton.setOnAction(e->{
             ClientSocket socket = null;
             try {
-                socket = new ClientSocket("192.168.31.56",8888);
+                socket = new ClientSocket("127.0.0.1",8888);
                 socket.send(new String("J/"+MainUi.user.getEmail()+"/"+familyTextField.getText().trim()));
                 MainUi.user.setFamilyId(familyTextField.getText().trim());
                 primaryStage.close();
+                familyMemberUi.familyMemberPane = new Pane();
+                familyMemberUi.init(tab);
+                tab.setContent(familyMemberUi.familyMemberPane);
             } catch (IOException ioException) {
                 ioException.printStackTrace();
             }
         });
     }
-    public void re(FamilyMemberUi familyMemberUi){
+    public void setTab(Tab tab){
+        this.tab = tab;
+    }
+    public void setFamilyMemberUi(FamilyMemberUi familyMemberUi){
         this.familyMemberUi = familyMemberUi;
     }
 }

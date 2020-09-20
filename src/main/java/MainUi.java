@@ -25,7 +25,7 @@ public class MainUi extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        ClientSocket socket = new ClientSocket("192.168.31.56",8888);
+        ClientSocket socket = new ClientSocket("127.0.0.1",8888);
         socket.send(new String("F/"+user.getEmail()));
         String[] message = socket.accept().split("/");
         System.out.println(message[0]+message[1]);
@@ -132,7 +132,7 @@ public class MainUi extends Application {
         incomeofFamilyMembers.setOnSelectionChanged(e->{
             try {
                 familyMemberUi.familyMemberPane = new Pane();
-                familyMemberUi.init();
+                familyMemberUi.init(incomeofFamilyMembers);
             } catch (IOException ioException) {
                 ioException.printStackTrace();
             }
