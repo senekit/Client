@@ -231,10 +231,10 @@ public class RegisterUi extends Application {
                         alert.setHeaderText(null);
                         alert.setContentText("该用户已存在");
                         alert.showAndWait();
-                        emailTextField.setText("请在此输入您的邮箱");
-                        passwordTextField.setText("请在此输入您的密码");
-                        passwordAgainTextField.setText("请在此输入您的密码");
-                        nameTextField.setText("请输入您的姓名");
+                        emailTextField.setText("");
+                        passwordTextField.setText("");
+                        passwordAgainTextField.setText("");
+                        nameTextField.setText("");
                         break;
                     }
                 }
