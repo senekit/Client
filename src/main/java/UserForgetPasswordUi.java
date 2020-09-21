@@ -68,37 +68,37 @@ public class UserForgetPasswordUi extends Application {
         /**关闭按钮**/
         closeButton.setStyle(
                 "-fx-background-color: antiquewhite;" +
-                "-fx-border-radius: 5px; " +
-                "-fx-font-size: 9pt ; " +
-                "-fx-font-family: STHeiti");
+                        "-fx-border-radius: 5px; " +
+                        "-fx-font-size: 9pt ; " +
+                        "-fx-font-family: STHeiti");
         closeButton.setOnMouseEntered(
                 e->{
-                closeButton.setStyle(
-                      "-fx-text-fill: white; " +
-                      "-fx-background-color: rgb(218, 95, 71)");
-        });
+                    closeButton.setStyle(
+                            "-fx-text-fill: white; " +
+                                    "-fx-background-color: rgb(218, 95, 71)");
+                });
         closeButton.setOnMouseExited(
-                 e->{
-                 closeButton.setStyle(
-                        "-fx-background-color: antiquewhite; -fx-border-radius: 5px;" +
-                        " -fx-font-size: 9pt ;" +
-                        " -fx-font-family: STHeiti");
-        });
+                e->{
+                    closeButton.setStyle(
+                            "-fx-background-color: antiquewhite; -fx-border-radius: 5px;" +
+                                    " -fx-font-size: 9pt ;" +
+                                    " -fx-font-family: STHeiti");
+                });
         closeButton.setOnMousePressed(e->{
-                closeButton.setStyle(
-                        "-fx-text-fill: white; " +
-                        "-fx-background-color: rgb(218, 95, 71)");
+            closeButton.setStyle(
+                    "-fx-text-fill: white; " +
+                            "-fx-background-color: rgb(218, 95, 71)");
         });
         closeButton.setOnMouseReleased(e->{
-                closeButton.setStyle(
-                        "-fx-background-color: antiquewhite; " +
-                        "-fx-border-radius: 5px; -fx-font-size: 9pt ;" +
-                        " -fx-font-family: STHeiti");
+            closeButton.setStyle(
+                    "-fx-background-color: antiquewhite; " +
+                            "-fx-border-radius: 5px; -fx-font-size: 9pt ;" +
+                            " -fx-font-family: STHeiti");
         });
 
 
         closeButton.setOnAction(e->{
-                primaryStage.close();
+            primaryStage.close();
         });
 
         /**发送验证码和确认按钮**/

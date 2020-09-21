@@ -198,27 +198,27 @@ public class BookingUi {
                     clothesButton.setStyle(
                             "-fx-background-color: antiquewhite;\n" +
                                     //"-fx-background-radius: 5;\n" +
-                                   // "-fx-border-radius: 5;"+
+                                    // "-fx-border-radius: 5;"+
                                     "-fx-font-size:16px;");
                 });
 
         eatButton.setStyle(
                 "-fx-background-color: antiquewhite;\n" +
-                       // "-fx-background-radius: 5;\n" +
-                       // "-fx-border-radius: 5;" +
+                        // "-fx-background-radius: 5;\n" +
+                        // "-fx-border-radius: 5;" +
                         "-fx-font-size:16px;");
         eatButton.setOnMouseEntered(
                 e->{
                     eatButton.setStyle("-fx-background-color: #d9d4bf;\n" +
-                           // "-fx-background-radius: 5;\n" +
-                           // "-fx-border-radius: 5;"+
+                            // "-fx-background-radius: 5;\n" +
+                            // "-fx-border-radius: 5;"+
                             "-fx-font-size:16px;");
                 });
         eatButton.setOnMouseExited(
                 e->{
                     eatButton.setStyle("-fx-background-color: antiquewhite;\n" +
                             //"-fx-background-radius: 5;\n" +
-                           // "-fx-border-radius: 5;"+
+                            // "-fx-border-radius: 5;"+
                             "-fx-font-size:16px;");
                 });
         eatButton.setOnMousePressed(
@@ -239,21 +239,21 @@ public class BookingUi {
 
         houseButton .setStyle(
                 "-fx-background-color: antiquewhite;\n" +
-                       // "-fx-background-radius: 5;\n" +
+                        // "-fx-background-radius: 5;\n" +
                         //"-fx-border-radius: 5;" +
                         "-fx-font-size:16px;");
         houseButton .setOnMouseEntered(
                 e->{
                     houseButton .setStyle("-fx-background-color: #d9d4bf;\n" +
                             //"-fx-background-radius: 5;\n" +
-                           //"-fx-border-radius: 5;"+
+                            //"-fx-border-radius: 5;"+
                             "-fx-font-size:16px;");
                 });
         houseButton .setOnMouseExited(
                 e->{
                     houseButton .setStyle("-fx-background-color: antiquewhite;\n" +
-                           //"-fx-background-radius: 5;\n" +
-                           // "-fx-border-radius: 5;"+
+                            //"-fx-background-radius: 5;\n" +
+                            // "-fx-border-radius: 5;"+
                             "-fx-font-size:16px;");
                 });
         houseButton .setOnMousePressed(
@@ -268,7 +268,7 @@ public class BookingUi {
                     houseButton .setStyle(
                             "-fx-background-color: antiquewhite;\n" +
                                     //"-fx-background-radius: 5;\n" +
-                                   // "-fx-border-radius: 5;"+
+                                    // "-fx-border-radius: 5;"+
                                     "-fx-font-size:16px;");
                 });
 

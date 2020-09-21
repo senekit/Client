@@ -89,9 +89,9 @@ public class LoginInUi extends Application {
         /** 注册和登录和关闭按钮样式 **/
         forgetPasswordButton .setStyle(
                 "-fx-background-color: #dfebff;\n" +
-                "-fx-background-radius: 10;\n" +
-                "-fx-border-radius: 10;" +
-                "-fx-font-size:12px;");
+                        "-fx-background-radius: 10;\n" +
+                        "-fx-border-radius: 10;" +
+                        "-fx-font-size:12px;");
         forgetPasswordButton.setOnMouseEntered(
                 e->{
                     forgetPasswordButton.setStyle("-fx-background-color: #bec9dd;\n" +
@@ -116,18 +116,18 @@ public class LoginInUi extends Application {
         forgetPasswordButton.setOnMouseReleased(
                 e->{
                     forgetPasswordButton.setStyle(
-                    "-fx-background-color: #dfebff;\n" +
-                    "-fx-background-radius: 10;\n" +
-                    "-fx-border-radius: 10;"+
-                    "-fx-font-size:12px;");
-        });
+                            "-fx-background-color: #dfebff;\n" +
+                                    "-fx-background-radius: 10;\n" +
+                                    "-fx-border-radius: 10;"+
+                                    "-fx-font-size:12px;");
+                });
 
 
         loginButton.setStyle(
                 "-fx-background-color: #dfebff;\n" +
-                "-fx-background-radius: 25;\n" +
-                "-fx-border-radius: 25;" +
-                "-fx-font-size:17px;");
+                        "-fx-background-radius: 25;\n" +
+                        "-fx-border-radius: 25;" +
+                        "-fx-font-size:17px;");
         loginButton.setOnMouseEntered(
                 e->{
                     loginButton.setStyle("-fx-background-color: #bec9dd;\n" +
@@ -152,17 +152,17 @@ public class LoginInUi extends Application {
         loginButton.setOnMouseReleased(
                 e->{
                     loginButton.setStyle("" +
-                    "-fx-background-color: #dfebff;\n" +
-                    "-fx-background-radius: 25;\n" +
-                    "-fx-border-radius: 25;"+
-                    "-fx-font-size:17px;");
-        });
+                            "-fx-background-color: #dfebff;\n" +
+                            "-fx-background-radius: 25;\n" +
+                            "-fx-border-radius: 25;"+
+                            "-fx-font-size:17px;");
+                });
 
         registerButton.setStyle(
                 "-fx-background-color: #dfebff;\n" +
-                "-fx-background-radius: 25;\n" +
-                "-fx-border-radius: 25;" +
-                "-fx-font-size:17px;");
+                        "-fx-background-radius: 25;\n" +
+                        "-fx-border-radius: 25;" +
+                        "-fx-font-size:17px;");
         registerButton.setOnMouseEntered(
                 e->{
                     registerButton.setStyle("-fx-background-color: #bec9dd;\n" +
@@ -187,11 +187,11 @@ public class LoginInUi extends Application {
         registerButton.setOnMouseReleased(
                 e->{
                     registerButton.setStyle("" +
-                    "-fx-background-color: #dfebff;\n" +
-                    "-fx-background-radius: 25;\n" +
-                    "-fx-border-radius: 25;"+
-                    "-fx-font-size:17px;");
-        });
+                            "-fx-background-color: #dfebff;\n" +
+                            "-fx-background-radius: 25;\n" +
+                            "-fx-border-radius: 25;"+
+                            "-fx-font-size:17px;");
+                });
 
         closeButton.setStyle("-fx-background-color: #dfebff;" +
                 "-fx-border-radius: 5px; -fx-font-size: 9pt ; -fx-font-family: STHeiti");
