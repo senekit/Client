@@ -33,11 +33,81 @@ public class FamilyMemberUi {
             createButton.setLayoutY(100);
             createButton.setStyle("-fx-font-size: 20px");
 
+            createButton .setStyle(
+                    "-fx-background-color: #f9fbff;\n" +
+                            //"-fx-background-radius: 5;\n" +
+                            //"-fx-border-radius: 5;" +
+                            "-fx-font-size:16px;");
+            createButton.setOnMouseEntered(
+                    e->{
+                        createButton.setStyle("-fx-background-color: #e2e3e7;\n" +
+                                //"-fx-background-radius: 5;\n" +
+                                //"-fx-border-radius: 5;"+
+                                "-fx-font-size:16px;");
+                    });
+            createButton.setOnMouseExited(
+                    e->{
+                        createButton.setStyle("-fx-background-color: #f9fbff;\n" +
+                                //"-fx-background-radius: 5;\n" +
+                                //"-fx-border-radius: 5;"+
+                                "-fx-font-size:16px;");
+                    });
+            createButton.setOnMousePressed(
+                    e->{
+                        createButton.setStyle("-fx-background-color: #b5b6ba;\n" +
+                                //"-fx-background-radius: 5;\n" +
+                                //"-fx-border-radius: 5;"+
+                                "-fx-font-size:16px;");
+                    });
+            createButton.setOnMouseReleased(
+                    e->{
+                        createButton.setStyle(
+                                "-fx-background-color: #f9fbff;\n" +
+                                        //"-fx-background-radius: 5;\n" +
+                                        //"-fx-border-radius: 5;"+
+                                        "-fx-font-size:16px;");
+                    });
+
             joinButton.setPrefWidth(200);
             joinButton.setPrefHeight(100);
             joinButton.setLayoutX(85);
             joinButton.setLayoutY(250);
             joinButton.setStyle("-fx-font-size: 20px");
+
+            joinButton .setStyle(
+                    "-fx-background-color: #f9fbff;\n" +
+                            //"-fx-background-radius: 5;\n" +
+                            //"-fx-border-radius: 5;" +
+                            "-fx-font-size:16px;");
+            joinButton.setOnMouseEntered(
+                    e->{
+                        joinButton.setStyle("-fx-background-color: #e2e3e7;\n" +
+                                //"-fx-background-radius: 5;\n" +
+                                //"-fx-border-radius: 5;"+
+                                "-fx-font-size:16px;");
+                    });
+            joinButton.setOnMouseExited(
+                    e->{
+                        joinButton.setStyle("-fx-background-color: #f9fbff;\n" +
+                                //"-fx-background-radius: 5;\n" +
+                                //"-fx-border-radius: 5;"+
+                                "-fx-font-size:16px;");
+                    });
+            joinButton.setOnMousePressed(
+                    e->{
+                        joinButton.setStyle("-fx-background-color: #b5b6ba;\n" +
+                                //"-fx-background-radius: 5;\n" +
+                                //"-fx-border-radius: 5;"+
+                                "-fx-font-size:16px;");
+                    });
+            joinButton.setOnMouseReleased(
+                    e->{
+                        joinButton.setStyle(
+                                "-fx-background-color: #f9fbff;\n" +
+                                        //"-fx-background-radius: 5;\n" +
+                                        //"-fx-border-radius: 5;"+
+                                        "-fx-font-size:16px;");
+                    });
 
             familyMemberPane.getChildren().addAll(promptText,createButton,joinButton);
 

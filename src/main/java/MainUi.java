@@ -53,7 +53,7 @@ public class MainUi extends Application {
         //pane.getChildren().add(mainTabPane);
 
 //页面背景 rgb(231,236,240)
-        mainTabPane.setStyle("-fx-background-color:#bac5d9");
+        mainTabPane.setStyle("-fx-background-color: #bac5d9");
 
 //最小化按钮
         closeButton.setLayoutX(260);

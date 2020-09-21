@@ -50,7 +50,7 @@ public class FinancialAnalysisUi {
 
         if(tag == 0){
             table.getColumns().addAll(itemColumn, moneyColumn, dateColumn,deleteColumn);
-            table.setPrefWidth(241);
+            table.setPrefWidth(275);
             tag++;
         }
 
@@ -86,13 +86,83 @@ public class FinancialAnalysisUi {
 
         reviseButton.setPrefWidth(100);
         reviseButton.setPrefHeight(40);
-        reviseButton.setLayoutX(270);
+        reviseButton.setLayoutX(300);
         reviseButton.setLayoutY(40);
+
+        reviseButton .setStyle(
+                "-fx-background-color: #f9fbff;\n" +
+                        //"-fx-background-radius: 5;\n" +
+                        //"-fx-border-radius: 5;" +
+                        "-fx-font-size:16px;");
+        reviseButton.setOnMouseEntered(
+                e->{
+                    reviseButton.setStyle("-fx-background-color: #e2e3e7;\n" +
+                            //"-fx-background-radius: 5;\n" +
+                            //"-fx-border-radius: 5;"+
+                            "-fx-font-size:16px;");
+                });
+        reviseButton.setOnMouseExited(
+                e->{
+                    reviseButton.setStyle("-fx-background-color: #f9fbff;\n" +
+                            //"-fx-background-radius: 5;\n" +
+                            //"-fx-border-radius: 5;"+
+                            "-fx-font-size:16px;");
+                });
+        reviseButton.setOnMousePressed(
+                e->{
+                    reviseButton.setStyle("-fx-background-color: #b5b6ba;\n" +
+                            //"-fx-background-radius: 5;\n" +
+                            //"-fx-border-radius: 5;"+
+                            "-fx-font-size:16px;");
+                });
+        reviseButton.setOnMouseReleased(
+                e->{
+                    reviseButton.setStyle(
+                            "-fx-background-color: #f9fbff;\n" +
+                                    //"-fx-background-radius: 5;\n" +
+                                    //"-fx-border-radius: 5;"+
+                                    "-fx-font-size:16px;");
+                });
 
         deleteButton.setPrefHeight(40);
         deleteButton.setPrefWidth(100);
-        deleteButton.setLayoutX(270);
+        deleteButton.setLayoutX(300);
         deleteButton.setLayoutY(90);
+
+        deleteButton .setStyle(
+                "-fx-background-color: #f9fbff;\n" +
+                        //"-fx-background-radius: 5;\n" +
+                        //"-fx-border-radius: 5;" +
+                        "-fx-font-size:16px;");
+        deleteButton.setOnMouseEntered(
+                e->{
+                    deleteButton.setStyle("-fx-background-color: #e2e3e7;\n" +
+                            //"-fx-background-radius: 5;\n" +
+                            //"-fx-border-radius: 5;"+
+                            "-fx-font-size:16px;");
+                });
+        deleteButton.setOnMouseExited(
+                e->{
+                    deleteButton.setStyle("-fx-background-color: #f9fbff;\n" +
+                            //"-fx-background-radius: 5;\n" +
+                            //"-fx-border-radius: 5;"+
+                            "-fx-font-size:16px;");
+                });
+        deleteButton.setOnMousePressed(
+                e->{
+                    deleteButton.setStyle("-fx-background-color: #b5b6ba;\n" +
+                            //"-fx-background-radius: 5;\n" +
+                            //"-fx-border-radius: 5;"+
+                            "-fx-font-size:16px;");
+                });
+        deleteButton.setOnMouseReleased(
+                e->{
+                    deleteButton.setStyle(
+                            "-fx-background-color: #f9fbff;\n" +
+                                    //"-fx-background-radius: 5;\n" +
+                                    //"-fx-border-radius: 5;"+
+                                    "-fx-font-size:16px;");
+                });
 
         itemColumn.setOnEditCommit(new EventHandler<TableColumn.CellEditEvent<User,String>>() {
             @Override

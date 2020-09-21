@@ -6,6 +6,7 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
 
@@ -26,7 +27,7 @@ public class BookingUi {
         TextField importTextField = new TextField();
         addPane.getChildren().add(importTextField);
         importTextField.setPrefHeight(100);
-        importTextField.setPrefWidth(300);
+        importTextField.setPrefWidth(350);
         importTextField.setLayoutX(37);
         importTextField.setLayoutY(20);
         importTextField.setAlignment(Pos.CENTER_RIGHT);
@@ -34,9 +35,10 @@ public class BookingUi {
         //工资 投资 衣食住行
         DatePicker datePicker = new DatePicker();
         addPane.getChildren().add(datePicker);
-        datePicker.setLayoutX(235);
+        datePicker.setLayoutX(287);
         datePicker.setLayoutY(130);
-        datePicker.setPrefWidth(100);
+        datePicker.setPrefSize(100,20);
+        datePicker.setValue(LocalDate.now());
 
         Text moneySign = new Text("￥");
         addPane.getChildren().add(moneySign);
@@ -52,243 +54,243 @@ public class BookingUi {
         Button trafficButton = new Button("交通");
         addPane.getChildren().addAll(salaryButton,investButton,clothesButton,eatButton,houseButton,trafficButton);
 
-        salaryButton.setPrefWidth(120);
-        salaryButton.setPrefHeight(40);
-        salaryButton.setLayoutX(55);
+        salaryButton.setPrefWidth(175);
+        salaryButton.setPrefHeight(60);
+        salaryButton.setLayoutX(37);
         salaryButton.setLayoutY(210);
 
-        investButton.setPrefWidth(120);
-        investButton.setPrefHeight(40);
-        investButton.setLayoutX(55);
-        investButton.setLayoutY(270);
+        investButton.setPrefWidth(175);
+        investButton.setPrefHeight(60);
+        investButton.setLayoutX(212);
+        investButton.setLayoutY(210);
 
-        clothesButton.setPrefWidth(120);
-        clothesButton.setPrefHeight(40);
-        clothesButton.setLayoutX(55);
-        clothesButton.setLayoutY(330);
+        clothesButton.setPrefWidth(175);
+        clothesButton.setPrefHeight(60);
+        clothesButton.setLayoutX(37);
+        clothesButton.setLayoutY(370);
 
-        eatButton.setPrefWidth(120);
-        eatButton.setPrefHeight(40);
-        eatButton.setLayoutX(195);
-        eatButton.setLayoutY(210);
+        eatButton.setPrefWidth(175);
+        eatButton.setPrefHeight(60);
+        eatButton.setLayoutX(37);
+        eatButton.setLayoutY(310);
 
-        houseButton.setPrefWidth(120);
-        houseButton.setPrefHeight(40);
-        houseButton.setLayoutX(195);
-        houseButton.setLayoutY(270);
+        houseButton.setPrefWidth(175);
+        houseButton.setPrefHeight(60);
+        houseButton.setLayoutX(212);
+        houseButton.setLayoutY(310);
 
-        trafficButton.setPrefWidth(120);
-        trafficButton.setPrefHeight(40);
-        trafficButton.setLayoutX(195);
-        trafficButton.setLayoutY(330);
+        trafficButton.setPrefWidth(175);
+        trafficButton.setPrefHeight(60);
+        trafficButton.setLayoutX(212);
+        trafficButton.setLayoutY(370);
 
         salaryButton .setStyle(
-                "-fx-background-color: antiquewhite;\n" +
-                        "-fx-background-radius: 5;\n" +
-                        "-fx-border-radius: 5;" +
+                "-fx-background-color: #f9fbff;\n" +
+                        //"-fx-background-radius: 5;\n" +
+                        //"-fx-border-radius: 5;" +
                         "-fx-font-size:16px;");
         salaryButton.setOnMouseEntered(
                 e->{
-                    salaryButton.setStyle("-fx-background-color: #d9d4bf;\n" +
-                            "-fx-background-radius: 5;\n" +
-                            "-fx-border-radius: 5;"+
+                    salaryButton.setStyle("-fx-background-color: #e2e3e7;\n" +
+                            //"-fx-background-radius: 5;\n" +
+                            //"-fx-border-radius: 5;"+
                             "-fx-font-size:16px;");
                 });
         salaryButton.setOnMouseExited(
                 e->{
-                    salaryButton.setStyle("-fx-background-color: antiquewhite;\n" +
-                            "-fx-background-radius: 5;\n" +
-                            "-fx-border-radius: 5;"+
+                    salaryButton.setStyle("-fx-background-color: #f9fbff;\n" +
+                            //"-fx-background-radius: 5;\n" +
+                            //"-fx-border-radius: 5;"+
                             "-fx-font-size:16px;");
                 });
         salaryButton.setOnMousePressed(
                 e->{
-                    salaryButton.setStyle("-fx-background-color: #c9c4af;\n" +
-                            "-fx-background-radius: 5;\n" +
-                            "-fx-border-radius: 5;"+
+                    salaryButton.setStyle("-fx-background-color: #b5b6ba;\n" +
+                            //"-fx-background-radius: 5;\n" +
+                            //"-fx-border-radius: 5;"+
                             "-fx-font-size:16px;");
                 });
         salaryButton.setOnMouseReleased(
                 e->{
                     salaryButton.setStyle(
-                            "-fx-background-color: antiquewhite;\n" +
-                                    "-fx-background-radius: 5;\n" +
-                                    "-fx-border-radius: 5;"+
+                            "-fx-background-color: #f9fbff;\n" +
+                                    //"-fx-background-radius: 5;\n" +
+                                    //"-fx-border-radius: 5;"+
                                     "-fx-font-size:16px;");
                 });
 
-        investButton  .setStyle(
-                "-fx-background-color: antiquewhite;\n" +
-                        "-fx-background-radius: 5;\n" +
-                        "-fx-border-radius: 5;" +
+        investButton.setStyle(
+                "-fx-background-color: #f9fbff;\n" +
+                        //"-fx-background-radius: 5;\n" +
+                        //"-fx-border-radius: 5;" +
                         "-fx-font-size:16px;");
-        investButton .setOnMouseEntered(
+        investButton.setOnMouseEntered(
                 e->{
-                    investButton .setStyle("-fx-background-color: #d9d4bf;\n" +
-                            "-fx-background-radius: 5;\n" +
-                            "-fx-border-radius: 5;"+
+                    investButton.setStyle("-fx-background-color: #e2e3e7;\n" +
+                            //"-fx-background-radius: 5;\n" +
+                            //"-fx-border-radius: 5;"+
                             "-fx-font-size:16px;");
                 });
-        investButton .setOnMouseExited(
+        investButton.setOnMouseExited(
                 e->{
-                    investButton .setStyle("-fx-background-color: antiquewhite;\n" +
-                            "-fx-background-radius: 5;\n" +
-                            "-fx-border-radius: 5;"+
+                    investButton.setStyle("-fx-background-color: #f9fbff;\n" +
+                            //"-fx-background-radius: 5;\n" +
+                            //"-fx-border-radius: 5;"+
                             "-fx-font-size:16px;");
                 });
-        investButton .setOnMousePressed(
+        investButton.setOnMousePressed(
                 e->{
-                    investButton .setStyle("-fx-background-color: #c9c4af;\n" +
-                            "-fx-background-radius: 5;\n" +
-                            "-fx-border-radius: 5;"+
+                    investButton.setStyle("-fx-background-color: #b5b6ba;\n" +
+                            //"-fx-background-radius: 5;\n" +
+                            //"-fx-border-radius: 5;"+
                             "-fx-font-size:16px;");
                 });
-        investButton .setOnMouseReleased(
+        investButton.setOnMouseReleased(
                 e->{
-                    investButton .setStyle(
-                            "-fx-background-color: antiquewhite;\n" +
-                                    "-fx-background-radius: 5;\n" +
-                                    "-fx-border-radius: 5;"+
+                    investButton.setStyle(
+                            "-fx-background-color: #f9fbff;\n" +
+                                    //"-fx-background-radius: 5;\n" +
+                                    //"-fx-border-radius: 5;"+
                                     "-fx-font-size:16px;");
                 });
 
         clothesButton.setStyle(
                 "-fx-background-color: antiquewhite;\n" +
-                        "-fx-background-radius: 5;\n" +
-                        "-fx-border-radius: 5;" +
+                        //"-fx-background-radius: 5;\n" +
+                        //"-fx-border-radius: 5;" +
                         "-fx-font-size:16px;");
         clothesButton.setOnMouseEntered(
                 e->{
                     clothesButton.setStyle("-fx-background-color: #d9d4bf;\n" +
-                            "-fx-background-radius: 5;\n" +
-                            "-fx-border-radius: 5;"+
+                            //"-fx-background-radius: 5;\n" +
+                            //"-fx-border-radius: 5;"+
                             "-fx-font-size:16px;");
                 });
         clothesButton.setOnMouseExited(
                 e->{
                     clothesButton.setStyle("-fx-background-color: antiquewhite;\n" +
-                            "-fx-background-radius: 5;\n" +
-                            "-fx-border-radius: 5;"+
+                            //"-fx-background-radius: 5;\n" +
+                            //"-fx-border-radius: 5;"+
                             "-fx-font-size:16px;");
                 });
         clothesButton.setOnMousePressed(
                 e->{
                     clothesButton.setStyle("-fx-background-color: #c9c4af;\n" +
-                            "-fx-background-radius: 5;\n" +
-                            "-fx-border-radius: 5;"+
+                            //"-fx-background-radius: 5;\n" +
+                            //"-fx-border-radius: 5;"+
                             "-fx-font-size:16px;");
                 });
         clothesButton.setOnMouseReleased(
                 e->{
                     clothesButton.setStyle(
                             "-fx-background-color: antiquewhite;\n" +
-                                    "-fx-background-radius: 5;\n" +
-                                    "-fx-border-radius: 5;"+
+                                    //"-fx-background-radius: 5;\n" +
+                                   // "-fx-border-radius: 5;"+
                                     "-fx-font-size:16px;");
                 });
 
         eatButton.setStyle(
                 "-fx-background-color: antiquewhite;\n" +
-                        "-fx-background-radius: 5;\n" +
-                        "-fx-border-radius: 5;" +
+                       // "-fx-background-radius: 5;\n" +
+                       // "-fx-border-radius: 5;" +
                         "-fx-font-size:16px;");
         eatButton.setOnMouseEntered(
                 e->{
                     eatButton.setStyle("-fx-background-color: #d9d4bf;\n" +
-                            "-fx-background-radius: 5;\n" +
-                            "-fx-border-radius: 5;"+
+                           // "-fx-background-radius: 5;\n" +
+                           // "-fx-border-radius: 5;"+
                             "-fx-font-size:16px;");
                 });
         eatButton.setOnMouseExited(
                 e->{
                     eatButton.setStyle("-fx-background-color: antiquewhite;\n" +
-                            "-fx-background-radius: 5;\n" +
-                            "-fx-border-radius: 5;"+
+                            //"-fx-background-radius: 5;\n" +
+                           // "-fx-border-radius: 5;"+
                             "-fx-font-size:16px;");
                 });
         eatButton.setOnMousePressed(
                 e->{
                     eatButton .setStyle("-fx-background-color: #c9c4af;\n" +
-                            "-fx-background-radius: 5;\n" +
-                            "-fx-border-radius: 5;"+
+                            //"-fx-background-radius: 5;\n" +
+                            //"-fx-border-radius: 5;"+
                             "-fx-font-size:16px;");
                 });
         eatButton.setOnMouseReleased(
                 e->{
                     eatButton.setStyle(
                             "-fx-background-color: antiquewhite;\n" +
-                                    "-fx-background-radius: 5;\n" +
-                                    "-fx-border-radius: 5;"+
+                                    //"-fx-background-radius: 5;\n" +
+                                    //"-fx-border-radius: 5;"+
                                     "-fx-font-size:16px;");
                 });
 
         houseButton .setStyle(
                 "-fx-background-color: antiquewhite;\n" +
-                        "-fx-background-radius: 5;\n" +
-                        "-fx-border-radius: 5;" +
+                       // "-fx-background-radius: 5;\n" +
+                        //"-fx-border-radius: 5;" +
                         "-fx-font-size:16px;");
         houseButton .setOnMouseEntered(
                 e->{
                     houseButton .setStyle("-fx-background-color: #d9d4bf;\n" +
-                            "-fx-background-radius: 5;\n" +
-                            "-fx-border-radius: 5;"+
+                            //"-fx-background-radius: 5;\n" +
+                           //"-fx-border-radius: 5;"+
                             "-fx-font-size:16px;");
                 });
         houseButton .setOnMouseExited(
                 e->{
                     houseButton .setStyle("-fx-background-color: antiquewhite;\n" +
-                            "-fx-background-radius: 5;\n" +
-                            "-fx-border-radius: 5;"+
+                           //"-fx-background-radius: 5;\n" +
+                           // "-fx-border-radius: 5;"+
                             "-fx-font-size:16px;");
                 });
         houseButton .setOnMousePressed(
                 e->{
                     houseButton  .setStyle("-fx-background-color: #c9c4af;\n" +
-                            "-fx-background-radius: 5;\n" +
-                            "-fx-border-radius: 5;"+
+                            //"-fx-background-radius: 5;\n" +
+                            //"-fx-border-radius: 5;"+
                             "-fx-font-size:16px;");
                 });
         houseButton .setOnMouseReleased(
                 e->{
                     houseButton .setStyle(
                             "-fx-background-color: antiquewhite;\n" +
-                                    "-fx-background-radius: 5;\n" +
-                                    "-fx-border-radius: 5;"+
+                                    //"-fx-background-radius: 5;\n" +
+                                   // "-fx-border-radius: 5;"+
                                     "-fx-font-size:16px;");
                 });
 
         trafficButton  .setStyle(
                 "-fx-background-color: antiquewhite;\n" +
-                        "-fx-background-radius: 5;\n" +
-                        "-fx-border-radius: 5;" +
+                        //"-fx-background-radius: 5;\n" +
+                        //"-fx-border-radius: 5;" +
                         "-fx-font-size:16px;");
         trafficButton  .setOnMouseEntered(
                 e->{
                     trafficButton  .setStyle("-fx-background-color: #d9d4bf;\n" +
-                            "-fx-background-radius: 5;\n" +
-                            "-fx-border-radius: 5;"+
+                            //"-fx-background-radius: 5;\n" +
+                            //"-fx-border-radius: 5;"+
                             "-fx-font-size:16px;");
                 });
         trafficButton  .setOnMouseExited(
                 e->{
                     trafficButton  .setStyle("-fx-background-color: antiquewhite;\n" +
-                            "-fx-background-radius: 5;\n" +
-                            "-fx-border-radius: 5;"+
+                            //"-fx-background-radius: 5;\n" +
+                            //"-fx-border-radius: 5;"+
                             "-fx-font-size:16px;");
                 });
         trafficButton  .setOnMousePressed(
                 e->{
                     trafficButton   .setStyle("-fx-background-color: #c9c4af;\n" +
-                            "-fx-background-radius: 5;\n" +
-                            "-fx-border-radius: 5;"+
+                            //"-fx-background-radius: 5;\n" +
+                            //"-fx-border-radius: 5;"+
                             "-fx-font-size:16px;");
                 });
         trafficButton  .setOnMouseReleased(
                 e->{
                     trafficButton  .setStyle(
                             "-fx-background-color: antiquewhite;\n" +
-                                    "-fx-background-radius: 5;\n" +
-                                    "-fx-border-radius: 5;"+
+                                    //"-fx-background-radius: 5;\n" +
+                                    //"-fx-border-radius: 5;"+
                                     "-fx-font-size:16px;");
                 });
 //内部类用于发送消息和接收消息

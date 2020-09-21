@@ -106,8 +106,7 @@ public class UserInformationUi {
             try {
                 ClientSocket socket = new ClientSocket("127.0.0.1",8888);
                 socket.send(new String("Z/"+MainUi.user.getFamilyId()));
-                MainUi.user.setFamilyId("0");
-                init(new Stage());
+                familyIdText.setText("家庭ID：0");
             } catch (IOException ioException) {
                 ioException.printStackTrace();
             }
