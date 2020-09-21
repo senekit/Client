@@ -64,6 +64,182 @@ public class UserInformationUi {
         cancelButton.setPrefHeight(50);
         cancelButton.setPrefWidth(150);
 
+        deleteButton.setStyle(
+                "-fx-background-color: #f9fbff;\n" +
+                        "-fx-background-radius: 5;\n" +
+                        "-fx-border-radius: 5;" +
+                        "-fx-font-size:16px;");
+        deleteButton.setOnMouseEntered(
+                e->{
+                    deleteButton.setStyle("-fx-background-color: #e2e3e7;\n" +
+                            "-fx-background-radius: 5;\n" +
+                            "-fx-border-radius: 5;"+
+                            "-fx-font-size:16px;");
+                });
+        deleteButton.setOnMouseExited(
+                e->{
+                    deleteButton.setStyle("-fx-background-color: #f9fbff;\n" +
+                            "-fx-background-radius: 5;\n" +
+                            "-fx-border-radius: 5;"+
+                            "-fx-font-size:16px;");
+                });
+        deleteButton.setOnMousePressed(
+                e->{
+                    deleteButton.setStyle("-fx-background-color: #b5b6ba;\n" +
+                            "-fx-background-radius: 5;\n" +
+                            "-fx-border-radius: 5;"+
+                            "-fx-font-size:16px;");
+                });
+        deleteButton.setOnMouseReleased(
+                e->{
+                    deleteButton.setStyle(
+                            "-fx-background-color: #f9fbff;\n" +
+                                    "-fx-background-radius: 5;\n" +
+                                    "-fx-border-radius: 5;"+
+                                    "-fx-font-size:16px;");
+                });
+
+        changePasswordButton.setStyle(
+                "-fx-background-color: #f9fbff;\n" +
+                        "-fx-background-radius: 5;\n" +
+                        "-fx-border-radius: 5;" +
+                        "-fx-font-size:16px;");
+        changePasswordButton.setOnMouseEntered(
+                e->{
+                    changePasswordButton.setStyle("-fx-background-color: #e2e3e7;\n" +
+                            "-fx-background-radius: 5;\n" +
+                            "-fx-border-radius: 5;"+
+                            "-fx-font-size:16px;");
+                });
+        changePasswordButton.setOnMouseExited(
+                e->{
+                    changePasswordButton.setStyle("-fx-background-color: #f9fbff;\n" +
+                            "-fx-background-radius: 5;\n" +
+                            "-fx-border-radius: 5;"+
+                            "-fx-font-size:16px;");
+                });
+        changePasswordButton.setOnMousePressed(
+                e->{
+                    changePasswordButton.setStyle("-fx-background-color: #b5b6ba;\n" +
+                            "-fx-background-radius: 5;\n" +
+                            "-fx-border-radius: 5;"+
+                            "-fx-font-size:16px;");
+                });
+        changePasswordButton.setOnMouseReleased(
+                e->{
+                    changePasswordButton.setStyle(
+                            "-fx-background-color: #f9fbff;\n" +
+                                    "-fx-background-radius: 5;\n" +
+                                    "-fx-border-radius: 5;"+
+                                    "-fx-font-size:16px;");
+                });
+
+        switchAccountButton.setStyle(
+                "-fx-background-color: #f9fbff;\n" +
+                        "-fx-background-radius: 5;\n" +
+                        "-fx-border-radius: 5;" +
+                        "-fx-font-size:16px;");
+        switchAccountButton.setOnMouseEntered(
+                e->{
+                    switchAccountButton.setStyle("-fx-background-color: #e2e3e7;\n" +
+                            "-fx-background-radius: 5;\n" +
+                            "-fx-border-radius: 5;"+
+                            "-fx-font-size:16px;");
+                });
+        switchAccountButton.setOnMouseExited(
+                e->{
+                    switchAccountButton.setStyle("-fx-background-color: #f9fbff;\n" +
+                            "-fx-background-radius: 5;\n" +
+                            "-fx-border-radius: 5;"+
+                            "-fx-font-size:16px;");
+                });
+        switchAccountButton.setOnMousePressed(
+                e->{
+                    switchAccountButton.setStyle("-fx-background-color: #b5b6ba;\n" +
+                            "-fx-background-radius: 5;\n" +
+                            "-fx-border-radius: 5;"+
+                            "-fx-font-size:16px;");
+                });
+        switchAccountButton.setOnMouseReleased(
+                e->{
+                    switchAccountButton.setStyle(
+                            "-fx-background-color: #f9fbff;\n" +
+                                    "-fx-background-radius: 5;\n" +
+                                    "-fx-border-radius: 5;"+
+                                    "-fx-font-size:16px;");
+                });
+
+        cancelAccountButton.setStyle(
+                "-fx-background-color: #f9fbff;\n" +
+                        "-fx-background-radius: 5;\n" +
+                        "-fx-border-radius: 5;" +
+                        "-fx-font-size:16px;");
+        cancelAccountButton.setOnMouseEntered(
+                e->{
+                    cancelAccountButton.setStyle("-fx-background-color: #e2e3e7;\n" +
+                            "-fx-background-radius: 5;\n" +
+                            "-fx-border-radius: 5;"+
+                            "-fx-font-size:16px;");
+                });
+        cancelAccountButton.setOnMouseExited(
+                e->{
+                    cancelAccountButton.setStyle("-fx-background-color: #f9fbff;\n" +
+                            "-fx-background-radius: 5;\n" +
+                            "-fx-border-radius: 5;"+
+                            "-fx-font-size:16px;");
+                });
+        cancelAccountButton.setOnMousePressed(
+                e->{
+                    cancelAccountButton.setStyle("-fx-background-color: #b5b6ba;\n" +
+                            "-fx-background-radius: 5;\n" +
+                            "-fx-border-radius: 5;"+
+                            "-fx-font-size:16px;");
+                });
+        cancelAccountButton.setOnMouseReleased(
+                e->{
+                    cancelAccountButton.setStyle(
+                            "-fx-background-color: #f9fbff;\n" +
+                                    "-fx-background-radius: 5;\n" +
+                                    "-fx-border-radius: 5;"+
+                                    "-fx-font-size:16px;");
+                });
+
+        cancelButton.setStyle(
+                "-fx-background-color: #f9fbff;\n" +
+                        "-fx-background-radius: 5;\n" +
+                        "-fx-border-radius: 5;" +
+                        "-fx-font-size:16px;");
+        cancelButton.setOnMouseEntered(
+                e->{
+                    cancelButton.setStyle("-fx-background-color: #e2e3e7;\n" +
+                            "-fx-background-radius: 5;\n" +
+                            "-fx-border-radius: 5;"+
+                            "-fx-font-size:16px;");
+                });
+        cancelButton.setOnMouseExited(
+                e->{
+                    cancelButton.setStyle("-fx-background-color: #f9fbff;\n" +
+                            "-fx-background-radius: 5;\n" +
+                            "-fx-border-radius: 5;"+
+                            "-fx-font-size:16px;");
+                });
+        cancelButton.setOnMousePressed(
+                e->{
+                    cancelButton.setStyle("-fx-background-color: #b5b6ba;\n" +
+                            "-fx-background-radius: 5;\n" +
+                            "-fx-border-radius: 5;"+
+                            "-fx-font-size:16px;");
+                });
+        cancelButton.setOnMouseReleased(
+                e->{
+                    cancelButton.setStyle(
+                            "-fx-background-color: #f9fbff;\n" +
+                                    "-fx-background-radius: 5;\n" +
+                                    "-fx-border-radius: 5;"+
+                                    "-fx-font-size:16px;");
+                });
+
+
         userInformationPane.getChildren().addAll(backgroundLabel,cancelAccountButton,switchAccountButton,changePasswordButton,deleteButton,cancelButton,userImageView);
 
         Text emailText = new Text("邮箱：" + MainUi.user.getEmail());
