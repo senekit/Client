@@ -30,6 +30,11 @@ public class UserInformationUi {
         Button deleteButton = new Button("解散家庭");
         Button cancelButton = new Button("退出程序");
 
+        deleteButton.setLayoutX(223);
+        deleteButton.setLayoutY(135);
+        deleteButton.setPrefHeight(25);
+        deleteButton.setPrefWidth(75);
+
         changePasswordButton.setLayoutX(113);
         changePasswordButton.setLayoutY(205);
         changePasswordButton.setPrefHeight(50);
@@ -49,6 +54,8 @@ public class UserInformationUi {
         cancelButton.setLayoutY(400);
         cancelButton.setPrefHeight(50);
         cancelButton.setPrefWidth(150);
+
+
 
         userInformationPane.getChildren().addAll(backgroundLabel,cancelAccountButton,switchAccountButton,changePasswordButton,deleteButton,cancelButton);
 

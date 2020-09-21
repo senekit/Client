@@ -32,7 +32,7 @@ public class MainUi extends Application {
         user.setFamilyId(message[0]);
         user.setName(message[1]);
 
-        Pane pane = new Pane();
+        //Pane pane = new Pane();
 
         TabPane mainTabPane = new TabPane();
         Tab bookingTab = new Tab("记账本");
@@ -50,20 +50,10 @@ public class MainUi extends Application {
         dataVisualizationTab.setClosable(false);
         mainTabPane.getTabs().addAll(bookingTab,financialAnalysisTab,dataVisualizationTab,incomeofFamilyMembers,financialProjectTab,userInformationTab);
 
-        pane.getChildren().add(mainTabPane);
+        //pane.getChildren().add(mainTabPane);
 
-//实现页面拖动
-        AtomicReference<Double> xOffSet = new AtomicReference<>((double) 0);
-        AtomicReference<Double> yOffSet = new AtomicReference<>((double) 0);
-        pane.setOnMousePressed(event -> {
-            xOffSet.set(event.getSceneX());
-            yOffSet.set(event.getSceneY());
-        });
-
-        pane.setOnMouseDragged(event -> {
-            primaryStage.setX(event.getScreenX() - xOffSet.get());
-            primaryStage.setY(event.getScreenY() - yOffSet.get());
-        });
+//页面背景 rgb(231,236,240)
+        mainTabPane.setStyle("-fx-background-color:#bac5d9");
 
 //最小化按钮
         closeButton.setLayoutX(260);
@@ -92,6 +82,20 @@ public class MainUi extends Application {
         BookingUi bookingUi = new BookingUi();
         bookingUi.init();
         bookingTab.setContent(bookingUi.bookingPane);
+
+        //实现窗口拖动
+        AtomicReference<Double> xOffSet = new AtomicReference<>((double) 0);
+        AtomicReference<Double> yOffSet = new AtomicReference<>((double) 0);
+        mainTabPane.setOnMousePressed(event -> {
+            xOffSet.set(event.getSceneX());
+            yOffSet.set(event.getSceneY());
+        });
+
+        mainTabPane.setOnMouseDragged(event -> {
+            primaryStage.setX(event.getScreenX() - xOffSet.get());
+            primaryStage.setY(event.getScreenY() - yOffSet.get());
+        });
+
         //记账本选项卡
 
         FinancialProjectUi financialProjectUi = new FinancialProjectUi();
@@ -142,7 +146,7 @@ public class MainUi extends Application {
         //家庭成员选项卡
 
         primaryStage.setTitle("家庭金融管理系统");
-        primaryStage.setScene(new Scene(pane,375,530));
+        primaryStage.setScene(new Scene(mainTabPane,430,530));
         primaryStage.initStyle(StageStyle.TRANSPARENT);
         primaryStage.show();
         //Stage设置
