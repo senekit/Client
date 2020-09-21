@@ -36,7 +36,7 @@ public class MainUi extends Application {
 
         TabPane mainTabPane = new TabPane();
         Tab bookingTab = new Tab("记账本");
-        Tab financialAnalysisTab = new Tab("财务分析");
+        Tab financialAnalysisTab = new Tab("收支记录");
         Tab dataVisualizationTab = new Tab("数据可视化");
         Tab incomeofFamilyMembers = new Tab("家庭成员收支情况");
         Tab financialProjectTab = new Tab("理财项目");

@@ -21,7 +21,7 @@ public class UserInformationUi {
         backgroundLabel.setStyle("-fx-background-radius: 10px ;-fx-background-color: gray;");
         backgroundLabel.setPrefHeight(160);
         backgroundLabel.setPrefWidth(300);
-        backgroundLabel.setLayoutX(38);
+        backgroundLabel.setLayoutX(66);
         backgroundLabel.setLayoutY(20);
 
         Button changePasswordButton = new Button("修改密码");
@@ -30,32 +30,30 @@ public class UserInformationUi {
         Button deleteButton = new Button("解散家庭");
         Button cancelButton = new Button("退出程序");
 
-        deleteButton.setLayoutX(223);
-        deleteButton.setLayoutY(135);
-        deleteButton.setPrefHeight(25);
-        deleteButton.setPrefWidth(75);
+        deleteButton.setLayoutX(260);
+        deleteButton.setLayoutY(140);
+        deleteButton.setPrefHeight(30);
+        deleteButton.setPrefWidth(80);
 
-        changePasswordButton.setLayoutX(113);
+        changePasswordButton.setLayoutX(138);
         changePasswordButton.setLayoutY(205);
         changePasswordButton.setPrefHeight(50);
         changePasswordButton.setPrefWidth(150);
 
-        switchAccountButton.setLayoutX(113);
+        switchAccountButton.setLayoutX(138);
         switchAccountButton.setLayoutY(270);
         switchAccountButton.setPrefHeight(50);
         switchAccountButton.setPrefWidth(150);
 
-        cancelAccountButton.setLayoutX(113);
+        cancelAccountButton.setLayoutX(138);
         cancelAccountButton.setLayoutY(335);
         cancelAccountButton.setPrefHeight(50);
         cancelAccountButton.setPrefWidth(150);
 
-        cancelButton.setLayoutX(113);
+        cancelButton.setLayoutX(138);
         cancelButton.setLayoutY(400);
         cancelButton.setPrefHeight(50);
         cancelButton.setPrefWidth(150);
-
-
 
         userInformationPane.getChildren().addAll(backgroundLabel,cancelAccountButton,switchAccountButton,changePasswordButton,deleteButton,cancelButton);
 
@@ -63,17 +61,17 @@ public class UserInformationUi {
         Text nameText = new Text("姓名：" + MainUi.user.getName());
         Text familyIdText = new Text("家庭ID：" + MainUi.user.getFamilyId());
 
-        emailText.setLayoutX(60);
-        emailText.setLayoutY(50);
-        emailText.setStyle("-fx-font-size: 15px;");
+        emailText.setLayoutX(85);
+        emailText.setLayoutY(55);
+        emailText.setStyle("-fx-font-size: 30px;");
 
-        nameText.setLayoutX(60);
-        nameText.setLayoutY(80);
-        nameText.setStyle("-fx-font-size: 15px;");
+        nameText.setLayoutX(85);
+        nameText.setLayoutY(110);
+        nameText.setStyle("-fx-font-size: 30px;");
 
-        familyIdText.setLayoutX(60);
-        familyIdText.setLayoutY(110);
-        familyIdText.setStyle("-fx-font-size: 15px;");
+        familyIdText.setLayoutX(85);
+        familyIdText.setLayoutY(165);
+        familyIdText.setStyle("-fx-font-size: 30px;");
 
         userInformationPane.getChildren().addAll(emailText,nameText,familyIdText);
 

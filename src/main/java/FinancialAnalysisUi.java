@@ -50,7 +50,8 @@ public class FinancialAnalysisUi {
 
         if(tag == 0){
             table.getColumns().addAll(itemColumn, moneyColumn, dateColumn,deleteColumn);
-            table.setPrefWidth(275);
+            table.setPrefWidth(240);
+            table.setPrefHeight(400);  //表格大小
             tag++;
         }
 
@@ -58,6 +59,9 @@ public class FinancialAnalysisUi {
         vbox.setSpacing(5);
         vbox.setPadding(new Insets(10, 0, 0, 10));
         vbox.getChildren().addAll(label, table);
+
+        vbox.setLayoutX(30);
+        vbox.setLayoutY(30);
 
         financialAnalysisPane.getChildren().add(vbox);
 
@@ -87,7 +91,7 @@ public class FinancialAnalysisUi {
         reviseButton.setPrefWidth(100);
         reviseButton.setPrefHeight(40);
         reviseButton.setLayoutX(300);
-        reviseButton.setLayoutY(40);
+        reviseButton.setLayoutY(70);
 
         reviseButton .setStyle(
                 "-fx-background-color: #f9fbff;\n" +
@@ -127,7 +131,7 @@ public class FinancialAnalysisUi {
         deleteButton.setPrefHeight(40);
         deleteButton.setPrefWidth(100);
         deleteButton.setLayoutX(300);
-        deleteButton.setLayoutY(90);
+        deleteButton.setLayoutY(120);
 
         deleteButton .setStyle(
                 "-fx-background-color: #f9fbff;\n" +

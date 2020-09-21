@@ -1,6 +1,4 @@
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.Tab;
+import javafx.scene.control.*;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
@@ -23,14 +21,15 @@ public class FamilyMemberUi {
             Button createButton = new Button("创建家庭组");
             Button joinButton = new Button("加入家庭组");
 
+
             promptText.setStyle("-fx-font-size: 15px;");
-            promptText.setLayoutX(30);
+            promptText.setLayoutX(65);
             promptText.setLayoutY(50);
 
-            createButton.setPrefWidth(200);
-            createButton.setPrefHeight(100);
-            createButton.setLayoutX(85);
-            createButton.setLayoutY(100);
+            createButton.setPrefWidth(250);
+            createButton.setPrefHeight(150);
+            createButton.setLayoutX(90);
+            createButton.setLayoutY(90);
             createButton.setStyle("-fx-font-size: 20px");
 
             createButton .setStyle(
@@ -68,10 +67,10 @@ public class FamilyMemberUi {
                                         "-fx-font-size:16px;");
                     });
 
-            joinButton.setPrefWidth(200);
-            joinButton.setPrefHeight(100);
-            joinButton.setLayoutX(85);
-            joinButton.setLayoutY(250);
+            joinButton.setPrefWidth(250);
+            joinButton.setPrefHeight(150);
+            joinButton.setLayoutX(90);
+            joinButton.setLayoutY(280);
             joinButton.setStyle("-fx-font-size: 20px");
 
             joinButton .setStyle(
@@ -142,24 +141,53 @@ public class FamilyMemberUi {
             backgroundLabel1.setStyle("-fx-background-radius: 10px ;-fx-background-color: gray;");
             backgroundLabel1.setPrefHeight(130);
             backgroundLabel1.setPrefWidth(300);
-            backgroundLabel1.setLayoutX(38);
+            backgroundLabel1.setLayoutX(66);
             backgroundLabel1.setLayoutY(20);
 
             Label backgroundLabel2 = new Label("                     ");
             backgroundLabel2.setStyle("-fx-background-radius: 10px ;-fx-background-color: gray;");
             backgroundLabel2.setPrefHeight(130);
             backgroundLabel2.setPrefWidth(300);
-            backgroundLabel2.setLayoutX(38);
+            backgroundLabel2.setLayoutX(66);
             backgroundLabel2.setLayoutY(170);
 
             Label backgroundLabel3 = new Label("                     ");
             backgroundLabel3.setStyle("-fx-background-radius: 10px ;-fx-background-color: gray;");
             backgroundLabel3.setPrefHeight(130);
             backgroundLabel3.setPrefWidth(300);
-            backgroundLabel3.setLayoutX(38);
+            backgroundLabel3.setLayoutX(66);
             backgroundLabel3.setLayoutY(320);
 
-            familyMemberPane.getChildren().addAll(backgroundLabel1,backgroundLabel2,backgroundLabel3);
+            TextArea backgroundTextArea1 = new TextArea();
+            TextArea backgroundTextArea2 = new TextArea();
+            TextArea backgroundTextArea3 = new TextArea();
+            backgroundTextArea1.setEditable(false);
+            backgroundTextArea2.setEditable(false);
+            backgroundTextArea3.setEditable(false);
+
+            backgroundTextArea1.setLayoutX(93);
+            backgroundTextArea1.setLayoutY(37);
+            backgroundTextArea1.setPrefHeight(100);
+            backgroundTextArea1.setPrefWidth(250);
+
+
+            backgroundTextArea2.setLayoutX(93);
+            backgroundTextArea2.setLayoutY(187);
+            backgroundTextArea2.setPrefHeight(100);
+            backgroundTextArea2.setPrefWidth(250);
+
+            backgroundTextArea3.setLayoutX(93);
+            backgroundTextArea3.setLayoutY(337);
+            backgroundTextArea3.setPrefHeight(100);
+            backgroundTextArea3.setPrefWidth(250);
+
+            backgroundTextArea1.setStyle("-fx-control-inner-background: gray; -fx-text-fill: white");
+            backgroundTextArea2.setStyle("-fx-control-inner-background: gray; -fx-text-fill: white");
+            backgroundTextArea3.setStyle("-fx-control-inner-background: gray; -fx-text-fill: white");
+
+
+
+            familyMemberPane.getChildren().addAll(backgroundLabel1,backgroundLabel2,backgroundLabel3,backgroundTextArea1,backgroundTextArea2,backgroundTextArea3);
 
             ClientSocket socket = new ClientSocket("127.0.0.1",8888);
             socket.send(new String("G/"+MainUi.user.getEmail()));
@@ -168,41 +196,41 @@ public class FamilyMemberUi {
             for (int i = 2; i <11; i+=3) {
                 if(!messages[i].equals(" ")){
                     if(messages[i+1].charAt(0)=='-'){
-                        background1 = background1+messages[1]+"在"+messages[i+2]+"因"+messages[i]+"支出"+messages[i+1]+"/n";
+                        background1 = background1+messages[1]+"在"+messages[i+2]+"因"+messages[i]+"支出"+messages[i+1]+"元\n";
                     }
                     else{
-                        background1 = background1+messages[1]+"在"+messages[i+2]+"因"+messages[i]+"花费"+messages[i+1]+"/n";
+                        background1 = background1+messages[1]+"在"+messages[i+2]+"因"+messages[i]+"花费"+messages[i+1]+"元\n";
                     }
                 }
                 else break;
             }
-            backgroundLabel1.setText(background1);
+            backgroundTextArea1.setText(background1);
             String background2="";
             for (int i = 12; i <21; i++) {
                 if(!messages[i].equals(" ")){
                     if(messages[i+1].charAt(0)=='-'){
-                        background1 = background1+messages[11]+"在"+messages[i+2]+"因"+messages[i]+"支出"+messages[i+1]+"/n";
+                        background1 = background1+messages[11]+"在"+messages[i+2]+"因"+messages[i]+"支出"+messages[i+1]+"元\n";
                     }
                     else{
-                        background1 = background1+messages[11]+"在"+messages[i+2]+"因"+messages[i]+"花费"+messages[i+1]+"/n";
+                        background1 = background1+messages[11]+"在"+messages[i+2]+"因"+messages[i]+"花费"+messages[i+1]+"元\n";
                     }
                 }
                 else break;
             }
-            backgroundLabel2.setText(background2);
+            backgroundTextArea2.setText(background2);
             String background3="";
             for (int i = 22; i <31; i++) {
                 if(!messages[i].equals(" ")){
                     if(messages[i+1].charAt(0)=='-'){
-                        background1 = background1+messages[21]+"在"+messages[i+2]+"因"+messages[i]+"支出"+messages[i+1]+"/n";
+                        background1 = background1+messages[21]+"在"+messages[i+2]+"因"+messages[i]+"支出"+messages[i+1]+"元\n";
                     }
                     else{
-                        background1 = background1+messages[21]+"在"+messages[i+2]+"因"+messages[i]+"花费"+messages[i+1]+"/n";
+                        background1 = background1+messages[21]+"在"+messages[i+2]+"因"+messages[i]+"花费"+messages[i+1]+"元\n";
                     }
                 }
                 else break;
             }
-            backgroundLabel3.setText(background3);
+            backgroundTextArea3.setText(background3);
         }
     }
 }

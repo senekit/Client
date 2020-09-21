@@ -52,37 +52,50 @@ public class BookingUi {
         Button eatButton = new Button("食物");
         Button houseButton = new Button("居住");
         Button trafficButton = new Button("交通");
-        addPane.getChildren().addAll(salaryButton,investButton,clothesButton,eatButton,houseButton,trafficButton);
+
+        TextField customizeTextField = new TextField();
+        customizeTextField.setPromptText("请输入自定义内容");
+        customizeTextField.setPrefHeight(60);
+        customizeTextField.setPrefWidth(175);
+        customizeTextField.setLayoutX(37);
+        customizeTextField.setLayoutY(425);
+        Button confirmButton = new Button("确认");
+        confirmButton.setPrefHeight(60);
+        confirmButton.setPrefWidth(175);
+        confirmButton.setLayoutX(212);
+        confirmButton.setLayoutY(425);
+
+        addPane.getChildren().addAll(salaryButton,investButton,clothesButton,eatButton,houseButton,trafficButton,customizeTextField,confirmButton);
 
         salaryButton.setPrefWidth(175);
         salaryButton.setPrefHeight(60);
         salaryButton.setLayoutX(37);
-        salaryButton.setLayoutY(210);
+        salaryButton.setLayoutY(175);
 
         investButton.setPrefWidth(175);
         investButton.setPrefHeight(60);
         investButton.setLayoutX(212);
-        investButton.setLayoutY(210);
+        investButton.setLayoutY(175);
 
         clothesButton.setPrefWidth(175);
         clothesButton.setPrefHeight(60);
         clothesButton.setLayoutX(37);
-        clothesButton.setLayoutY(370);
+        clothesButton.setLayoutY(330);
 
         eatButton.setPrefWidth(175);
         eatButton.setPrefHeight(60);
         eatButton.setLayoutX(37);
-        eatButton.setLayoutY(310);
+        eatButton.setLayoutY(270);
 
         houseButton.setPrefWidth(175);
         houseButton.setPrefHeight(60);
         houseButton.setLayoutX(212);
-        houseButton.setLayoutY(310);
+        houseButton.setLayoutY(270);
 
         trafficButton.setPrefWidth(175);
         trafficButton.setPrefHeight(60);
         trafficButton.setLayoutX(212);
-        trafficButton.setLayoutY(370);
+        trafficButton.setLayoutY(330);
 
         salaryButton .setStyle(
                 "-fx-background-color: #f9fbff;\n" +
