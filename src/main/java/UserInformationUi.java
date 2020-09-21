@@ -1,10 +1,14 @@
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.net.URI;
 
 
 /**
@@ -16,13 +20,18 @@ import java.io.IOException;
 public class UserInformationUi {
     public Pane userInformationPane = new Pane();
 
-    public void init( Stage stage){
+    public void init(Stage stage){
         Label backgroundLabel = new Label("                     ");
         backgroundLabel.setStyle("-fx-background-radius: 10px ;-fx-background-color: gray;");
         backgroundLabel.setPrefHeight(160);
         backgroundLabel.setPrefWidth(300);
         backgroundLabel.setLayoutX(66);
         backgroundLabel.setLayoutY(20);
+
+        Image userImage = new Image("file:///D:/Study/Client/src/main/Image/timg.png");
+        ImageView userImageView = new ImageView(userImage);
+        userImageView.setFitHeight(100);
+        userImageView.setFitWidth(100);
 
         Button changePasswordButton = new Button("修改密码");
         Button switchAccountButton = new Button("更换账号");
@@ -55,7 +64,7 @@ public class UserInformationUi {
         cancelButton.setPrefHeight(50);
         cancelButton.setPrefWidth(150);
 
-        userInformationPane.getChildren().addAll(backgroundLabel,cancelAccountButton,switchAccountButton,changePasswordButton,deleteButton,cancelButton);
+        userInformationPane.getChildren().addAll(backgroundLabel,cancelAccountButton,switchAccountButton,changePasswordButton,deleteButton,cancelButton,userImageView);
 
         Text emailText = new Text("邮箱：" + MainUi.user.getEmail());
         Text nameText = new Text("姓名：" + MainUi.user.getName());
@@ -108,7 +117,6 @@ public class UserInformationUi {
             } catch (IOException ioException) {
                 ioException.printStackTrace();
             }
-
         });
     }
 }
