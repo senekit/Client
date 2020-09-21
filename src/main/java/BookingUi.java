@@ -327,6 +327,9 @@ public class BookingUi {
                         alert.setHeaderText(null);
                         alert.setContentText("添加成功");
                         alert.showAndWait();
+                        datePicker.setValue(LocalDate.now());
+                        importTextField.setText("");
+                        customizeTextField.setText("");
                         break;
                     }
                     case 'F':{
@@ -380,6 +383,13 @@ public class BookingUi {
         trafficButton.setOnAction(e->{
             try {
                 new Send().sendMessage(trafficButton.getText());
+            } catch (IOException ioException) {
+                ioException.printStackTrace();
+            }
+        });
+        confirmButton.setOnAction(e->{
+            try {
+                new Send().sendMessage(customizeTextField.getText());
             } catch (IOException ioException) {
                 ioException.printStackTrace();
             }
