@@ -60,10 +60,10 @@ public class BookingUi {
         customizeTextField.setLayoutX(37);
         customizeTextField.setLayoutY(425);
         Button confirmButton = new Button("确认");
-        confirmButton.setPrefHeight(60);
+        confirmButton.setPrefHeight(57);
         confirmButton.setPrefWidth(175);
         confirmButton.setLayoutX(212);
-        confirmButton.setLayoutY(425);
+        confirmButton.setLayoutY(426);
 
         addPane.getChildren().addAll(salaryButton,investButton,clothesButton,eatButton,houseButton,trafficButton,customizeTextField,confirmButton);
 
@@ -306,6 +306,42 @@ public class BookingUi {
                                     //"-fx-border-radius: 5;"+
                                     "-fx-font-size:16px;");
                 });
+
+        confirmButton.setStyle(
+                "-fx-background-color: #f0f2f6;\n" +
+                        //"-fx-background-radius: 5;\n" +
+                        //"-fx-border-radius: 5;" +
+                        "-fx-font-size:16px;");
+        confirmButton.setOnMouseEntered(
+                e->{
+                    confirmButton.setStyle("-fx-background-color: #e2e3e7;\n" +
+                            //"-fx-background-radius: 5;\n" +
+                            //"-fx-border-radius: 5;"+
+                            "-fx-font-size:16px;");
+                });
+        confirmButton.setOnMouseExited(
+                e->{
+                    confirmButton.setStyle("-fx-background-color: #f0f2f6;\n" +
+                            //"-fx-background-radius: 5;\n" +
+                            //"-fx-border-radius: 5;"+
+                            "-fx-font-size:16px;");
+                });
+        confirmButton.setOnMousePressed(
+                e->{
+                    confirmButton.setStyle("-fx-background-color: #b5b6ba;\n" +
+                            //"-fx-background-radius: 5;\n" +
+                            //"-fx-border-radius: 5;"+
+                            "-fx-font-size:16px;");
+                });
+        confirmButton.setOnMouseReleased(
+                e->{
+                    confirmButton.setStyle(
+                            "-fx-background-color: #f0f2f6;\n" +
+                                    //"-fx-background-radius: 5;\n" +
+                                    //"-fx-border-radius: 5;"+
+                                    "-fx-font-size:16px;");
+                });
+
 //内部类用于发送消息和接收消息
         class Send{
             public void sendMessage(String species) throws IOException {

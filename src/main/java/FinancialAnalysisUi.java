@@ -39,9 +39,6 @@ public class FinancialAnalysisUi {
     public void init() throws IOException {
         financialAnalysisPane = new Pane();
 
-        final Label label = new Label("收支记录");
-        label.setFont(new Font("Arial", 20));
-
         table.setEditable(false);
         itemColumn.setCellFactory(TextFieldTableCell.forTableColumn());
         moneyColumn.setCellFactory(TextFieldTableCell.forTableColumn());
@@ -50,18 +47,18 @@ public class FinancialAnalysisUi {
 
         if(tag == 0){
             table.getColumns().addAll(itemColumn, moneyColumn, dateColumn,deleteColumn);
-            table.setPrefWidth(240);
-            table.setPrefHeight(400);  //表格大小
+            table.setPrefWidth(350);
+            table.setPrefHeight(410);  //表格大小
             tag++;
         }
 
         final VBox vbox = new VBox();
         vbox.setSpacing(5);
         vbox.setPadding(new Insets(10, 0, 0, 10));
-        vbox.getChildren().addAll(label, table);
+        vbox.getChildren().addAll(table);
 
         vbox.setLayoutX(30);
-        vbox.setLayoutY(30);
+        vbox.setLayoutY(10);
 
         financialAnalysisPane.getChildren().add(vbox);
 
@@ -90,81 +87,81 @@ public class FinancialAnalysisUi {
 
         reviseButton.setPrefWidth(100);
         reviseButton.setPrefHeight(40);
-        reviseButton.setLayoutX(300);
-        reviseButton.setLayoutY(70);
+        reviseButton.setLayoutX(90);
+        reviseButton.setLayoutY(440);
 
         reviseButton .setStyle(
                 "-fx-background-color: #f9fbff;\n" +
-                        //"-fx-background-radius: 5;\n" +
-                        //"-fx-border-radius: 5;" +
+                        "-fx-background-radius: 5;\n" +
+                        "-fx-border-radius: 5;" +
                         "-fx-font-size:16px;");
         reviseButton.setOnMouseEntered(
                 e->{
                     reviseButton.setStyle("-fx-background-color: #e2e3e7;\n" +
-                            //"-fx-background-radius: 5;\n" +
-                            //"-fx-border-radius: 5;"+
+                            "-fx-background-radius: 5;\n" +
+                            "-fx-border-radius: 5;"+
                             "-fx-font-size:16px;");
                 });
         reviseButton.setOnMouseExited(
                 e->{
                     reviseButton.setStyle("-fx-background-color: #f9fbff;\n" +
-                            //"-fx-background-radius: 5;\n" +
-                            //"-fx-border-radius: 5;"+
+                            "-fx-background-radius: 5;\n" +
+                            "-fx-border-radius: 5;"+
                             "-fx-font-size:16px;");
                 });
         reviseButton.setOnMousePressed(
                 e->{
                     reviseButton.setStyle("-fx-background-color: #b5b6ba;\n" +
-                            //"-fx-background-radius: 5;\n" +
-                            //"-fx-border-radius: 5;"+
+                            "-fx-background-radius: 5;\n" +
+                            "-fx-border-radius: 5;"+
                             "-fx-font-size:16px;");
                 });
         reviseButton.setOnMouseReleased(
                 e->{
                     reviseButton.setStyle(
                             "-fx-background-color: #f9fbff;\n" +
-                                    //"-fx-background-radius: 5;\n" +
-                                    //"-fx-border-radius: 5;"+
+                                    "-fx-background-radius: 5;\n" +
+                                    "-fx-border-radius: 5;"+
                                     "-fx-font-size:16px;");
                 });
 
         deleteButton.setPrefHeight(40);
         deleteButton.setPrefWidth(100);
-        deleteButton.setLayoutX(300);
-        deleteButton.setLayoutY(120);
+        deleteButton.setLayoutX(240);
+        deleteButton.setLayoutY(440);
 
         deleteButton .setStyle(
                 "-fx-background-color: #f9fbff;\n" +
-                        //"-fx-background-radius: 5;\n" +
-                        //"-fx-border-radius: 5;" +
+                        "-fx-background-radius: 5;\n" +
+                        "-fx-border-radius: 5;" +
                         "-fx-font-size:16px;");
         deleteButton.setOnMouseEntered(
                 e->{
                     deleteButton.setStyle("-fx-background-color: #e2e3e7;\n" +
-                            //"-fx-background-radius: 5;\n" +
-                            //"-fx-border-radius: 5;"+
+                            "-fx-background-radius: 5;\n" +
+                            "-fx-border-radius: 5;"+
                             "-fx-font-size:16px;");
                 });
         deleteButton.setOnMouseExited(
                 e->{
                     deleteButton.setStyle("-fx-background-color: #f9fbff;\n" +
-                            //"-fx-background-radius: 5;\n" +
-                            //"-fx-border-radius: 5;"+
+                            "-fx-background-radius: 5;\n" +
+                            "-fx-border-radius: 5;"+
                             "-fx-font-size:16px;");
                 });
         deleteButton.setOnMousePressed(
                 e->{
                     deleteButton.setStyle("-fx-background-color: #b5b6ba;\n" +
-                            //"-fx-background-radius: 5;\n" +
-                            //"-fx-border-radius: 5;"+
+                            "-fx-background-radius: 5;\n" +
+                            "-fx-border-radius: 5;"+
                             "-fx-font-size:16px;");
                 });
         deleteButton.setOnMouseReleased(
                 e->{
                     deleteButton.setStyle(
                             "-fx-background-color: #f9fbff;\n" +
-                                    //"-fx-background-radius: 5;\n" +
-                                    //"-fx-border-radius: 5;"+
+                                    "-fx-background-radius: 5;\n" +
+                                    "-fx-border-radius: 5;"+
                                     "-fx-font-size:16px;");
                 });
 
