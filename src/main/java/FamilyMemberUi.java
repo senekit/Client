@@ -190,7 +190,9 @@ public class FamilyMemberUi {
 
             ClientSocket socket = new ClientSocket("127.0.0.1",8888);
             socket.send(new String("G/"+MainUi.user.getEmail()));
-            String[] messages=socket.accept().trim().split("/");
+            String message=socket.accept();
+            System.out.println(message);
+            String[] messages=message.trim().split("/");
             String background1="";
             String name1 = "姓名：" + messages[1];
             String name2 = "姓名：" + messages[11];
@@ -208,37 +210,39 @@ public class FamilyMemberUi {
                 else break;
             }
             backgroundTextArea1.setText(background1);
+            System.out.println(background1);
             String background2="";
-            for (int i = 12; i <21; i++) {
+            for (int i = 12; i <21; i+=3) {
                 if(!messages[i].equals(" ")){
                     if(messages[i+1].charAt(0)=='-'){
-                        background2 = background1+messages[11]+"在"+messages[i+2]+"因"+messages[i]+"支出"+messages[i+1]+"元\n";
+                        background2 = background2+messages[11]+"在"+messages[i+2]+"因"+messages[i]+"支出"+messages[i+1]+"元\n";
                     }
                     else{
-                        background2 = background1+messages[11]+"在"+messages[i+2]+"因"+messages[i]+"花费"+messages[i+1]+"元\n";
+                        background2 = background2+messages[11]+"在"+messages[i+2]+"因"+messages[i]+"花费"+messages[i+1]+"元\n";
                     }
                 }
                 else break;
             }
             backgroundTextArea2.setText(background2);
+            System.out.println(background2);
             String background3="";
-            for (int i = 22; i <31; i++) {
+            for (int i = 22; i <31; i+=3) {
                 if(!messages[i].equals(" ")){
                     if(messages[i+1].charAt(0)=='-'){
-                        background3 = background1+messages[21]+"在"+messages[i+2]+"因"+messages[i]+"支出"+messages[i+1]+"元\n";
+                        background3 = background3+messages[21]+"在"+messages[i+2]+"因"+messages[i]+"支出"+messages[i+1]+"元\n";
                     }
                     else{
-                        background3 = background1+messages[21]+"在"+messages[i+2]+"因"+messages[i]+"花费"+messages[i+1]+"元\n";
+                        background3 = background3+messages[21]+"在"+messages[i+2]+"因"+messages[i]+"花费"+messages[i+1]+"元\n";
                     }
                 }
                 else break;
             }
             backgroundTextArea3.setText(background3);
-
+            System.out.println(background3);
             Image familyMemberImageGreen = new Image("file:D:\\Study\\Client\\src\\main\\Image\\timg.png");
             Image familyMemberImageRed = new Image("file:D:\\Study\\Client\\src\\main\\Image\\timg2.png");
             ImageView familyImageView1 = null;
-            if(backgroundTextArea1.getText().equals(""))
+            if(name1.equals("姓名："))
                 familyImageView1 = new ImageView(familyMemberImageRed);
             else{
                 familyImageView1 = new ImageView(familyMemberImageGreen);
@@ -249,7 +253,7 @@ public class FamilyMemberUi {
             familyImageView1.setFitHeight(80);
 
             ImageView familyImageView2 = null;
-            if(backgroundTextArea2.getText().equals(""))
+            if(name2.equals("姓名："))
                 familyImageView2 = new ImageView(familyMemberImageRed);
             else{
                 familyImageView2 = new ImageView(familyMemberImageGreen);
@@ -260,7 +264,7 @@ public class FamilyMemberUi {
             familyImageView2.setFitHeight(80);
 
             ImageView familyImageView3 = null;
-            if(backgroundTextArea3.getText().equals(""))
+            if(name3.equals("姓名："))
                 familyImageView3 = new ImageView(familyMemberImageRed);
             else{
                 familyImageView3 = new ImageView(familyMemberImageGreen);
