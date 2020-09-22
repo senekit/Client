@@ -9,10 +9,10 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 /**
- * @program: Client
- * @description: 家庭成员界面Ui
- * @author: Wry is a vegetable guy
- * @create: 2020-09-18 10:46
+ * program: Client
+ * description: 家庭成员界面Ui
+ * author: Wry is a vegetable guy
+ * create: 2020-09-18 10:46
  **/
 public class FamilyMemberUi {
     Pane familyMemberPane = new Pane();
@@ -242,7 +242,7 @@ public class FamilyMemberUi {
             Image familyMemberImageGreen = new Image("file:D:\\Study\\Client\\src\\main\\Image\\timg.png");
             Image familyMemberImageRed = new Image("file:D:\\Study\\Client\\src\\main\\Image\\timg2.png");
             ImageView familyImageView1 = null;
-            if(name1.equals("姓名："))
+            if(name1.equals("姓名： "))
                 familyImageView1 = new ImageView(familyMemberImageRed);
             else{
                 familyImageView1 = new ImageView(familyMemberImageGreen);
@@ -253,7 +253,7 @@ public class FamilyMemberUi {
             familyImageView1.setFitHeight(80);
 
             ImageView familyImageView2 = null;
-            if(name2.equals("姓名："))
+            if(name2.equals("姓名： "))
                 familyImageView2 = new ImageView(familyMemberImageRed);
             else{
                 familyImageView2 = new ImageView(familyMemberImageGreen);
@@ -264,7 +264,8 @@ public class FamilyMemberUi {
             familyImageView2.setFitHeight(80);
 
             ImageView familyImageView3 = null;
-            if(name3.equals("姓名："))
+            System.out.println(name3);
+            if(name3.equals("姓名： "))
                 familyImageView3 = new ImageView(familyMemberImageRed);
             else{
                 familyImageView3 = new ImageView(familyMemberImageGreen);
@@ -289,6 +290,14 @@ public class FamilyMemberUi {
             nameText3.setLayoutX(150);
             nameText3.setLayoutY(387);
             nameText3.setStyle("-fx-font-size: 20px");
+
+            if(backgroundTextArea1.getText().equals(""))
+                backgroundTextArea1.setText("暂无收支记录");
+            if(backgroundTextArea2.getText().equals(""))
+                backgroundTextArea2.setText("暂无收支记录");
+            if(backgroundTextArea3.getText().equals(""))
+                backgroundTextArea3.setText("暂无收支记录");
+
 
             familyMemberPane.getChildren().addAll(backgroundLabel1,backgroundLabel2,backgroundLabel3,backgroundTextArea1,backgroundTextArea2,backgroundTextArea3,familyImageView1,familyImageView2,familyImageView3);
             familyMemberPane.getChildren().addAll(nameText1,nameText2,nameText3);
