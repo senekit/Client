@@ -1,26 +1,19 @@
 <component name="libraryTable">
   <library name="activation">
     <CLASSES>
-      <root url="jar://$PROJECT_DIR$/../程序环境 编译器 工具/javafx-sdk-11.0.2/lib/activation.jar!/" />
-      <root url="jar://$PROJECT_DIR$/../程序环境 编译器 工具/javafx-sdk-11.0.2/lib/javafx-swt.jar!/" />
-      <root url="jar://$PROJECT_DIR$/../程序环境 编译器 工具/javafx-sdk-11.0.2/lib/javafx.base.jar!/" />
-      <root url="jar://$PROJECT_DIR$/../程序环境 编译器 工具/javafx-sdk-11.0.2/lib/javafx.controls.jar!/" />
-      <root url="jar://$PROJECT_DIR$/../程序环境 编译器 工具/javafx-sdk-11.0.2/lib/javafx.fxml.jar!/" />
-      <root url="jar://$PROJECT_DIR$/../程序环境 编译器 工具/javafx-sdk-11.0.2/lib/javafx.graphics.jar!/" />
-      <root url="jar://$PROJECT_DIR$/../程序环境 编译器 工具/javafx-sdk-11.0.2/lib/javafx.media.jar!/" />
-      <root url="jar://$PROJECT_DIR$/../程序环境 编译器 工具/javafx-sdk-11.0.2/lib/javafx.swing.jar!/" />
-      <root url="jar://$PROJECT_DIR$/../程序环境 编译器 工具/javafx-sdk-11.0.2/lib/javafx.web.jar!/" />
-      <root url="jar://$PROJECT_DIR$/../程序环境 编译器 工具/javafx-sdk-11.0.2/lib/javax.mail.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../javafx-sdk-11.0.2/lib/activation.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../javafx-sdk-11.0.2/lib/javafx.swing.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../javafx-sdk-11.0.2/lib/javafx.graphics.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../javafx-sdk-11.0.2/lib/mysql-connector-java-5.1.24-bin.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../javafx-sdk-11.0.2/lib/javax.mail.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../javafx-sdk-11.0.2/lib/javafx.base.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../javafx-sdk-11.0.2/lib/javafx-swt.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../javafx-sdk-11.0.2/lib/javafx.controls.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../javafx-sdk-11.0.2/lib/javafx.web.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../javafx-sdk-11.0.2/lib/javafx.media.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../javafx-sdk-11.0.2/lib/javafx.fxml.jar!/" />
     </CLASSES>
     <JAVADOC />
-    <SOURCES>
-      <root url="jar://$PROJECT_DIR$/../程序环境 编译器 工具/javafx-sdk-11.0.2/lib/src.zip!/javafx.base" />
-      <root url="jar://$PROJECT_DIR$/../程序环境 编译器 工具/javafx-sdk-11.0.2/lib/src.zip!/javafx.controls" />
-      <root url="jar://$PROJECT_DIR$/../程序环境 编译器 工具/javafx-sdk-11.0.2/lib/src.zip!/javafx.fxml" />
-      <root url="jar://$PROJECT_DIR$/../程序环境 编译器 工具/javafx-sdk-11.0.2/lib/src.zip!/javafx.graphics" />
-      <root url="jar://$PROJECT_DIR$/../程序环境 编译器 工具/javafx-sdk-11.0.2/lib/src.zip!/javafx.media" />
-      <root url="jar://$PROJECT_DIR$/../程序环境 编译器 工具/javafx-sdk-11.0.2/lib/src.zip!/javafx.swing" />
-      <root url="jar://$PROJECT_DIR$/../程序环境 编译器 工具/javafx-sdk-11.0.2/lib/src.zip!/javafx.web" />
-    </SOURCES>
+    <SOURCES />
   </library>
 </component>
