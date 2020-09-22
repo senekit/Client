@@ -37,7 +37,8 @@ public class BookingUi {
         addPane.getChildren().add(datePicker);
         datePicker.setLayoutX(287);
         datePicker.setLayoutY(130);
-        datePicker.setPrefSize(100,20);
+        datePicker.setPrefSize(100,25);
+        datePicker.setStyle("-fx-background-color: #f9fbff");
         datePicker.setValue(LocalDate.now());
 
         Text moneySign = new Text("￥");

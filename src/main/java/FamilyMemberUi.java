@@ -24,6 +24,10 @@ public class FamilyMemberUi {
             Button createButton = new Button("创建家庭组");
             Button joinButton = new Button("加入家庭组");
 
+            Text joinText = new Text("通过输入家庭组id加入");
+            joinText.setStyle("-fx-font-size: 15px;");
+            joinText.setLayoutX(100);
+            joinText.setLayoutY(300);
 
             promptText.setStyle("-fx-font-size: 15px;");
             promptText.setLayoutX(65);
@@ -39,27 +43,27 @@ public class FamilyMemberUi {
                     "-fx-background-color: #f9fbff;\n" +
                             //"-fx-background-radius: 5;\n" +
                             //"-fx-border-radius: 5;" +
-                            "-fx-font-size:16px;");
+                            "-fx-font-size:20px;");
             createButton.setOnMouseEntered(
                     e->{
                         createButton.setStyle("-fx-background-color: #e2e3e7;\n" +
                                 //"-fx-background-radius: 5;\n" +
                                 //"-fx-border-radius: 5;"+
-                                "-fx-font-size:16px;");
+                                "-fx-font-size:20px;");
                     });
             createButton.setOnMouseExited(
                     e->{
                         createButton.setStyle("-fx-background-color: #f9fbff;\n" +
                                 //"-fx-background-radius: 5;\n" +
                                 //"-fx-border-radius: 5;"+
-                                "-fx-font-size:16px;");
+                                "-fx-font-size:20px;");
                     });
             createButton.setOnMousePressed(
                     e->{
                         createButton.setStyle("-fx-background-color: #b5b6ba;\n" +
                                 //"-fx-background-radius: 5;\n" +
                                 //"-fx-border-radius: 5;"+
-                                "-fx-font-size:16px;");
+                                "-fx-font-size:20px;");
                     });
             createButton.setOnMouseReleased(
                     e->{
@@ -67,7 +71,7 @@ public class FamilyMemberUi {
                                 "-fx-background-color: #f9fbff;\n" +
                                         //"-fx-background-radius: 5;\n" +
                                         //"-fx-border-radius: 5;"+
-                                        "-fx-font-size:16px;");
+                                        "-fx-font-size:20px;");
                     });
 
             joinButton.setPrefWidth(250);
@@ -80,27 +84,27 @@ public class FamilyMemberUi {
                     "-fx-background-color: #f9fbff;\n" +
                             //"-fx-background-radius: 5;\n" +
                             //"-fx-border-radius: 5;" +
-                            "-fx-font-size:16px;");
+                            "-fx-font-size:20px;");
             joinButton.setOnMouseEntered(
                     e->{
                         joinButton.setStyle("-fx-background-color: #e2e3e7;\n" +
                                 //"-fx-background-radius: 5;\n" +
                                 //"-fx-border-radius: 5;"+
-                                "-fx-font-size:16px;");
+                                "-fx-font-size:20px;");
                     });
             joinButton.setOnMouseExited(
                     e->{
                         joinButton.setStyle("-fx-background-color: #f9fbff;\n" +
                                 //"-fx-background-radius: 5;\n" +
                                 //"-fx-border-radius: 5;"+
-                                "-fx-font-size:16px;");
+                                "-fx-font-size:20px;");
                     });
             joinButton.setOnMousePressed(
                     e->{
                         joinButton.setStyle("-fx-background-color: #b5b6ba;\n" +
                                 //"-fx-background-radius: 5;\n" +
                                 //"-fx-border-radius: 5;"+
-                                "-fx-font-size:16px;");
+                                "-fx-font-size:20px;");
                     });
             joinButton.setOnMouseReleased(
                     e->{
@@ -108,10 +112,10 @@ public class FamilyMemberUi {
                                 "-fx-background-color: #f9fbff;\n" +
                                         //"-fx-background-radius: 5;\n" +
                                         //"-fx-border-radius: 5;"+
-                                        "-fx-font-size:16px;");
+                                        "-fx-font-size:20px;");
                     });
 
-            familyMemberPane.getChildren().addAll(promptText,createButton,joinButton);
+            familyMemberPane.getChildren().addAll(promptText,createButton,joinButton,joinText);
 
             joinButton.setOnAction(e->{
                 JoinFamilyUi open  = new JoinFamilyUi();

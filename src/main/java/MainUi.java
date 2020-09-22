@@ -54,6 +54,12 @@ public class MainUi extends Application {
 
 //页面背景 rgb(231,236,240)
         mainTabPane.setStyle("-fx-background-color: #bac5d9");
+        bookingTab.setStyle("-fx-background-color: #f9fbff");
+        financialAnalysisTab.setStyle("-fx-background-color: #f9fbff");
+        dataVisualizationTab.setStyle("-fx-background-color: #f9fbff");
+        incomeofFamilyMembers.setStyle("-fx-background-color: #f9fbff");
+        financialProjectTab.setStyle("-fx-background-color: #f9fbff");
+        userInformationTab.setStyle("-fx-background-color: #f9fbff");
 
 //最小化按钮
         closeButton.setLayoutX(260);

@@ -34,6 +34,7 @@ public class JoinFamilyUi extends Application {
         Pane joinFamilyPane = new Pane();
         joinFamilyPane.getChildren().addAll(familyTextField,confirmButton);
         primaryStage.setScene(new Scene(joinFamilyPane,200,100));
+        //primaryStage.setTitle("请输入家庭组ID");
         primaryStage.show();
 
         confirmButton.setOnAction(e->{
