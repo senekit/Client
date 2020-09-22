@@ -25,7 +25,7 @@ public class MainUi extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        ClientSocket socket = new ClientSocket("192.168.43.10",8888);
+        ClientSocket socket = new ClientSocket("127.0.0.1",8888);
         socket.send(new String("F/"+user.getEmail()));
         String[] message = socket.accept().split("/");
         user.setFamilyId(message[0]);

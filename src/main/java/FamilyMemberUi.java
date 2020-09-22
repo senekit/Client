@@ -1,7 +1,10 @@
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+
 
 import java.io.IOException;
 
@@ -14,6 +17,7 @@ import java.io.IOException;
 public class FamilyMemberUi {
     Pane familyMemberPane = new Pane();
     public void init(Tab incomeTab) throws IOException {
+        System.out.println(MainUi.user.getFamilyId());
         if(MainUi.user.getFamilyId().equals("0")){
 
             Text promptText = new Text("您还未加入任何家庭组，请选择加入或者创建");
@@ -123,40 +127,40 @@ public class FamilyMemberUi {
 
             createButton.setOnAction(e->{
                 try {
-                    ClientSocket socket = new ClientSocket("192.168.43.10",8888);
+                    ClientSocket socket = new ClientSocket("127.0.0.1",8888);
                     socket.send(new String("H/"+MainUi.user.getEmail()));
                     String[] messages=socket.accept().trim().split("/");
                     MainUi.user.setFamilyId(messages[1]);
                     familyMemberPane = new Pane();
                     incomeTab.setContent(familyMemberPane);
                     init(incomeTab);
-                    socket.close();
                 } catch (IOException ioException) {
                     ioException.printStackTrace();
                 }
             });
         }
         else{
+
             Label backgroundLabel1 = new Label("                     ");
             backgroundLabel1.setStyle("-fx-background-radius: 10px ;-fx-background-color: gray;");
-            backgroundLabel1.setPrefHeight(130);
-            backgroundLabel1.setPrefWidth(300);
-            backgroundLabel1.setLayoutX(66);
-            backgroundLabel1.setLayoutY(20);
+            backgroundLabel1.setPrefHeight(150);
+            backgroundLabel1.setPrefWidth(350);
+            backgroundLabel1.setLayoutX(40);
+            backgroundLabel1.setLayoutY(15);
 
             Label backgroundLabel2 = new Label("                     ");
             backgroundLabel2.setStyle("-fx-background-radius: 10px ;-fx-background-color: gray;");
-            backgroundLabel2.setPrefHeight(130);
-            backgroundLabel2.setPrefWidth(300);
-            backgroundLabel2.setLayoutX(66);
-            backgroundLabel2.setLayoutY(170);
+            backgroundLabel2.setPrefHeight(150);
+            backgroundLabel2.setPrefWidth(350);
+            backgroundLabel2.setLayoutX(40);
+            backgroundLabel2.setLayoutY(175);
 
             Label backgroundLabel3 = new Label("                     ");
             backgroundLabel3.setStyle("-fx-background-radius: 10px ;-fx-background-color: gray;");
-            backgroundLabel3.setPrefHeight(130);
-            backgroundLabel3.setPrefWidth(300);
-            backgroundLabel3.setLayoutX(66);
-            backgroundLabel3.setLayoutY(320);
+            backgroundLabel3.setPrefHeight(150);
+            backgroundLabel3.setPrefWidth(350);
+            backgroundLabel3.setLayoutX(40);
+            backgroundLabel3.setLayoutY(340);
 
             TextArea backgroundTextArea1 = new TextArea();
             TextArea backgroundTextArea2 = new TextArea();
@@ -165,34 +169,33 @@ public class FamilyMemberUi {
             backgroundTextArea2.setEditable(false);
             backgroundTextArea3.setEditable(false);
 
-            backgroundTextArea1.setLayoutX(93);
-            backgroundTextArea1.setLayoutY(37);
-            backgroundTextArea1.setPrefHeight(100);
-            backgroundTextArea1.setPrefWidth(250);
+            backgroundTextArea1.setLayoutX(67);
+            backgroundTextArea1.setLayoutY(100);
+            backgroundTextArea1.setPrefHeight(58);
+            backgroundTextArea1.setPrefWidth(300);
 
+            backgroundTextArea2.setLayoutX(67);
+            backgroundTextArea2.setLayoutY(260);
+            backgroundTextArea2.setPrefHeight(58);
+            backgroundTextArea2.setPrefWidth(300);
 
-            backgroundTextArea2.setLayoutX(93);
-            backgroundTextArea2.setLayoutY(187);
-            backgroundTextArea2.setPrefHeight(100);
-            backgroundTextArea2.setPrefWidth(250);
-
-            backgroundTextArea3.setLayoutX(93);
-            backgroundTextArea3.setLayoutY(337);
-            backgroundTextArea3.setPrefHeight(100);
-            backgroundTextArea3.setPrefWidth(250);
+            backgroundTextArea3.setLayoutX(67);
+            backgroundTextArea3.setLayoutY(420);
+            backgroundTextArea3.setPrefHeight(58);
+            backgroundTextArea3.setPrefWidth(300);
 
             backgroundTextArea1.setStyle("-fx-control-inner-background: gray; -fx-text-fill: white");
             backgroundTextArea2.setStyle("-fx-control-inner-background: gray; -fx-text-fill: white");
             backgroundTextArea3.setStyle("-fx-control-inner-background: gray; -fx-text-fill: white");
 
-
-
-            familyMemberPane.getChildren().addAll(backgroundLabel1,backgroundLabel2,backgroundLabel3,backgroundTextArea1,backgroundTextArea2,backgroundTextArea3);
-
-            ClientSocket socket = new ClientSocket("192.168.43.10",8888);
+            ClientSocket socket = new ClientSocket("127.0.0.1",8888);
             socket.send(new String("G/"+MainUi.user.getEmail()));
             String[] messages=socket.accept().trim().split("/");
             String background1="";
+            String name1 = "姓名：" + messages[1];
+            String name2 = "姓名：" + messages[11];
+            String name3 = "姓名：" + messages[21];
+
             for (int i = 2; i <11; i+=3) {
                 if(!messages[i].equals(" ")){
                     if(messages[i+1].charAt(0)=='-'){
@@ -209,10 +212,10 @@ public class FamilyMemberUi {
             for (int i = 12; i <21; i++) {
                 if(!messages[i].equals(" ")){
                     if(messages[i+1].charAt(0)=='-'){
-                        background1 = background1+messages[11]+"在"+messages[i+2]+"因"+messages[i]+"支出"+messages[i+1]+"元\n";
+                        background2 = background1+messages[11]+"在"+messages[i+2]+"因"+messages[i]+"支出"+messages[i+1]+"元\n";
                     }
                     else{
-                        background1 = background1+messages[11]+"在"+messages[i+2]+"因"+messages[i]+"花费"+messages[i+1]+"元\n";
+                        background2 = background1+messages[11]+"在"+messages[i+2]+"因"+messages[i]+"花费"+messages[i+1]+"元\n";
                     }
                 }
                 else break;
@@ -222,16 +225,69 @@ public class FamilyMemberUi {
             for (int i = 22; i <31; i++) {
                 if(!messages[i].equals(" ")){
                     if(messages[i+1].charAt(0)=='-'){
-                        background1 = background1+messages[21]+"在"+messages[i+2]+"因"+messages[i]+"支出"+messages[i+1]+"元\n";
+                        background3 = background1+messages[21]+"在"+messages[i+2]+"因"+messages[i]+"支出"+messages[i+1]+"元\n";
                     }
                     else{
-                        background1 = background1+messages[21]+"在"+messages[i+2]+"因"+messages[i]+"花费"+messages[i+1]+"元\n";
+                        background3 = background1+messages[21]+"在"+messages[i+2]+"因"+messages[i]+"花费"+messages[i+1]+"元\n";
                     }
                 }
                 else break;
             }
             backgroundTextArea3.setText(background3);
-            socket.close();
+
+            Image familyMemberImageGreen = new Image("file:D:\\Study\\Client\\src\\main\\Image\\timg.png");
+            Image familyMemberImageRed = new Image("file:D:\\Study\\Client\\src\\main\\Image\\timg2.png");
+            ImageView familyImageView1 = null;
+            if(backgroundTextArea1.getText().equals(""))
+                familyImageView1 = new ImageView(familyMemberImageRed);
+            else{
+                familyImageView1 = new ImageView(familyMemberImageGreen);
+            }
+            familyImageView1.setX(65);
+            familyImageView1.setY(20);
+            familyImageView1.setFitWidth(80);
+            familyImageView1.setFitHeight(80);
+
+            ImageView familyImageView2 = null;
+            if(backgroundTextArea2.getText().equals(""))
+                familyImageView2 = new ImageView(familyMemberImageRed);
+            else{
+                familyImageView2 = new ImageView(familyMemberImageGreen);
+            }
+            familyImageView2.setX(65);
+            familyImageView2.setY(180);
+            familyImageView2.setFitWidth(80);
+            familyImageView2.setFitHeight(80);
+
+            ImageView familyImageView3 = null;
+            if(backgroundTextArea3.getText().equals(""))
+                familyImageView3 = new ImageView(familyMemberImageRed);
+            else{
+                familyImageView3 = new ImageView(familyMemberImageGreen);
+            }
+            familyImageView3.setX(65);
+            familyImageView3.setY(340);
+            familyImageView3.setFitWidth(80);
+            familyImageView3.setFitHeight(80);
+
+            Text nameText1 = new Text(name1);
+            Text nameText2 = new Text(name2);
+            Text nameText3 = new Text(name3);
+
+            nameText1.setLayoutX(150);
+            nameText1.setLayoutY(67);
+            nameText1.setStyle("-fx-font-size: 20px");
+
+            nameText2.setLayoutX(150);
+            nameText2.setLayoutY(227);
+            nameText2.setStyle("-fx-font-size: 20px");
+
+            nameText3.setLayoutX(150);
+            nameText3.setLayoutY(387);
+            nameText3.setStyle("-fx-font-size: 20px");
+
+            familyMemberPane.getChildren().addAll(backgroundLabel1,backgroundLabel2,backgroundLabel3,backgroundTextArea1,backgroundTextArea2,backgroundTextArea3,familyImageView1,familyImageView2,familyImageView3);
+            familyMemberPane.getChildren().addAll(nameText1,nameText2,nameText3);
         }
     }
 }
