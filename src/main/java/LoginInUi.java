@@ -215,7 +215,7 @@ public class LoginInUi extends Application {
         primaryStage.setScene(new Scene(pane, 300, 500));
         primaryStage.initStyle(StageStyle.TRANSPARENT);
         primaryStage.show();
-        ClientSocket socket = new ClientSocket("127.0.0.1", 8888);
+        ClientSocket socket = new ClientSocket("192.168.43.10", 8888);
 
 
 //实现窗口拖动
@@ -252,6 +252,7 @@ public class LoginInUi extends Application {
                         MainUi open = new MainUi(user);
                         try {
                             open.start(new Stage());
+                            socket.close();
                         } catch (Exception e) {
                             e.printStackTrace();
                         }

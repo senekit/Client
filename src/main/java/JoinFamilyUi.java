@@ -39,13 +39,14 @@ public class JoinFamilyUi extends Application {
         confirmButton.setOnAction(e->{
             ClientSocket socket = null;
             try {
-                socket = new ClientSocket("127.0.0.1",8888);
+                socket = new ClientSocket("192.168.43.10",8888);
                 socket.send(new String("J/"+MainUi.user.getEmail()+"/"+familyTextField.getText().trim()));
                 MainUi.user.setFamilyId(familyTextField.getText().trim());
                 primaryStage.close();
                 familyMemberUi.familyMemberPane = new Pane();
                 familyMemberUi.init(tab);
                 tab.setContent(familyMemberUi.familyMemberPane);
+                socket.close();
             } catch (IOException ioException) {
                 ioException.printStackTrace();
             }

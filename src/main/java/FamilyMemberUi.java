@@ -14,7 +14,6 @@ import java.io.IOException;
 public class FamilyMemberUi {
     Pane familyMemberPane = new Pane();
     public void init(Tab incomeTab) throws IOException {
-        System.out.println(MainUi.user.getFamilyId());
         if(MainUi.user.getFamilyId().equals("0")){
 
             Text promptText = new Text("您还未加入任何家庭组，请选择加入或者创建");
@@ -124,13 +123,14 @@ public class FamilyMemberUi {
 
             createButton.setOnAction(e->{
                 try {
-                    ClientSocket socket = new ClientSocket("127.0.0.1",8888);
+                    ClientSocket socket = new ClientSocket("192.168.43.10",8888);
                     socket.send(new String("H/"+MainUi.user.getEmail()));
                     String[] messages=socket.accept().trim().split("/");
                     MainUi.user.setFamilyId(messages[1]);
                     familyMemberPane = new Pane();
                     incomeTab.setContent(familyMemberPane);
                     init(incomeTab);
+                    socket.close();
                 } catch (IOException ioException) {
                     ioException.printStackTrace();
                 }
@@ -189,7 +189,7 @@ public class FamilyMemberUi {
 
             familyMemberPane.getChildren().addAll(backgroundLabel1,backgroundLabel2,backgroundLabel3,backgroundTextArea1,backgroundTextArea2,backgroundTextArea3);
 
-            ClientSocket socket = new ClientSocket("127.0.0.1",8888);
+            ClientSocket socket = new ClientSocket("192.168.43.10",8888);
             socket.send(new String("G/"+MainUi.user.getEmail()));
             String[] messages=socket.accept().trim().split("/");
             String background1="";
@@ -231,6 +231,7 @@ public class FamilyMemberUi {
                 else break;
             }
             backgroundTextArea3.setText(background3);
+            socket.close();
         }
     }
 }

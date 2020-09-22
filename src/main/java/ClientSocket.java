@@ -45,7 +45,6 @@ public class ClientSocket extends Socket {
         byte[] data=new byte[1024];
         in.read(data);
         String message =new String(data);
-        System.out.println(message);
         return message;
     }
 }

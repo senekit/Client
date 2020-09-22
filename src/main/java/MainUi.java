@@ -25,12 +25,12 @@ public class MainUi extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        ClientSocket socket = new ClientSocket("127.0.0.1",8888);
+        ClientSocket socket = new ClientSocket("192.168.43.10",8888);
         socket.send(new String("F/"+user.getEmail()));
         String[] message = socket.accept().split("/");
-        System.out.println(message[0]+message[1]);
         user.setFamilyId(message[0]);
         user.setName(message[1]);
+        socket.close();
 
         //Pane pane = new Pane();
 

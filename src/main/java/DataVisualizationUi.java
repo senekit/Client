@@ -20,7 +20,7 @@ public class DataVisualizationUi {
     int tag=0;
 
     public void init() throws IOException {
-        ClientSocket socket = new ClientSocket("127.0.0.1",8888);
+        ClientSocket socket = new ClientSocket("192.168.43.10",8888);
         socket.send(new String("B/"+MainUi.user.getEmail()));
         String[] messages= socket.accept().trim().split("/");
         Calendar c = Calendar.getInstance();
@@ -65,5 +65,6 @@ public class DataVisualizationUi {
 
         linechart.setPrefHeight(400);
         linechart.setPrefWidth(400);
+        socket.close();
     }
 }

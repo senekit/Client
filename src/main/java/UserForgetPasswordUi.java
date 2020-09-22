@@ -20,7 +20,7 @@ public class UserForgetPasswordUi extends Application {
     String[] messages;
     @Override
     public void start(Stage primaryStage) throws Exception {
-        ClientSocket socket = new ClientSocket("127.0.0.1",8888);
+        ClientSocket socket = new ClientSocket("192.168.43.10",8888);
 
         TextField newPasswordTextField = new TextField();
         TextField newPasswordTextFieldAgain = new TextField();
@@ -232,6 +232,7 @@ public class UserForgetPasswordUi extends Application {
                             alert.setHeaderText(null);
                             alert.setContentText("修改成功");
                             alert.showAndWait();
+                            socket.close();
                             primaryStage.close();
                         }
                         else{

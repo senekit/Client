@@ -62,13 +62,11 @@ public class FinancialAnalysisUi {
 
         financialAnalysisPane.getChildren().add(vbox);
 
-        ClientSocket socket = new ClientSocket("127.0.0.1",8888);
+        ClientSocket socket = new ClientSocket("192.168.43.10",8888);
         String send = "I/"+MainUi.user.getEmail();
-        System.out.println(send);
         socket.send(send);
         String[] message=socket.accept().split("/");
         socket.close();
-        System.out.println(message[0]);
 
         ObservableList<User> data = FXCollections.observableArrayList();
         int i = 1;
@@ -173,9 +171,8 @@ public class FinancialAnalysisUi {
                         +event.getTableView().getItems().get(event.getTablePosition().getRow()).getItem()+"/"
                         +event.getTableView().getItems().get(event.getTablePosition().getRow()).getMoney()+"/"
                         +event.getTableView().getItems().get(event.getTablePosition().getRow()).getDate();
-                System.out.println(message);
                 try {
-                    ClientSocket socket1 = new ClientSocket("127.0.0.1",8888);
+                    ClientSocket socket1 = new ClientSocket("192.168.43.10",8888);
                     socket1.send(message);
                     socket1.accept();
                     socket1.close();
@@ -194,7 +191,7 @@ public class FinancialAnalysisUi {
                         +event.getTableView().getItems().get(event.getTablePosition().getRow()).getMoney()+"/"
                         +event.getTableView().getItems().get(event.getTablePosition().getRow()).getDate();
                 try {
-                    ClientSocket socket1 = new ClientSocket("127.0.0.1",8888);
+                    ClientSocket socket1 = new ClientSocket("192.168.43.10",8888);
                     socket1.send(message);
                     socket1.close();
                 } catch (IOException e) {
@@ -212,7 +209,7 @@ public class FinancialAnalysisUi {
                         +event.getTableView().getItems().get(event.getTablePosition().getRow()).getMoney()+"/"
                         +event.getTableView().getItems().get(event.getTablePosition().getRow()).getDate();
                 try {
-                    ClientSocket socket1 = new ClientSocket("127.0.0.1",8888);
+                    ClientSocket socket1 = new ClientSocket("192.168.43.10",8888);
                     socket1.send(message);
                     socket1.close();
                 } catch (IOException e) {
@@ -234,8 +231,6 @@ public class FinancialAnalysisUi {
                                     ObservableValue<? extends Boolean> observable,
                                     Boolean oldValue, Boolean newValue) {
                                 user1.setCheck(newValue);
-                                System.out.println(user1.isCheck());
-                                System.out.println(data.get(0).isCheck());
                             }
                         });
                         return ret;
@@ -251,14 +246,16 @@ public class FinancialAnalysisUi {
                 User s = data.get(i1);
                 if (s.isCheck()) {
                     try {
-                        ClientSocket clientSocket = new ClientSocket("127.0.0.1",8888);
+                        ClientSocket clientSocket = new ClientSocket("192.168.43.10",8888);
                         clientSocket.send(new String("E/"+MainUi.user.getEmail()+"/"+data.get(i1).getItem()+"/"+data.get(i1).getMoney())+"/"+data.get(i1).getDate());
+                        socket.close();
                     } catch (IOException ioException) {
                         ioException.printStackTrace();
                     }
                     data.remove(s);
                 }
             }
+
         });
 
         reviseButton.setOnAction(e->{

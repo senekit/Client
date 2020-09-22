@@ -29,12 +29,11 @@ public class FinancialProjectUi {
 
         Pane stablePane = new Pane();
         Pane radicalPane = new Pane();
-        Pane popularPane = new Pane();
 
         TableView stableTable = new TableView();
         TableView radicalTable = new TableView();
 
-        ClientSocket socket = new ClientSocket("127.0.0.1",8888);
+        ClientSocket socket = new ClientSocket("192.168.43.10",8888);
         socket.send(new String("WS"));
         String[] message=socket.accept().trim().split("#");
 
@@ -50,6 +49,8 @@ public class FinancialProjectUi {
 
         stableTab.setContent(stablePane);
         radicalTab.setContent(radicalPane);
+
+        socket.close();
     }
 
     public void creatTable(TableView tableView,String[] messages){
